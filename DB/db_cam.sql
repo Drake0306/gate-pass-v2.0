@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2021 at 12:09 PM
+-- Generation Time: Mar 20, 2021 at 02:06 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -72,6 +72,13 @@ CREATE TABLE `location` (
   `id` int(11) NOT NULL,
   `name` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `location`
+--
+
+INSERT INTO `location` (`id`, `name`) VALUES
+(1, 'JAMSHEDPUR');
 
 -- --------------------------------------------------------
 
@@ -164,7 +171,10 @@ INSERT INTO `log_in_log` (`id`, `table_id`, `user_id`, `date`) VALUES
 (71, 1, 'admin', '2021-03-15 10:52:52'),
 (72, 1, 'admin', '2021-03-15 10:52:52'),
 (73, 1, 'admin', '2021-03-16 11:11:55'),
-(74, 1, 'admin', '2021-03-18 12:05:21');
+(74, 1, 'admin', '2021-03-18 12:05:21'),
+(75, 1, 'admin', '2021-03-20 11:12:29'),
+(76, 1, 'admin', '2021-03-20 11:52:13'),
+(77, 1, 'admin', '2021-03-20 12:58:37');
 
 -- --------------------------------------------------------
 
@@ -214,7 +224,10 @@ INSERT INTO `no_of_visit` (`id`, `uid`, `visitor_id`, `in_or_out`, `visit_reason
 (42, '382154172012', '15', NULL, 'work', '1997', 'laldhi,ghatshila,near panchayat bhavan', NULL, NULL, 'Satinal nandlala', 'work', NULL, 'danroy48@hotmail.com', 'CEO', '2020-04-13 08:21:30', '2020-04-13 00:00:00', '2020-04-13 08:21:30', '5e958c70efcfa.png', NULL),
 (43, '382154172012', '15', NULL, 'work', '1997', 'laldhi,ghatshila,near panchayat bhavan', NULL, '08084342203', 'Satinal nandlala', 'work', 'CEO Office', 'danroy48@hotmail.com', 'CEO', '2020-04-13 08:27:33', '2020-04-13 00:00:00', '2020-04-13 08:27:33', '5e958b46915f5.png', NULL),
 (44, '382154172012', '15', NULL, 'work for home info', 'FORD', 'laldhi,ghatshila,near panchayat bhavan', 'www.lication.com', '08084342203', 'Sam', 'work for home info', 'head of department of motors', 'famestar0306@gmail.com', 'cheaf exiutive', '2020-04-14 10:54:55', '0000-00-00 00:00:00', '2020-04-14 10:54:55', '5e959c560a8c5.png', NULL),
-(45, 'asjhdgjhasjhags', '17', NULL, 'sajhjdh', 'asjhdgjahd', 'ahsjdgjha', 'ajhgjhsd', 'dajhsg', 'jhgajhsd', 'sajhjdh', 'ajhdsjhd', 'dajshsjhda', 'dajhsgdjha', '2021-02-12 10:59:45', NULL, '2021-02-12 10:59:45', '60265fa97ad1b.png', NULL);
+(45, 'asjhdgjhasjhags', '17', NULL, 'sajhjdh', 'asjhdgjahd', 'ahsjdgjha', 'ajhgjhsd', 'dajhsg', 'jhgajhsd', 'sajhjdh', 'ajhdsjhd', 'dajshsjhda', 'dajhsgdjha', '2021-02-12 10:59:45', NULL, '2021-02-12 10:59:45', '60265fa97ad1b.png', NULL),
+(46, NULL, '18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-03-20 11:45:24', NULL, '2021-03-20 11:45:24', NULL, NULL),
+(47, NULL, '18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-03-20 11:45:54', NULL, '2021-03-20 11:45:54', NULL, NULL),
+(48, NULL, '18', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-03-20 11:50:19', NULL, '2021-03-20 11:50:19', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -317,38 +330,51 @@ CREATE TABLE `profile_master` (
 
 CREATE TABLE `truck_data` (
   `id` int(11) NOT NULL,
-  `card_type` varchar(10) DEFAULT NULL,
-  `pid` varchar(20) DEFAULT NULL,
-  `t_date` datetime NOT NULL DEFAULT current_timestamp(),
-  `data_type` varchar(10) DEFAULT NULL,
-  `pass_no` varchar(10) DEFAULT NULL,
-  `sap_code` varchar(20) DEFAULT NULL,
-  `truck_no` varchar(50) DEFAULT NULL,
-  `p_name` varchar(50) DEFAULT NULL,
-  `father_name` varchar(50) DEFAULT NULL,
-  `dob` date DEFAULT NULL,
-  `address` varchar(240) DEFAULT NULL,
-  `phone` varchar(50) DEFAULT NULL,
-  `license_no` varchar(100) DEFAULT NULL,
-  `lvalid_through` date DEFAULT NULL,
-  `plase_issue` varchar(50) DEFAULT NULL,
-  `ploice_verification` varchar(5) DEFAULT NULL,
-  `ploice_station` varchar(50) DEFAULT NULL,
-  `ref_no` varchar(100) DEFAULT NULL,
-  `eye_sight` varchar(10) DEFAULT NULL,
-  `from_j` varchar(5) DEFAULT NULL,
-  `from_h` varchar(5) DEFAULT NULL,
-  `hg_training` varchar(5) DEFAULT NULL,
-  `hg_valid_from` date DEFAULT NULL,
-  `hg_valid_to` date DEFAULT NULL,
-  `cvalid_to` date DEFAULT NULL,
-  `cvalid_from` date DEFAULT NULL,
-  `no_renew` int(11) DEFAULT NULL,
-  `created_date` date DEFAULT NULL,
-  `create_user` varchar(100) DEFAULT NULL,
-  `attach_document` varchar(100) DEFAULT NULL,
-  `location_code` varchar(20) DEFAULT NULL
+  `party` varchar(250) DEFAULT NULL,
+  `truck_no` varchar(250) DEFAULT NULL,
+  `type` varchar(250) DEFAULT NULL,
+  `adhar_no` varchar(250) DEFAULT NULL,
+  `full_name` varchar(250) DEFAULT NULL,
+  `fathers_name` varchar(250) DEFAULT NULL,
+  `gender` varchar(250) DEFAULT NULL,
+  `yob` varchar(250) DEFAULT NULL,
+  `mobile` varchar(250) DEFAULT NULL,
+  `house` varchar(250) DEFAULT NULL,
+  `dl_no` varchar(250) DEFAULT NULL,
+  `issueing_rto` varchar(250) DEFAULT NULL,
+  `eye_sight` varchar(250) DEFAULT NULL,
+  `from_j` varchar(250) DEFAULT NULL,
+  `from_h` varchar(250) DEFAULT NULL,
+  `police_verification` varchar(250) DEFAULT NULL,
+  `ref` varchar(250) DEFAULT NULL,
+  `police_station` varchar(250) DEFAULT NULL,
+  `valid_from` varchar(250) DEFAULT NULL,
+  `valid_to` varchar(250) DEFAULT NULL,
+  `valid_from_training` varchar(250) DEFAULT NULL,
+  `valid_to_training` varchar(250) DEFAULT NULL,
+  `upload_documents` varchar(250) DEFAULT NULL,
+  `issue_date` varchar(250) DEFAULT NULL,
+  `insuranse_rs_1` varchar(250) DEFAULT NULL,
+  `insuranse_rs_2` varchar(250) DEFAULT NULL,
+  `nominee` varchar(250) DEFAULT NULL,
+  `bank_account` varchar(250) DEFAULT NULL,
+  `hiv_test` varchar(250) DEFAULT NULL,
+  `fitness_test` varchar(250) DEFAULT NULL,
+  `created_date` varchar(250) DEFAULT NULL,
+  `create_user` varchar(250) DEFAULT NULL,
+  `attach_document` varchar(250) DEFAULT NULL,
+  `location_code` varchar(250) DEFAULT NULL,
+  `card_number` varchar(250) DEFAULT NULL,
+  `temp` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `truck_data`
+--
+
+INSERT INTO `truck_data` (`id`, `party`, `truck_no`, `type`, `adhar_no`, `full_name`, `fathers_name`, `gender`, `yob`, `mobile`, `house`, `dl_no`, `issueing_rto`, `eye_sight`, `from_j`, `from_h`, `police_verification`, `ref`, `police_station`, `valid_from`, `valid_to`, `valid_from_training`, `valid_to_training`, `upload_documents`, `issue_date`, `insuranse_rs_1`, `insuranse_rs_2`, `nominee`, `bank_account`, `hiv_test`, `fitness_test`, `created_date`, `create_user`, `attach_document`, `location_code`, `card_number`, `temp`) VALUES
+(1, '234567', '1', 'Helper', '5432165', 'Drake', 'dghub', NULL, '2021-01-20', NULL, 'dasd213', '543', '12367', 'OK', 'Yes', 'Yes', 'Yes', 'nbv', 'asd', '2021-03-25', '2021-03-27', '2021-03-16', '2021-04-04', NULL, '2021-03-17', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, '234567', '1', 'Helper', '876543', 'qwert', 'kajsdh', NULL, '2021-04-02', NULL, 'sadsfdsg', '1231441', 'asdasd', 'OK', 'No', 'No', 'Yes', NULL, 'asd', '2021-03-19', '2021-03-27', '2021-03-11', '2021-03-30', NULL, '2021-03-06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'JAMP10001', '0');
 
 -- --------------------------------------------------------
 
@@ -408,11 +434,11 @@ CREATE TABLE `user_table` (
 --
 
 INSERT INTO `user_table` (`id`, `name`, `user_id`, `password`, `type`, `user_type`, `user_code`, `cname`, `phone`, `email`, `location_code`, `created_at`) VALUES
-(1, 'admin', 'admin', 'admin123', 0, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00'),
-(2, 'demo', 'demo123', '123456', 1, NULL, NULL, NULL, NULL, NULL, NULL, '0000-00-00 00:00:00'),
-(9, 'drake', 'drake123456', 'drake123456', 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-16 08:54:31'),
-(10, 'test dummy', 'dummy1', 'dummy123', 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-16 09:04:22'),
-(11, 'Debasish Upadhyay', 'deba1234', 'deba1234', 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-04-29 13:14:25');
+(1, 'admin', 'admin', 'admin123', 0, NULL, NULL, NULL, NULL, NULL, '1', '0000-00-00 00:00:00'),
+(2, 'demo', 'demo123', '123456', 1, NULL, NULL, NULL, NULL, NULL, '1', '0000-00-00 00:00:00'),
+(9, 'drake', 'drake123456', 'drake123456', 1, NULL, NULL, NULL, NULL, NULL, '1', '2020-04-16 08:54:31'),
+(10, 'test dummy', 'dummy1', 'dummy123', 1, NULL, NULL, NULL, NULL, NULL, '1', '2020-04-16 09:04:22'),
+(11, 'Debasish Upadhyay', 'deba1234', 'deba1234', 1, NULL, NULL, NULL, NULL, NULL, '1', '2020-04-29 13:14:25');
 
 -- --------------------------------------------------------
 
@@ -456,7 +482,8 @@ CREATE TABLE `visitor` (
 INSERT INTO `visitor` (`id`, `uid`, `name`, `gender`, `yob`, `co`, `house`, `street`, `lm`, `vtc`, `po`, `dist`, `state`, `mobile_no`, `email`, `company_details`, `company_address`, `designation`, `company_website`, `company_email`, `company_mobile`, `whome_to_meet`, `details`, `department`, `pc`, `created_date`) VALUES
 (15, '382154172012', 'Abhinav Roy', 'M', '1997-09-30', NULL, '116 GOURI VILLA LALDIH NEAR PANCHAYAT BHAWAN Ghatshila Purbi Singhbhum Jharkhand', NULL, NULL, NULL, NULL, NULL, NULL, '7903826151', 'danroy48@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-24 16:46:09'),
 (16, '247780532648', 'Purnima Roy', 'F', '1667-09-09', NULL, 'LALDIH', NULL, NULL, NULL, NULL, NULL, NULL, '7903826151', 'donaroy@gmail.com', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2020-03-25 12:11:42'),
-(17, 'asjhdgjhasjhags', 'asjhdjahs', 'M', '1970-01-01', NULL, 'jhagdsjhga', NULL, NULL, NULL, NULL, NULL, NULL, 'jhasdj', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-02-12 10:59:45');
+(17, 'asjhdgjhasjhags', 'asjhdjahs', 'M', '1970-01-01', NULL, 'jhagdsjhga', NULL, NULL, NULL, NULL, NULL, NULL, 'jhasdj', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-02-12 10:59:45'),
+(18, NULL, NULL, NULL, '1970-01-01', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2021-03-20 11:45:24');
 
 --
 -- Indexes for dumped tables
@@ -560,19 +587,19 @@ ALTER TABLE `devices`
 -- AUTO_INCREMENT for table `location`
 --
 ALTER TABLE `location`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `log_in_log`
 --
 ALTER TABLE `log_in_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=75;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
 
 --
 -- AUTO_INCREMENT for table `no_of_visit`
 --
 ALTER TABLE `no_of_visit`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `party_master`
@@ -602,7 +629,7 @@ ALTER TABLE `profile_master`
 -- AUTO_INCREMENT for table `truck_data`
 --
 ALTER TABLE `truck_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user_role`
@@ -620,7 +647,7 @@ ALTER TABLE `user_table`
 -- AUTO_INCREMENT for table `visitor`
 --
 ALTER TABLE `visitor`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
