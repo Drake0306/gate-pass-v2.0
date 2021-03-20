@@ -75,6 +75,7 @@ class log_inController extends Controller
             $request->session()->put('out_entry',$permission->out_entry);
             
             $request->session()->put('location','101');
+            $request->session()->put('location_code',$data->location_code);
 
             // $request->session()->put('ip', $request->ip());
 

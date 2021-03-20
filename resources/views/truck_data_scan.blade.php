@@ -22,8 +22,12 @@
     =========================================================
     * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
     -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
     <link href="{{url('public/style.css')}}" rel="stylesheet">
     <link href="{{url('public/main.css')}}" rel="stylesheet">
+
 </head>
 
 <body>
@@ -272,7 +276,8 @@
                                 <div class="card-header-tab card-header-tab-animation card-header">
                                     <div class="card-header-title">
                                         <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
-                                        Driver / Helper - Aadhar QR Scan Preview <small class="text-danger"> &nbsp;&nbsp; NOTE !!! - If it
+                                        Driver / Helper - Aadhar QR Scan Preview <small class="text-danger">
+                                            &nbsp;&nbsp; NOTE !!! - If it
                                             is taking more than 10 seconds Reload scanner</small>
                                     </div>
 
@@ -326,22 +331,24 @@
                                 </div>
                             </div>
                             <!-- <div class="col-md-12" id="input_part" style="display: none"> -->
-                            <div class="col-md-12" id="input_part">
-                                <div class="mb-3 card">
-                                    <div class="card-header-tab card-header-tab-animation card-header"
-                                        style="background-color: #F79646">
-                                        <div class="card-header-title text-light" style="font-size:18px">
-                                            <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
-                                            Personal Details
-                                        </div>
+                            <form method="POST" novalidate id="registervalidation" role="form" enctype="multipart/form-data"
+                                action="{{url('/truck/data/add')}}">
+                                @csrf
+                                <div class="col-md-12" id="input_part">
+                                    <div class="mb-3 card">
+                                        <div class="card-header-tab card-header-tab-animation card-header"
+                                            style="background-color: #F79646">
+                                            <div class="card-header-title text-light" style="font-size:18px">
+                                                <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
+                                                Personal Details
+                                            </div>
 
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="tab-content">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <form method="POST" action="{{url('/store_visitor_data')}}">
-                                                        @csrf
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="tab-content">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+
                                                         <div class="row">
                                                             <!-- <div class="col-md-12">
                                                                 <h4>Personal Details</h4>
@@ -368,8 +375,8 @@
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="">Truck Number</label>
-                                                                    <select class="form-control" id="truck_no" name="truck_no"
-                                                                        required required>
+                                                                    <select class="form-control" id="truck_no"
+                                                                        name="truck_no" required required>
                                                                         <option value="">Select</option>
                                                                     </select>
                                                                     <small id="helpId"
@@ -505,27 +512,26 @@
 
 
                                                         </div>
-                                                    </form>
+
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="mb-3 card">
-                                    <div class="card-header-tab card-header-tab-animation card-header"
-                                        style="background-color: #F79646">
-                                        <div class="card-header-title text-light" style="font-size:18px">
-                                            <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
-                                            Professional Details
-                                        </div>
+                                    <div class="mb-3 card">
+                                        <div class="card-header-tab card-header-tab-animation card-header"
+                                            style="background-color: #F79646">
+                                            <div class="card-header-title text-light" style="font-size:18px">
+                                                <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
+                                                Professional Details
+                                            </div>
 
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="tab-content">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <form method="POST" action="{{url('/store_visitor_data')}}">
-                                                        @csrf
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="tab-content">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+
                                                         <div class="row">
 
 
@@ -542,6 +548,17 @@
                                                                     <input type="text" class="form-control" name="dl_no"
                                                                         id="box" aria-describedby="helpId"
                                                                         placeholder="Enter Number" required>
+                                                                    <small id="helpId"
+                                                                        class="form-text text-primary">Required</small>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="">Issue Date</label>
+                                                                    <input type="date" class="form-control" name="issue_date"
+                                                                        id="box" aria-describedby="helpId"
+                                                                        placeholder="Enter Date" required>
                                                                     <small id="helpId"
                                                                         class="form-text text-primary">Required</small>
                                                                 </div>
@@ -698,31 +715,50 @@
                                                                 </div>
                                                             </div>
 
+                                                            <div class="col-md-6">
+
+                                                            </div>
+                                                            <div class="col-md-6">
+                                                                <div class="form-group">
+                                                                    <label for="formFile" class="form-label">Upload
+                                                                        Documents</label>
+                                                                    <input class="form-control" name="upload_documents" type="file"
+                                                                        id="formFile">
+                                                                    <!-- <small id="helpId"
+                                                                        class="form-text text-primary">Required</small> -->
+                                                                </div>
+                                                            </div>
+
                                                             <!-- Fields for entry End-->
                                                             <div class="col-md-8 mt-4">
-                                                                <button type="button" onclick="validatedate()"
-                                                                    class="btn"
+                                                                <button type="submit" class="btn"
                                                                     style="background-color: #F79646;color: white">Next</button>
-                                                                <button type="submit" style="display:none"
-                                                                    id="at_submit" class="btn btn-primary">Next</button>
+                                                                
                                                             </div>
                                                         </div>
-                                                    </form>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+
+                            </form>
                         </div>
-
                     </div>
-
                 </div>
-
             </div>
-            <!--<script src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
         </div>
+    </div>
+    </div>
+
+    </div>
+
+    </div>
+
+    </div>
+    <!--<script src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
+    </div>
     </div>
     <script type="text/javascript" src="{{url('public/assets/scripts/main.js')}}"></script>
     <script type="text/javascript" src="{{url('public/script.js')}}"></script>
@@ -748,6 +784,30 @@
             });
         }
     </script> --}}
+
+    <script type="text/javascript">
+        $(function () {
+            $('#registervalidation').bootstrapValidator({
+                message: 'This value is not valid',
+                fields: {
+                    passport: {
+                        validators: {
+                            file: {
+                                extension: 'jpg,pdf',
+                                maxSize: 5 * 1024 * 1024, // 5 MB
+                                message: 'Please upload a .pdf or .jpg file - max. size 5MB'
+                            },
+                            notEmpty: {
+                                message: 'Please select Passport File'
+                            }
+                        }
+                    },
+                }
+            });
+
+        });
+    </script>
+
     {{-- <script>
         function check() {
             var image = $('#image').val();
@@ -1179,13 +1239,16 @@
             $.ajax({ //create an ajax request to display.php
                 type: "GET",
                 url: "{{url('truck/ajax/load')}}",
-                data: {value: value},
-                dataType: "json",               
+                data: {
+                    value: value
+                },
+                dataType: "json",
                 success: function (response) {
                     console.log(response);
                     var tag = `<option value="" selected>Select</option>`;
                     for (var i = 0; i < response.length; i++) {
-                        tag += `<option value="`+ response[i].id +`" >`+ response[i].truck_no +`</option>`
+                        tag += `<option value="` + response[i].id + `" >` + response[i].truck_no +
+                            `</option>`
                     }
                     $('#truck_no').append(tag);
                     //alert(response);

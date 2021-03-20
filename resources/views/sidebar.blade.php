@@ -78,6 +78,14 @@
                     <ul>
                         <li>
                             @if(Session::get('read_in_out') == 1)
+                            <a href="{{url('/truck/visit/list')}}" id="in_out_value">
+                                <i class="metismenu-icon">
+                                </i>Driver / Helper List
+                            </a>
+                            @endif
+                        </li>
+                        <li>
+                            @if(Session::get('read_in_out') == 1)
                             <a href="{{url('/in_out_register')}}" id="in_out_value">
                                 <i class="metismenu-icon">
                                 </i>IN / OUT REGISTER

@@ -17,6 +17,8 @@ use App\no_of_visit;
 use App\permission;
 use App\party_wise_tt;
 use App\party_master;
+use App\truck_data;
+use App\location;
 use App\company_master;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -656,5 +658,78 @@ class viewController extends Controller
     public function LabourDataScan(REQUEST $request){
         $party_master = party_master::get();
         return view('labour_data_scan', compact('party_master'));
+    }
+    
+    public function TruckVisitList(REQUEST $request){
+        $truck_data = truck_data::paginate(10);
+        return view('truck_visits_list', compact('truck_data'));
+    }
+    
+    public function DriverHelperAdd(REQUEST $request){
+        // return $request;
+        $truck_data_add = new truck_data();
+        $truck_data_add->party = $request->party;
+        $truck_data_add->truck_no = $request->truck_no;
+        $truck_data_add->type = $request->type;
+        $truck_data_add->adhar_no = $request->adhar_no;
+        $truck_data_add->full_name = $request->full_name;
+        $truck_data_add->fathers_name = $request->fathers_name;
+        $truck_data_add->gender = $request->gender;
+        $truck_data_add->yob = $request->yob;
+        $truck_data_add->mobile = $request->mobile;
+        $truck_data_add->house = $request->house;
+        $truck_data_add->dl_no = $request->dl_no;
+        $truck_data_add->issueing_rto = $request->issueing_rto;
+        $truck_data_add->eye_sight = $request->eye_sight;
+        $truck_data_add->from_j	 = $request->from_j;
+        $truck_data_add->from_h = $request->from_h;
+        $truck_data_add->police_verification = $request->police_verification;
+        $truck_data_add->ref = $request->ref;
+        $truck_data_add->police_station = $request->police_station;
+        $truck_data_add->valid_from = $request->valid_from;
+        $truck_data_add->valid_to = $request->valid_to;
+        $truck_data_add->valid_from_training = $request->valid_from_training;
+        $truck_data_add->valid_to_training = $request->valid_to_training;
+        $truck_data_add->issue_date = $request->issue_date;
+
+        //prifix
+        $location_code_id = $request->session()->get('location_code');
+        $location_code = location::where('id',$location_code_id)->first();
+        $location_name = substr(@$location_code->name, 0, 3);
+        $temp = false;
+        $RandNoPrefix = 'P';
+        if ($temp == true) {
+            $RandNoPrefix = 'T';
+        }
+        $countDriverHelper = truck_data::count();
+        $pad_length = 4;
+        $pad_char = 0;
+        $str_type = 'd'; // treats input as integer, and outputs as a (signed) decimal number
+
+        $format = "%{$pad_char}{$pad_length}{$str_type}"; // or "%04d"
+
+        // output and echo
+        printf($format, 123);
+
+        // output to a variable
+        $formatted_str = sprintf($format, $countDriverHelper);
+
+        $truck_data_add->card_number = $location_name.$RandNoPrefix.'1'.$formatted_str;
+        $truck_data_add->temp = $temp;
+        // $truck_data_add->upload_documents = $request->upload_documents;
+        // $truck_data_add->insuranse_rs_1 = $request->insuranse_rs_1;
+        // $truck_data_add->insuranse_rs_2 = $request->insuranse_rs_2;
+        // $truck_data_add->nominee = $request->nominee;
+        // $truck_data_add->bank_account = $request->bank_account;
+        // $truck_data_add->hiv_test = $request->hiv_test;
+        // $truck_data_add->fitness_test = $request->fitness_test;
+        
+        // $truck_data_add->created_date = $request->
+        // $truck_data_add->create_user = $request->
+        // $truck_data_add->attach_document = $request->
+        // $truck_data_add->location_code = $request->
+        $truck_data_add->save();
+
+        return redirect('/truck/data/scan');
     }
 }
