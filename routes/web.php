@@ -46,6 +46,7 @@ Route::any('/create_new_user_/','viewController@create_new_user_');
 Route::any('/truck/data/scan','viewController@truckDataScan');
 Route::any('/truck/visit/list','viewController@TruckVisitList');
 Route::any('/truck/data/add','viewController@DriverHelperAdd');
+Route::any('/truck/data/scan/edit/{id}','viewController@DriverHelperEditList');
 // Ajax
 Route::any('truck/ajax/load','viewController@truckDataloadAjax');
 

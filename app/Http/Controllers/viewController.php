@@ -19,7 +19,7 @@ use App\party_wise_tt;
 use App\party_master;
 use App\truck_data;
 use App\location;
-use App\company_master;
+use App\company_master; 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -649,6 +649,16 @@ class viewController extends Controller
         return view('truck_data_scan', compact('party_master'));
     }
     
+    public function DriverHelperEditList(REQUEST $request,$id){
+        $party_master = party_master::get();
+        $truck_data = truck_data::where('id',$id)->first();
+        $party_name = party_master::where('sap_code',@$truck_data->party)->first();
+        $party_wise_tt = party_wise_tt::where('id',@$truck_data->truck_no)->first();
+        $party_wise_tt_get = party_wise_tt::where('sap_code',@$truck_data->party)->get();
+        // return $party_name;
+        return view('truck_data_scan_edit', compact('party_master','truck_data','party_name','party_wise_tt','party_wise_tt_get'));
+    }
+    
     
     public function truckDataloadAjax(REQUEST $request){
         $party_wise_tt = party_wise_tt::where('sap_code', $request->value)->get();
@@ -691,6 +701,7 @@ class viewController extends Controller
         $truck_data_add->valid_from_training = $request->valid_from_training;
         $truck_data_add->valid_to_training = $request->valid_to_training;
         $truck_data_add->issue_date = $request->issue_date;
+        $truck_data_add->hg_training = $request->hg_training;
 
         //prifix
         $location_code_id = $request->session()->get('location_code');
@@ -716,7 +727,18 @@ class viewController extends Controller
 
         $truck_data_add->card_number = $location_name.$RandNoPrefix.'1'.$formatted_str;
         $truck_data_add->temp = $temp;
-        // $truck_data_add->upload_documents = $request->upload_documents;
+
+        // File Upload
+        if($request->hasFile('upload_documents')) {
+            $file_img_name = $request->file('upload_documents');
+            $file_name = time().'.'.$file_img_name->getClientOriginalExtension();
+            $destinationPath = public_path('/files');
+            $file_img_name->move($destinationPath, $file_name);
+        
+            $truck_data_add->upload_documents = $file_name;
+          }
+
+        $truck_data_add->process_stage = 1;
         // $truck_data_add->insuranse_rs_1 = $request->insuranse_rs_1;
         // $truck_data_add->insuranse_rs_2 = $request->insuranse_rs_2;
         // $truck_data_add->nominee = $request->nominee;
@@ -730,6 +752,6 @@ class viewController extends Controller
         // $truck_data_add->location_code = $request->
         $truck_data_add->save();
 
-        return redirect('/truck/data/scan');
+        return redirect('/truck/data/scan/edit/'.$truck_data_add->id);
     }
 }

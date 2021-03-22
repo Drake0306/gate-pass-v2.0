@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 20, 2021 at 02:06 PM
+-- Generation Time: Mar 22, 2021 at 01:54 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -174,7 +174,9 @@ INSERT INTO `log_in_log` (`id`, `table_id`, `user_id`, `date`) VALUES
 (74, 1, 'admin', '2021-03-18 12:05:21'),
 (75, 1, 'admin', '2021-03-20 11:12:29'),
 (76, 1, 'admin', '2021-03-20 11:52:13'),
-(77, 1, 'admin', '2021-03-20 12:58:37');
+(77, 1, 'admin', '2021-03-20 12:58:37'),
+(78, 1, 'admin', '2021-03-20 17:43:49'),
+(79, 1, 'admin', '2021-03-22 11:15:14');
 
 -- --------------------------------------------------------
 
@@ -365,16 +367,18 @@ CREATE TABLE `truck_data` (
   `attach_document` varchar(250) DEFAULT NULL,
   `location_code` varchar(250) DEFAULT NULL,
   `card_number` varchar(250) DEFAULT NULL,
-  `temp` varchar(250) DEFAULT NULL
+  `temp` varchar(250) DEFAULT NULL,
+  `process_stage` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `truck_data`
 --
 
-INSERT INTO `truck_data` (`id`, `party`, `truck_no`, `type`, `adhar_no`, `full_name`, `fathers_name`, `gender`, `yob`, `mobile`, `house`, `dl_no`, `issueing_rto`, `eye_sight`, `from_j`, `from_h`, `police_verification`, `ref`, `police_station`, `valid_from`, `valid_to`, `valid_from_training`, `valid_to_training`, `upload_documents`, `issue_date`, `insuranse_rs_1`, `insuranse_rs_2`, `nominee`, `bank_account`, `hiv_test`, `fitness_test`, `created_date`, `create_user`, `attach_document`, `location_code`, `card_number`, `temp`) VALUES
-(1, '234567', '1', 'Helper', '5432165', 'Drake', 'dghub', NULL, '2021-01-20', NULL, 'dasd213', '543', '12367', 'OK', 'Yes', 'Yes', 'Yes', 'nbv', 'asd', '2021-03-25', '2021-03-27', '2021-03-16', '2021-04-04', NULL, '2021-03-17', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, '234567', '1', 'Helper', '876543', 'qwert', 'kajsdh', NULL, '2021-04-02', NULL, 'sadsfdsg', '1231441', 'asdasd', 'OK', 'No', 'No', 'Yes', NULL, 'asd', '2021-03-19', '2021-03-27', '2021-03-11', '2021-03-30', NULL, '2021-03-06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'JAMP10001', '0');
+INSERT INTO `truck_data` (`id`, `party`, `truck_no`, `type`, `adhar_no`, `full_name`, `fathers_name`, `gender`, `yob`, `mobile`, `house`, `dl_no`, `issueing_rto`, `eye_sight`, `from_j`, `from_h`, `police_verification`, `ref`, `police_station`, `valid_from`, `valid_to`, `valid_from_training`, `valid_to_training`, `upload_documents`, `issue_date`, `insuranse_rs_1`, `insuranse_rs_2`, `nominee`, `bank_account`, `hiv_test`, `fitness_test`, `created_date`, `create_user`, `attach_document`, `location_code`, `card_number`, `temp`, `process_stage`) VALUES
+(1, '234567', '1', 'Helper', '5432165', 'Drake', 'dghub', NULL, '2021-01-20', NULL, 'dasd213', '543', '12367', 'OK', 'Yes', 'Yes', 'Yes', 'nbv', 'asd', '2021-03-25', '2021-03-27', '2021-03-16', '2021-04-04', '1616413160.pdf', '2021-03-17', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(2, '234567', '1', 'Helper', '876543', 'qwert', 'kajsdh', NULL, '2021-04-02', NULL, 'sadsfdsg', '1231441', 'asdasd', 'OK', 'No', 'No', 'Yes', NULL, 'asd', '2021-03-19', '2021-03-27', '2021-03-11', '2021-03-30', '1616413160.pdf', '2021-03-06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'JAMP10001', '0', 1),
+(3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1616413160.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'JAMP10002', '0', 1);
 
 -- --------------------------------------------------------
 
@@ -593,7 +597,7 @@ ALTER TABLE `location`
 -- AUTO_INCREMENT for table `log_in_log`
 --
 ALTER TABLE `log_in_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=78;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
 
 --
 -- AUTO_INCREMENT for table `no_of_visit`
@@ -629,7 +633,7 @@ ALTER TABLE `profile_master`
 -- AUTO_INCREMENT for table `truck_data`
 --
 ALTER TABLE `truck_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_role`

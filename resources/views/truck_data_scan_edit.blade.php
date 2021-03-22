@@ -280,19 +280,37 @@
 
                                                         <div class="row">
                                                             <div class="col-md-3">
-                                                                <button type="button" class="btn btn-danger">1'st Step
-                                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                                    Form Complete</button>
+                                                                <a type="button" href="{{url('truck/data/scan/edit/'.$truck_data->id)}}"
+
+                                                                    @if($truck_data->process_stage == 1)
+                                                                        class="btn btn-success"
+                                                                    @else
+                                                                        class="btn btn-danger"
+                                                                    @endif
+
+                                                                 >1'st Step
+                                                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                                                                Form Complete</a>
                                                             </div>
-                                                            <div class="col-md-3" >
-                                                                <button type="button" class="btn btn-danger">2'nd Step
+                                                            <div class="col-md-4" >
+                                                                <a type="button" hred="#"
+                                                                    @if($truck_data->process_stage == 2)
+                                                                        class="btn btn-success text-light"
+                                                                    @else
+                                                                        class="btn btn-danger text-light"
+                                                                    @endif>2'nd Step
                                                                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                                    Upload Picture</button>
+                                                                    Upload / Click Picture</a>
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <button type="button" class="btn btn-danger">3'rd Step
+                                                                <a type="button"  hred="#"
+                                                                    @if($truck_data->process_stage == 3)
+                                                                        class="btn btn-success text-light"
+                                                                    @else
+                                                                        class="btn btn-danger text-light"
+                                                                    @endif>3'rd Step
                                                                     <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                                    Download PDF</button>
+                                                                    Print PDF</a>
                                                             </div>
                                                         </div>
                                                         
@@ -333,6 +351,14 @@
                                                 <form method="POST" action="{{url('/store_image')}}">
                                                     @csrf
                                                     <div class="row">
+                                                        <div class="col-md-12 mt-3">
+                                                            <button type="button" onClick="toggleDataScanner('toggle_scanner')"
+                                                                class="btn btn-secondary"> <i
+                                                                    class="fas fa-chevron-right"></i> &nbsp;
+                                                                Toggle Scanner</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-5" id="toggle_scanner" style="display:none" >
                                                         <div class="col-md-6" style="padding: 5px;">
                                                             <video style="border-radius:10px; width: 100%; height: 100%"
                                                                 id="preview"></video>
@@ -353,10 +379,10 @@
                                                                         Scanner</button>
                                                                 </div>
                                                                 <div class="col-md-6 mt-3">
-                                                                    <button style="margin-top: 2px;" type="button"
+                                                                    <!-- <button style="margin-top: 2px;" type="button"
                                                                         class="btn btn-secondary"> <i
                                                                             class="fas fa-chevron-right"></i> &nbsp;
-                                                                        Next</button>
+                                                                        Next</button> -->
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -398,6 +424,10 @@
                                                                     <select class="form-control" name="party"
                                                                         onChange="loadAjax(this.value)" id="box"
                                                                         required>
+                                                                        @if($party_name)
+                                                                        <option value="{{$party_name->sap_code}}">
+                                                                            {{$party_name->party_name}}</option>
+                                                                        @endif
                                                                         <option value="">Select</option>
                                                                         @foreach($party_master as $value)
                                                                         <option value="{{$value->sap_code}}">
@@ -414,7 +444,14 @@
                                                                     <label for="">Truck Number</label>
                                                                     <select class="form-control" id="truck_no"
                                                                         name="truck_no" required required>
+                                                                        @if($party_wise_tt)
+                                                                            <option value="{{$party_wise_tt->id}}">{{$party_wise_tt->truck_no}}</option>
+                                                                        @endif
                                                                         <option value="">Select</option>
+                                                                        @foreach($party_wise_tt_get as $value)
+                                                                        <option value="{{$value->id}}">
+                                                                            {{$value->truck_no}}</option>
+                                                                        @endforeach
                                                                     </select>
                                                                     <small id="helpId"
                                                                         class="form-text text-primary">Required</small>
@@ -426,6 +463,9 @@
                                                                     <label for="">Type</label>
                                                                     <select class="form-control" name="type" required
                                                                         id="box" required>
+                                                                        
+                                                                        <option selected value="{{@$truck_data->type}}">{{@$truck_data->type}}</option>
+
                                                                         <option value="">Select</option>
                                                                         <option value="Driver">Driver</option>
                                                                         <option value="Helper">Helper</option>
@@ -441,6 +481,7 @@
                                                                     <label for="">Aadhar Number</label>
                                                                     <input type="text" class="form-control"
                                                                         name="adhar_no" id="box_1"
+                                                                        value="{{@$truck_data->adhar_no}}"
                                                                         aria-describedby="helpId"
                                                                         placeholder="Enter Aadhar Number" required>
                                                                     <small id="helpId"
@@ -454,6 +495,7 @@
                                                                     <input type="text" class="form-control"
                                                                         name="full_name" id="box_2"
                                                                         aria-describedby="helpId"
+                                                                        value="{{@$truck_data->full_name}}"
                                                                         placeholder="Enter Full Name" required>
                                                                     <small id="helpId"
                                                                         class="form-text text-primary">Required</small>
@@ -465,6 +507,7 @@
                                                                     <label for="">Fathers Name</label>
                                                                     <input type="text" class="form-control"
                                                                         name="fathers_name" id="box"
+                                                                        value="{{@$truck_data->fathers_name}}"
                                                                         aria-describedby="helpId"
                                                                         placeholder="Enter Name" required>
                                                                     <small id="helpId"
@@ -494,7 +537,7 @@
                                                                             in single digit add 0 infront of it
                                                                         </small></label>
                                                                     <input type="date" class="form-control" name="yob"
-                                                                        id="box_4" aria-describedby="helpId"
+                                                                        id="box_4" aria-describedby="helpId" value="{{@$truck_data->yob}}"
                                                                         placeholder="Enter date of birth (dd-mm-yyyy)"
                                                                         required>
                                                                     <small id="helpId" style="display:inline"
@@ -513,7 +556,7 @@
                                                                 <div class="form-group">
                                                                     <label for="">Phone Number</label>
                                                                     <input type="text" class="form-control"
-                                                                        name="mobile" id="mobile"
+                                                                        name="mobile" id="mobile" value="{{@$truck_data->mobile}}"
                                                                         aria-describedby="helpId"
                                                                         placeholder="Enter Number">
 
@@ -527,7 +570,7 @@
                                                                     <label for="">Email</label>
                                                                     <input type="text" class="form-control"
                                                                         name="mobile" id="email"
-                                                                        aria-describedby="helpId"
+                                                                        aria-describedby="helpId" 
                                                                         placeholder="Enter Email">
 
                                                                     <small id="helpId"
@@ -538,6 +581,7 @@
                                                                 <div class="form-group">
                                                                     <label for="">Address</label>
                                                                     <input type="text" class="form-control" name="house"
+                                                                    value="{{@$truck_data->house}}"
                                                                         id="box_5" aria-describedby="helpId" required
                                                                         placeholder="Enter Address">
                                                                     <small id="helpId"
@@ -584,6 +628,7 @@
                                                                     <label for="">DL Number</label>
                                                                     <input type="text" class="form-control" name="dl_no"
                                                                         id="box" aria-describedby="helpId"
+                                                                        value="{{@$truck_data->dl_no}}"
                                                                         placeholder="Enter Number" required>
                                                                     <small id="helpId"
                                                                         class="form-text text-primary">Required</small>
@@ -595,6 +640,7 @@
                                                                     <label for="">Issue Date</label>
                                                                     <input type="date" class="form-control"
                                                                         name="issue_date" id="box"
+                                                                        value="{{@$truck_data->issue_date}}"
                                                                         aria-describedby="helpId"
                                                                         placeholder="Enter Date" required>
                                                                     <small id="helpId"
@@ -607,6 +653,7 @@
                                                                     <label for="">Issueing RTO</label>
                                                                     <input type="text" class="form-control"
                                                                         name="issueing_rto" id="box"
+                                                                        value="{{@$truck_data->issueing_rto}}"
                                                                         aria-describedby="helpId" placeholder="Enter">
                                                                     <!-- <small id="helpId"
                                                                         class="form-text text-primary">Required</small> -->
@@ -618,6 +665,7 @@
                                                                     <label for="">Eye sight</label>
                                                                     <select class="form-control" name="eye_sight"
                                                                         id="box" required>
+                                                                        <option selected value="{{@$truck_data->eye_site}}">{{@$truck_data->eye_site}}</option>
                                                                         <option value="">Select</option>
                                                                         <option value="OK">OK</option>
                                                                         <option value="POOR">POOR</option>
@@ -632,6 +680,7 @@
                                                                     <label for="">From J</label>
                                                                     <select class="form-control" name="from_j" id="box"
                                                                         required>
+                                                                        <option selected value="{{@$truck_data->from_j}}">{{@$truck_data->from_j}}</option>
                                                                         <option value="">Select</option>
                                                                         <option value="Yes">Yes</option>
                                                                         <option value="No">No</option>
@@ -647,6 +696,7 @@
                                                                     <label for="">From H</label>
                                                                     <select class="form-control" name="from_h" id="box"
                                                                         required>
+                                                                        <option selected value="{{@$truck_data->form_h}}">{{@$truck_data->form_h}}</option>
                                                                         <option value="">Select</option>
                                                                         <option value="Yes">Yes</option>
                                                                         <option value="No">No</option>
@@ -661,6 +711,7 @@
                                                                     <label for="">Police Verification</label>
                                                                     <select class="form-control"
                                                                         name="police_verification" id="box" required>
+                                                                        <option selected value="{{@$truck_data->ploice_verification}}">{{@$truck_data->ploice_verification}}</option>
                                                                         <option value="">Select</option>
                                                                         <option value="Yes">Yes</option>
                                                                         <option value="No">No</option>
@@ -675,6 +726,7 @@
                                                                     <label for="">Ref</label>
                                                                     <input type="text" class="form-control" name="ref"
                                                                         id="box" aria-describedby="helpId" required
+                                                                        value="{{@$truck_data->ref}}"
                                                                         placeholder="Enter Ref">
                                                                     <small id="helpId"
                                                                         class="form-text text-primary">Required</small>
@@ -685,6 +737,7 @@
                                                                 <div class="form-group">
                                                                     <label for="">Police Station</label>
                                                                     <input type="text" class="form-control"
+                                                                    value="{{@$truck_data->police_station}}"
                                                                         name="police_station" id="box"
                                                                         aria-describedby="helpId" placeholder="Enter">
                                                                     <!-- <small id="helpId"
@@ -696,6 +749,7 @@
                                                                 <div class="form-group">
                                                                     <label for="">Valid From</label>
                                                                     <input type="date" class="form-control"
+                                                                    value="{{@$truck_data->valid_from}}"
                                                                         name="valid_from" id="box"
                                                                         aria-describedby="helpId" placeholder="Enter">
                                                                     <!-- <small id="helpId"
@@ -708,6 +762,7 @@
                                                                     <label for="">Valid To</label>
                                                                     <input type="date" class="form-control"
                                                                         name="valid_to" id="box"
+                                                                        value="{{@$truck_data->valid_to}}"
                                                                         aria-describedby="helpId" placeholder="Enter">
                                                                     <!-- <small id="helpId"
                                                                         class="form-text text-primary">Required</small> -->
@@ -722,6 +777,7 @@
                                                                     <label for="">HG Training</label>
                                                                     <select class="form-control"
                                                                         name="hg_training" id="box" required>
+                                                                        <option selected value="{{@$truck_data->hg_training}}">{{@$truck_data->hg_training}}</option>
                                                                         <option value="">Select</option>
                                                                         <option value="Yes">Yes</option>
                                                                         <option value="No">No</option>
@@ -736,6 +792,7 @@
                                                                     <label for="">Valid From</label>
                                                                     <input type="date" class="form-control"
                                                                         name="valid_from_training" id="box"
+                                                                        value="{{@$truck_data->valid_from_training}}"
                                                                         aria-describedby="helpId" placeholder="Enter">
                                                                     <!-- <small id="helpId"
                                                                         class="form-text text-primary">Required</small> -->
@@ -747,6 +804,7 @@
                                                                     <label for="">Valid To</label>
                                                                     <input type="date" class="form-control"
                                                                         name="valid_to_training" id="box"
+                                                                        value="{{@$truck_data->valid_to_training}}"
                                                                         aria-describedby="helpId" placeholder="Enter">
                                                                     <!-- <small id="helpId"
                                                                         class="form-text text-primary">Required</small> -->
@@ -761,9 +819,11 @@
                                                                     <label for="formFile" class="form-label">Upload
                                                                         Documents</label>
                                                                     <input class="form-control" name="upload_documents"
+                                                                        value="{{@$truck_data->upload_documents}}"
                                                                         type="file" id="formFile">
-                                                                    <!-- <small id="helpId"
-                                                                        class="form-text text-primary">Required</small> -->
+                                                                    
+                                                                    <small id="helpId"
+                                                                        class="form-text text-primary"><a target="_blank" href="{{url('public/files/'.@$truck_data->upload_documents)}}" >{{@$truck_data->upload_documents}}</a></small>
                                                                 </div>
                                                             </div>
 
@@ -1271,6 +1331,11 @@
         });
     </script>
 
+    <script>
+        function toggleDataScanner(id) {
+            $('#' + id).toggle(500);
+        }
+    </script>
     <script>
         function loadAjax(value) {
             $('#truck_no').empty();
