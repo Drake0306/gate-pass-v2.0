@@ -675,6 +675,11 @@ class viewController extends Controller
         return view('truck_visits_list', compact('truck_data'));
     }
     
+    public function TruckVisitEditUploadSection(REQUEST $request, $id){
+        $truck_data = truck_data::where('id',$id)->first();
+        return view('truck_data_scan_pic_upload', compact('truck_data'));
+    }
+    
     public function DriverHelperAdd(REQUEST $request){
         // return $request;
         $truck_data_add = new truck_data();
@@ -747,11 +752,62 @@ class viewController extends Controller
         // $truck_data_add->fitness_test = $request->fitness_test;
         
         // $truck_data_add->created_date = $request->
-        // $truck_data_add->create_user = $request->
+        $truck_data_add->create_user = $request->session()->get('id');
         // $truck_data_add->attach_document = $request->
         // $truck_data_add->location_code = $request->
         $truck_data_add->save();
 
         return redirect('/truck/data/scan/edit/'.$truck_data_add->id);
+    }
+    
+    public function DriverHelperEditUpdate(REQUEST $request, $id){
+        // return $request;
+        $truck_data_update = truck_data::find($id);
+        $truck_data_update->party = $request->party;
+        $truck_data_update->truck_no = $request->truck_no;
+        $truck_data_update->type = $request->type;
+        $truck_data_update->adhar_no = $request->adhar_no;
+        $truck_data_update->full_name = $request->full_name;
+        $truck_data_update->fathers_name = $request->fathers_name;
+        $truck_data_update->gender = $request->gender;
+        $truck_data_update->yob = $request->yob;
+        $truck_data_update->mobile = $request->mobile;
+        $truck_data_update->house = $request->house;
+        $truck_data_update->dl_no = $request->dl_no;
+        $truck_data_update->issueing_rto = $request->issueing_rto;
+        $truck_data_update->eye_sight = $request->eye_sight;
+        $truck_data_update->from_j	 = $request->from_j;
+        $truck_data_update->from_h = $request->from_h;
+        $truck_data_update->police_verification = $request->police_verification;
+        $truck_data_update->ref = $request->ref;
+        $truck_data_update->police_station = $request->police_station;
+        $truck_data_update->valid_from = $request->valid_from;
+        $truck_data_update->valid_to = $request->valid_to;
+        $truck_data_update->valid_from_training = $request->valid_from_training;
+        $truck_data_update->valid_to_training = $request->valid_to_training;
+        $truck_data_update->issue_date = $request->issue_date;
+        $truck_data_update->hg_training = $request->hg_training;
+
+        // File Upload
+        if($request->hasFile('upload_documents')) {
+            $file_img_name = $request->file('upload_documents');
+            $file_name = time().'.'.$file_img_name->getClientOriginalExtension();
+            $destinationPath = public_path('/files');
+            $file_img_name->move($destinationPath, $file_name);
+        
+            $truck_data_update->upload_documents = $file_name;
+          }
+
+        $truck_data_update->process_stage = 1;
+
+        // $truck_data_update->insuranse_rs_1 = $request->insuranse_rs_1;
+        // $truck_data_update->insuranse_rs_2 = $request->insuranse_rs_2;
+        // $truck_data_update->nominee = $request->nominee;
+        // $truck_data_update->bank_account = $request->bank_account;
+        // $truck_data_update->hiv_test = $request->hiv_test;
+        // $truck_data_update->fitness_test = $request->fitness_test;
+        $truck_data_update->save();
+
+        return redirect('/truck/data/scan/edit/'.$id);
     }
 }

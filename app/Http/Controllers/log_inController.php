@@ -60,6 +60,7 @@ class log_inController extends Controller
             $permission = permission::where('user_id',$data->id)->first();
             //ADDING DATA TO SESSION
             $request->session()->put('user_id', $data->user_id);
+            $request->session()->put('id', $data->id);
             $request->session()->put('type', $data->type);
             $request->session()->put('name', $data->name);
             //IN  OUT

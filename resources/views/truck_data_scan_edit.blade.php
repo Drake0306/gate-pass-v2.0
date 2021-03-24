@@ -280,37 +280,32 @@
 
                                                         <div class="row">
                                                             <div class="col-md-3">
-                                                                <a type="button" href="{{url('truck/data/scan/edit/'.$truck_data->id)}}"
-
-                                                                    @if($truck_data->process_stage == 1)
-                                                                        class="btn btn-success"
-                                                                    @else
-                                                                        class="btn btn-danger"
-                                                                    @endif
-
-                                                                 >1'st Step
-                                                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                                Form Complete</a>
+                                                                @if($truck_data->process_stage > 0)
+                                                                <a type="button" class="btn btn-success" href="{{url('truck/data/scan/edit/'.$truck_data->id)}}">
+                                                                    1 Step Form Complete <i class="fa fa-check-circle" aria-hidden="true"></i> </a>
+                                                                @else
+                                                                <a type="button" class="btn btn-danger text-light" href="#">
+                                                                    1 Step Form Complete <i class="fa fa-lock" aria-hidden="true"></i> </a>
+                                                                @endif
+                                                                
                                                             </div>
                                                             <div class="col-md-4" >
-                                                                <a type="button" hred="#"
-                                                                    @if($truck_data->process_stage == 2)
-                                                                        class="btn btn-success text-light"
-                                                                    @else
-                                                                        class="btn btn-danger text-light"
-                                                                    @endif>2'nd Step
-                                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                                    Upload / Click Picture</a>
+                                                            @if($truck_data->process_stage > 1)
+                                                                <a type="button" class="btn btn-success" href="{{url('truck/data/scan/edit/'.$truck_data->id)}}">
+                                                                    2 Step Upload / Take picture <i class="fa fa-check-circle" aria-hidden="true"></i> </a>
+                                                                @else
+                                                                <a type="button" class="btn btn-danger text-light" href="#">
+                                                                    2 Step Upload / Take picture <i class="fa fa-lock" aria-hidden="true"></i> </a>
+                                                                @endif
                                                             </div>
                                                             <div class="col-md-3">
-                                                                <a type="button"  hred="#"
-                                                                    @if($truck_data->process_stage == 3)
-                                                                        class="btn btn-success text-light"
-                                                                    @else
-                                                                        class="btn btn-danger text-light"
-                                                                    @endif>3'rd Step
-                                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                                    Print PDF</a>
+                                                            @if($truck_data->process_stage > 2)
+                                                                <a type="button" class="btn btn-success" href="{{url('truck/data/scan/edit/'.$truck_data->id)}}">
+                                                                    3 Step Print PDF <i class="fa fa-check-circle" aria-hidden="true"></i> </a>
+                                                                @else
+                                                                <a type="button" class="btn btn-danger text-light" href="#">
+                                                                    3 Step Print PDF <i class="fa fa-lock" aria-hidden="true"></i> </a>
+                                                                @endif
                                                             </div>
                                                         </div>
                                                         
@@ -395,7 +390,7 @@
                             </div>
                             <!-- <div class="col-md-12" id="input_part" style="display: none"> -->
                             <form method="POST" novalidate id="registervalidation" role="form"
-                                enctype="multipart/form-data" action="{{url('/truck/data/add')}}">
+                                enctype="multipart/form-data" action="{{url('/truck/data/update/'.$truck_data->id)}}">
                                 @csrf
                                 <div class="col-md-12" id="input_part">
                                     <div class="mb-3 card">
@@ -830,7 +825,9 @@
                                                             <!-- Fields for entry End-->
                                                             <div class="col-md-8 mt-4">
                                                                 <button type="submit" class="btn"
-                                                                    style="background-color: #F79646;color: white">Next</button>
+                                                                    style="background-color: #F79646;color: white">Update</button>
+                                                                <a href="{{url('/truck/data/update/file/upload/section/'.$truck_data->id)}}" class="btn ml-5 btn-secondary text-light"
+                                                                    >Next</a>
 
                                                             </div>
                                                         </div>
