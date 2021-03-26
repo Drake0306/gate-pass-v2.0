@@ -680,6 +680,57 @@ class viewController extends Controller
         return view('truck_data_scan_pic_upload', compact('truck_data'));
     }
     
+    public function TruckVisitPdfPrintView(REQUEST $request, $id){
+        $truck_data = truck_data::where('id',$id)->first();
+        return view('truck_data_scan_print_pdf', compact('truck_data'));
+    }
+    
+    public function TruckVisitPdfPrintNow(REQUEST $request, $id){
+        $truck_data = truck_data::where('id',$id)->first();
+        // return $truck_data;
+        $pdf = PDF::loadView('truck_data_scan_pdf',$truck_data);
+        return $pdf->stream();
+    }
+    
+    public function TruckVisitUploadFile(REQUEST $request, $id){
+        // return $request;
+        if(!empty($request->image)) {
+            // File Upload
+            $img = $request->image;
+            $image_parts = explode(";base64,", $img);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            
+            //decoding image
+            $image_base64 = base64_decode($image_parts[1]);
+            $fileName = uniqid() . '.png';
+
+            //saving image
+            file_put_contents(public_path().'/files/'.$fileName, $image_base64);
+
+            //updating file name
+            $update_file_name = truck_data::find($id);
+            $update_file_name->upload_photo_documents = $fileName;
+            $update_file_name->process_stage = 2;
+            $update_file_name->save();
+        }
+        else {
+            if($request->hasFile('upload_photo_documents')) {
+                $file_img_name = $request->file('upload_photo_documents');
+                $file_name = time().'.'.$file_img_name->getClientOriginalExtension();
+                $destinationPath = public_path('/files');
+                $file_img_name->move($destinationPath, $file_name);
+                
+                $truck_data_update = truck_data::find($id);
+                $truck_data_update->upload_photo_documents = $file_name;
+                $truck_data_update->process_stage = 2;
+                $truck_data_update->save();
+            }
+
+        }
+        return redirect('/truck/data/update/file/upload/section/'.$id);
+    }
+    
     public function DriverHelperAdd(REQUEST $request){
         // return $request;
         $truck_data_add = new truck_data();

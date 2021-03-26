@@ -49,6 +49,9 @@ Route::any('/truck/data/add','viewController@DriverHelperAdd');
 Route::any('/truck/data/scan/edit/{id}','viewController@DriverHelperEditList');
 Route::any('/truck/data/update/{id}','viewController@DriverHelperEditUpdate');
 Route::any('/truck/data/update/file/upload/section/{id}','viewController@TruckVisitEditUploadSection');
+Route::any('/truck/data/image/upload/{id}','viewController@TruckVisitUploadFile');
+Route::any('/truck/data/pdf/print/{id}','viewController@TruckVisitPdfPrintView');
+Route::any('/truck/data/pdf/print/now/{id}','viewController@TruckVisitPdfPrintNow');
 // Ajax
 Route::any('truck/ajax/load','viewController@truckDataloadAjax');
 

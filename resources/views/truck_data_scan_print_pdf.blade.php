@@ -343,7 +343,7 @@
                                             style="background-color: #F79646">
                                             <div class="card-header-title text-light" style="font-size:18px">
                                                 <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
-                                                Upload / Click Picture
+                                                Print / Download PDF
                                             </div>
 
                                         </div>
@@ -351,73 +351,10 @@
                                             <div class="tab-content">
                                                 <div class="row">
                                                     <div class="col-md-12">
-
                                                         <div class="row">
-                                                            <div class="col-md-12">
-                                                                <button type="button" style="margin-top: 31px"
-                                                                    onClick="toggleDataScanner('#toggle_scanner')"
-                                                                    class="btn btn-secondary"> <i
-                                                                        class="fas fa-chevron-right"></i> &nbsp;
-                                                                    Toggle Scanner</button>
-
-                                                                <div class="row mt-4" style="display:none"
-                                                                    id="toggle_scanner">
-                                                                    <div class="col-md-12">
-                                                                        <button style="margin-top: 2px;"
-                                                                            onClick="take_snapshot()" type="button"
-                                                                            class="btn btn-primary"> <i
-                                                                                class="fas fa-chevron-right"></i> &nbsp;
-                                                                            Take Picture</button>
-
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <div id="my_camera_snap"
-                                                                            style="border-radius: 10px"></div>
-                                                                    </div>
-                                                                    <div class="col-md-4">
-                                                                        <div class="col-md-12 mt-4">
-                                                                            <div id="results"
-                                                                                style="width: 250px; max-height: 100px">
-                                                                                Your
-                                                                                captured image will
-                                                                                appear here...
-                                                                            </div>
-                                                                        </div>
-                                                                        <input type="hidden" name="image" id="image"
-                                                                            class="image-tag">
-                                                                    </div>
-
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-12 mt-5">
-                                                                <hr>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="formFile" class="form-label">Upload
-                                                                        Documents</label>
-                                                                    <input class="form-control"
-                                                                        name="upload_photo_documents"
-                                                                        value="{{@$truck_data->upload_photo_documents}}"
-                                                                        type="file" id="formFile">
-
-                                                                    <small id="helpId" class="form-text text-primary"><a
-                                                                            target="_blank"
-                                                                            href="{{url('public/files/'.@$truck_data->upload_photo_documents)}}">{{@$truck_data->upload_photo_documents}}</a></small>
-                                                                </div>
-                                                            </div>
-
-
-
-
-                                                        </div>
-
-                                                        <div class="row">
-                                                            <div class="col-md-8 mt-5">
-                                                                <button type="submit" class="btn"
-                                                                    style="background-color: #F79646;color: white">Update</button>
-                                                                <a href="{{url('/truck/data/pdf/print/'.$truck_data->id)}}"
-                                                                    class="btn ml-5 btn-secondary text-light">Next</a>
+                                                            <div class="col-md-6 mt-5">
+                                                                <a href="{{url('/truck/data/pdf/print/now/'.$truck_data->id)}}" target="_blank"
+                                                                    class="btn btn-danger"> <i class="fa fa-file-pdf" aria-hidden="true"></i> &nbsp;PRINT / DOWNLOAD</a>
 
                                                             </div>
                                                         </div>
@@ -454,39 +391,6 @@
     <script type="text/javascript" src="https://rawgit.com/schmich/instascan-builds/master/instascan.min.js"></script>
     {{-- <script type="text/javascript" src="{{url('public/qr/instascan.min.js')}}"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-
-    <script language="JavaScript">
-        Webcam.set({
-            width: 400,
-            height: 400,
-            image_format: 'jpeg',
-            jpeg_quality: 100,
-
-        });
-
-        Webcam.attach('#my_camera_snap');
-
-        function take_snapshot() {
-            Webcam.snap(function (data_uri) {
-                $(".image-tag").val(data_uri);
-                document.getElementById('results').innerHTML = '<img src="' + data_uri + '"/>';
-                // $('#at_submit').click();
-
-                // window.location.href = "{{url('/view_home')}}";
-                // $('#url_at_click').click();
-            });
-        }
-    </script>
-
-    <script>
-        function toggleDataScanner(id) {
-            $(id).toggle();
-        }
-    </script>
-
-
-
 
 </body>
 
