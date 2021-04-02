@@ -422,9 +422,9 @@
                                             <div class="tab-content">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <div class="row book">
-                                                            <div class="col-md-12 mt-5 page">
-                                                                <div class="subpage">
+                                                        <div class="row">
+                                                            <div class="col-md-12 mt-5">
+                                                                <div class="">
                                                                     <table width="100%" >
                                                                         <tr>
                                                                             <th>&nbsp;</th>
@@ -434,7 +434,7 @@
                                                                         <tr>
                                                                             <td style="width: 350px" >
                                                                                 <table width="100%"
-                                                                                    style="border: 1px solid black; font-size:11px">
+                                                                                    style="border: 1px solid black; font-size:11px; padding: 0px">
                                                                                     <tr>
                                                                                         <th>Image</th>
                                                                                         <th style="text-align:center">
@@ -478,16 +478,25 @@
                                                                                         <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼Qksu½  </u> &nbsp; Phone. 9911331144</p></td>                                                                                        
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼uke½  </u> &nbsp; Name. PRANAV PANKAJ</p></td>                                                                                        
+                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> xkgh la[;k½  </u> &nbsp; Vechile No: </p></td>                                                                                        
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼uke½  </u> &nbsp; Name. PRANAV PANKAJ</p></td>                                                                                        
+                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼feyus ckys C;fDr½  </u> &nbsp; Person to meet: Finance</p></td>                                                                                        
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼uke½  </u> &nbsp; Name. PRANAV PANKAJ</p></td>                                                                                        
+                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼m}s";½  </u> &nbsp; Purpose. Official</p></td>                                                                                        
                                                                                     </tr>
                                                                                     <tr>
-                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼uke½  </u> &nbsp; Name. PRANAV PANKAJ</p></td>                                                                                        
+                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼C;fDr;ks dk la[;k½  </u> &nbsp; No. of Persons: 1</p></td>                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td colspan="1" > <p> <u class="KrutiDev_hindi_text"> ços'k le;½  </u> &nbsp; In Time: 12:38:05</p></td>                                                                                        
+                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ckgj tkus dk le;½  </u> &nbsp; Out time: 12:38:05</p></td>                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td colspan="1" > <p> <u class="KrutiDev_hindi_text"> ¼ xkMZ dk gLrk{kj ½  </u> <br> Signature of Security</p></td>                                                                                        
+                                                                                        <td colspan="1" > <p> <u class="KrutiDev_hindi_text"> ¼ vf/kdkjh dk gLrk{kj ½  </u> <br> Signature of officer</p></td>                                                                                        
+                                                                                        <td colspan="1" style="width: 100px" > <p> <u class="KrutiDev_hindi_text"> ¼ vkxarqd dk gLrk{kj ½  </u> <br> Signature of visitor</p></td>                                                                                        
                                                                                     </tr>
 
                                                                                 </table>
