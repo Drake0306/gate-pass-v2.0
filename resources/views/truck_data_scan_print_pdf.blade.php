@@ -28,6 +28,59 @@
     <link href="{{url('public/style.css')}}" rel="stylesheet">
     <link href="{{url('public/main.css')}}" rel="stylesheet">
 
+    <style>
+        @font-face {
+            font-family: 'Kruti Dev 010';
+            src: url('{{url("public/assets/fonts/KrutiDev010.woff2")}}') format('woff2'),
+            url('{{url("public/assets/fonts/KrutiDev010.woff")}}') format('woff');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        .KrutiDev_hindi_text {
+            font-family: 'Kruti Dev 010';
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        .page {
+            width: 21cm;
+            min-height: 29.7cm;
+            padding: 2cm;
+            margin: 1cm auto;
+            border: 1px #D3D3D3 solid;
+            border-radius: 5px;
+            background: white;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .subpage {
+            padding: 1cm;
+            border: 5px red solid;
+            height: 237mm;
+            outline: 2cm white solid;
+        }
+
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        @media print {
+            .page {
+                margin: 0;
+                border: initial;
+                border-radius: initial;
+                width: initial;
+                min-height: initial;
+                box-shadow: initial;
+                background: initial;
+                page-break-after: always;
+            }
+        }
+    </style>
+
 </head>
 
 <body>
@@ -353,8 +406,116 @@
                                                     <div class="col-md-12">
                                                         <div class="row">
                                                             <div class="col-md-6 mt-5">
-                                                                <a href="{{url('/truck/data/pdf/print/now/'.$truck_data->id)}}" target="_blank"
-                                                                    class="btn btn-danger"> <i class="fa fa-file-pdf" aria-hidden="true"></i> &nbsp;PRINT / DOWNLOAD</a>
+                                                                <a href="{{url('/truck/data/pdf/print/now/'.$truck_data->id)}}"
+                                                                    target="_blank" class="btn btn-danger"> <i
+                                                                        class="fa fa-file-pdf" aria-hidden="true"></i>
+                                                                    &nbsp;PRINT / DOWNLOAD</a>
+
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="tab-content">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <div class="row book">
+                                                            <div class="col-md-12 mt-5 page">
+                                                                <div class="subpage">
+                                                                    <table width="100%" >
+                                                                        <tr>
+                                                                            <th>&nbsp;</th>
+                                                                            <th>&nbsp;</th>
+
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <td style="width: 350px" >
+                                                                                <table width="100%"
+                                                                                    style="border: 1px solid black; font-size:11px">
+                                                                                    <tr>
+                                                                                        <th>Image</th>
+                                                                                        <th style="text-align:center">
+                                                                                            <p><u
+                                                                                                    class="KrutiDev_hindi_text">bafM;u
+                                                                                                    v‚;y
+                                                                                                    d‚j~iksZjs'ku
+                                                                                                    fyfeVsM</u>
+                                                                                                <br>
+                                                                                                <b>Indian Oil Corporation
+                                                                                                Limited</b> 
+                                                                                            </p>
+                                                                                            <p> <u
+                                                                                                    class="KrutiDev_hindi_text">¼ fpÙkkSM+x<+ VfeZuy ½</u> &nbsp;
+                                                                                                        Chittorgarh
+                                                                                                        Terminal</p>
+                                                                                                        <p> <u
+                                                                                                            class="KrutiDev_hindi_text">¼
+                                                                                                            vkxarqd
+                                                                                                            izos'k irz
+                                                                                                            ½</u> &nbsp;
+                                                                                                        <u>Visitor's
+                                                                                                            Pass</u>
+                                                                                            </p>
+                                                                                        </th>
+                                                                                        <th style="width: 60px" >&nbsp;</th>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td> <p> <u class="KrutiDev_hindi_text"> ¼la[;k½  </u> &nbsp; Sr No. COR-1</p></td>
+                                                                                        <td colspan="2" style="text-align: right" > <p> <u class="KrutiDev_hindi_text"> ¼ frfFk ½  </u> &nbsp; Date. December 15, 2017 &nbsp;</p></td>
+                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼uke½  </u> &nbsp; Name. PRANAV PANKAJ</p></td>                                                                                        
+                                                                                        <td rowspan="7" >Image</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> irk½  </u> &nbsp; Address. COMSYS IT DELH</p></td>                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼Qksu½  </u> &nbsp; Phone. 9911331144</p></td>                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼uke½  </u> &nbsp; Name. PRANAV PANKAJ</p></td>                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼uke½  </u> &nbsp; Name. PRANAV PANKAJ</p></td>                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼uke½  </u> &nbsp; Name. PRANAV PANKAJ</p></td>                                                                                        
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼uke½  </u> &nbsp; Name. PRANAV PANKAJ</p></td>                                                                                        
+                                                                                    </tr>
+
+                                                                                </table>
+                                                                            </td>
+                                                                            <td style="width: 350px">
+                                                                                <table width="100%"
+                                                                                    style="border: 1px solid black">
+                                                                                    <tr>
+                                                                                        <th style="text-align:center">
+                                                                                            <p><u class="KrutiDev_hindi_text">egRoiq.kZ funsZ'k</u>
+                                                                                            <br>
+                                                                                            <u>IMPORTANT INSTRUCTION</u>
+                                                                                            </p>
+                                                                                        </th>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>sda</td>
+                                                                                    </tr>
+
+                                                                                </table>
+                                                                            </td>
+
+                                                                        </tr>
+
+                                                                    </table>
+
+
+                                                                </div>
 
                                                             </div>
                                                         </div>
