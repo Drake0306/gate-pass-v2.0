@@ -406,9 +406,9 @@
                                                     <div class="col-md-12">
                                                         <div class="row">
                                                             <div class="col-md-6 mt-5">
-                                                                <a href="{{url('/truck/data/pdf/print/now/'.$truck_data->id)}}"
-                                                                    target="_blank" class="btn btn-danger"> <i
-                                                                        class="fa fa-file-pdf" aria-hidden="true"></i>
+                                                                <a href="#" onclick="printDiv('printableArea')"
+                                                                    class="btn btn-danger"> <i class="fa fa-file-pdf"
+                                                                        aria-hidden="true"></i>
                                                                     &nbsp;PRINT / DOWNLOAD</a>
 
                                                             </div>
@@ -418,113 +418,216 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="card-body">
+                                        <div class="card-body" style="display:block">
                                             <div class="tab-content">
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="row">
                                                             <div class="col-md-12 mt-5">
-                                                                <div class="">
-                                                                    <table width="100%" >
-                                                                        <tr>
-                                                                            <th>&nbsp;</th>
-                                                                            <th>&nbsp;</th>
+                                                                <center id="printableArea">
 
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <td style="width: 350px" >
-                                                                                <table width="100%"
-                                                                                    style="border: 1px solid black; font-size:11px; padding: 0px">
-                                                                                    <tr>
-                                                                                        <th>Image</th>
-                                                                                        <th style="text-align:center">
-                                                                                            <p><u
-                                                                                                    class="KrutiDev_hindi_text">bafM;u
-                                                                                                    v‚;y
-                                                                                                    d‚j~iksZjs'ku
-                                                                                                    fyfeVsM</u>
+                                                                    <div class=""
+                                                                        style="width:21cm; padding-left: 20px; padding-right: 20px; padding-top: 20px">
+                                                                        <table width="100%" style="">
+                                                                            <!--  -->
+                                                                            <tr>
+                                                                                <td style="width: 500px">
+                                                                                    <table width="100%" cellspacing="0"
+                                                                                        style="border: 1px solid black;background-color:#FF6B2B;color: black;font-size:10px; padding: 0px; border-spacing: 0;border-collapse: collapse;">
+                                                                                        <tr>
+                                                                                            <th><img src="{{url('public/files/iocl lOGO.jpg')}}"
+                                                                                                    alt="Logo"
+                                                                                                    style="width:70px; height: 70px;padding-left: 10px">
+                                                                                            </th>
+                                                                                            <th
+                                                                                                style="text-align:center">
+                                                                                                <p><u
+                                                                                                        class="KrutiDev_hindi_text">bafM;u
+                                                                                                        v‚;y
+                                                                                                        d‚j~iksZjs'ku
+                                                                                                        fyfeVsM</u>
+                                                                                                    <br>
+                                                                                                    <b>Indian Oil
+                                                                                                        Corporation
+                                                                                                        Limited</b>
+                                                                                                    <br>
+                                                                                                    <span
+                                                                                                        class="KrutiDev_hindi_text">¼foi.ku
+                                                                                                        çHkkx½</span>
+                                                                                                    <span>( Marketing
+                                                                                                        Division)</span>
+                                                                                                    <br>
+                                                                                                    <span
+                                                                                                        class="KrutiDev_hindi_text">¼tkjh
+                                                                                                        djus dh
+                                                                                                        frfFk%½</span>
+                                                                                                    <span>Date of issue
+                                                                                                        05/08/2015</span>
+                                                                                                    <br>
+                                                                                                    <span
+                                                                                                        class="KrutiDev_hindi_text">oS/krk%½</span>
+                                                                                                    <span>Validity
+                                                                                                        Till</span>
+                                                                                                    <span>04/02/2016</span>
+                                                                                                    <span
+                                                                                                        class="KrutiDev_hindi_text">¼la[;k
+                                                                                                        %½</span>
+                                                                                                    <span>S.No.
+                                                                                                        TKT10042</span>
+                                                                                                    <br>
+                                                                                                    <center>
+                                                                                                        <div
+                                                                                                            style="width:100px;padding: 1px; color: blue; border: 1px solid black; background-color: white;">
+                                                                                                            DRIVER</div>
+                                                                                                    </center>
+                                                                                                </p>
+
+                                                                                            </th>
+                                                                                            <th style="width: 60px">
+                                                                                                &nbsp;
+                                                                                            </th>
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td>
+                                                                                                <img src="{{url('public/files/iocl lOGO.jpg')}}"
+                                                                                                    alt="Logo"
+                                                                                                    style="width:90px; height: 100px">
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <span
+                                                                                                    class="KrutiDev_hindi_text">¼uke%½</span>
+                                                                                                <span>Name MANJIT
+                                                                                                    SINGH</span>
                                                                                                 <br>
-                                                                                                <b>Indian Oil Corporation
-                                                                                                Limited</b> 
-                                                                                            </p>
-                                                                                            <p> <u
-                                                                                                    class="KrutiDev_hindi_text">¼ fpÙkkSM+x<+ VfeZuy ½</u> &nbsp;
-                                                                                                        Chittorgarh
-                                                                                                        Terminal</p>
-                                                                                                        <p> <u
-                                                                                                            class="KrutiDev_hindi_text">¼
-                                                                                                            vkxarqd
-                                                                                                            izos'k irz
-                                                                                                            ½</u> &nbsp;
-                                                                                                        <u>Visitor's
-                                                                                                            Pass</u>
-                                                                                            </p>
-                                                                                        </th>
-                                                                                        <th style="width: 60px" >&nbsp;</th>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td> <p> <u class="KrutiDev_hindi_text"> ¼la[;k½  </u> &nbsp; Sr No. COR-1</p></td>
-                                                                                        <td colspan="2" style="text-align: right" > <p> <u class="KrutiDev_hindi_text"> ¼ frfFk ½  </u> &nbsp; Date. December 15, 2017 &nbsp;</p></td>
+                                                                                                <span
+                                                                                                    class="KrutiDev_hindi_text">¼fu;ksäk%½</span>
+                                                                                                <span>Employer AUTO
+                                                                                                    ENGINEERS SERVICE
+                                                                                                    CENTRE</span>
+                                                                                                <br>
+                                                                                                <span
+                                                                                                    class="KrutiDev_hindi_text">¼VhVh
+                                                                                                    la[;k%½</span>
+                                                                                                <span>TT No
+                                                                                                    DL1GB5049</span>
+                                                                                                <br>
+                                                                                                <span
+                                                                                                    class="KrutiDev_hindi_text">¼vuqefrr%
+                                                                                                    fpÙkkSM+x<+ VfeZuy
+                                                                                                        ½</span> <br>
+                                                                                                        <span>PERMITED
+                                                                                                            INSIDE:
+                                                                                                            Chittorgarh
+                                                                                                            Terminal</span>
+
+                                                                                            </td>
+                                                                                            <td></td>
+
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            <td
+                                                                                                style="text-align: center">
+                                                                                                <p> <u
+                                                                                                        class="KrutiDev_hindi_text">
+                                                                                                        ¼ xkMZ dk
+                                                                                                        gLrk{kj ½
+                                                                                                    </u> <br> Signature
+                                                                                                    of
+                                                                                                    Security</p>
+                                                                                            </td>
+                                                                                            <td
+                                                                                                style="text-align: center">
+                                                                                                <p> <u
+                                                                                                        class="KrutiDev_hindi_text">
+                                                                                                        ¼ vf/kdkjh dk
+                                                                                                        gLrk{kj ½ </u>
+                                                                                                    <br>
+                                                                                                    Signature of officer
+                                                                                                </p>
+                                                                                            </td>
+                                                                                            <td style="text-align: center"
+                                                                                                style="width: 100px">
+                                                                                                <p> <u
+                                                                                                        class="KrutiDev_hindi_text">
+                                                                                                        ¼ vkxarqd dk
+                                                                                                        gLrk{kj
+                                                                                                        ½ </u> <br>
+                                                                                                    Signature of visitor
+                                                                                                </p>
+                                                                                            </td>
+                                                                                        </tr>
+
+                                                                                    </table>
+                                                                                </td>
+                                                                                <td width="400px">
+                                                                                    <table width="100%" cellspacing="0"
+                                                                                        style="border: 1px solid black;color: black;font-size:10px; padding: 0px; border-spacing: 0;border-collapse: collapse;">
+                                                                                        <tr>
+                                                                                            <th
+                                                                                                style="text-align:center">
+                                                                                                <p><span
+                                                                                                        class="KrutiDev_hindi_text">
+                                                                                                        bl igpku ds dkMZ
+                                                                                                        /kkjd uhps ukfer
+                                                                                                        fu;ksäk ds ,d
+                                                                                                        deZpkjh
+                                                                                                        gSA laLFkk esa
+                                                                                                        ços'k dh vuqefr
+                                                                                                        nh tkrh gSA
+                                                                                                    </span>
+                                                                                                    <br>
+                                                                                                    <b>THE HOLDER OF
+                                                                                                        THIS IDENTITY
+                                                                                                        CARD IS AN
+                                                                                                        EMPLOYEE
+                                                                                                        OF THE
+                                                                                                        CONTRACTOR AS
+                                                                                                        NAME BELOW. MAY
+                                                                                                        KINDLY BE
+                                                                                                        PERMITTED ENTRY
+                                                                                                        INTO THE
+                                                                                                        LOCATION</b>
+                                                                                                    <br>
+                                                                                                </p>
+
+                                                                                            </th>
+                                                                                            
+                                                                                        </tr>
+                                                                                        <tr>
+                                                                                            
+                                                                                            <td>
+                                                                                                <span class="KrutiDev_hindi_text" style="font-size:15px">¼uke vkSj fu;ksäk ds gLrk{kj ½</span>
+                                                                                                <br>
+                                                                                                <span>NAME & SIGNATURE OF CONTRACTOR ---- ---- ---- ---- ----</span>
+                                                                                                <br>
+                                                                                                <span class="KrutiDev_hindi_text" style="font-size:14px">¼irk ½  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----</span>
+                                                                                                <span >ADDRESS  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----</span>
+                                                                                                <span > ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----</span>
+                                                                                                <span > ---- ---- ---- ---- ---- ---- ---- ---- --- ---- ---- ---- ---- ---- ---- ---- ----</span>
+                                                                                                <span > ---- ---- ---- ---- ---- ---- ---- ---- --- ---- ---- ---- ---- ---- ---- ---- ----</span>
+                                                                                                <span > ---- ---- ---- ---- ---- ---- ---- ---- --- ---- ---- ---- ---- ---- ---- ---- ----</span>
+                                                                                                <span > ---- ---- ---- ---- ---- ---- ---- ---- --- ---- ---- ---- ---- ---- ---- ---- ----</span>
+                                                                                                <span > ---- ---- ---- ---- ---- ---- ---- ---- --- ---- ---- ---- ---- ---- ---- ---- ----</span>
+                                                                                                <span > ---- ---- ---- ---- ---- ---- ---- ---- --- ---- ---- ---- ---- ---- ---- ---- ----</span>
+                                                                                                <span > ---- ---- ---- ---- ---- ---- ---- ---- --- ---- ---- ---- ---- ---- ---- ---- ----</span>
+                                                                                                <span > ---- ---- ---- ---- ---- ---- ---- ---- --- ---- ---- ---- ---- ---- ---- ---- ----</span>
+                                                                                                
+
+                                                                                            </td>
+
+                                                                                        </tr>
                                                                                         
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼uke½  </u> &nbsp; Name. PRANAV PANKAJ</p></td>                                                                                        
-                                                                                        <td rowspan="7" >Image</td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> irk½  </u> &nbsp; Address. COMSYS IT DELH</p></td>                                                                                        
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼Qksu½  </u> &nbsp; Phone. 9911331144</p></td>                                                                                        
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> xkgh la[;k½  </u> &nbsp; Vechile No: </p></td>                                                                                        
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼feyus ckys C;fDr½  </u> &nbsp; Person to meet: Finance</p></td>                                                                                        
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼m}s";½  </u> &nbsp; Purpose. Official</p></td>                                                                                        
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ¼C;fDr;ks dk la[;k½  </u> &nbsp; No. of Persons: 1</p></td>                                                                                        
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td colspan="1" > <p> <u class="KrutiDev_hindi_text"> ços'k le;½  </u> &nbsp; In Time: 12:38:05</p></td>                                                                                        
-                                                                                        <td colspan="2" > <p> <u class="KrutiDev_hindi_text"> ckgj tkus dk le;½  </u> &nbsp; Out time: 12:38:05</p></td>                                                                                        
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td colspan="1" > <p> <u class="KrutiDev_hindi_text"> ¼ xkMZ dk gLrk{kj ½  </u> <br> Signature of Security</p></td>                                                                                        
-                                                                                        <td colspan="1" > <p> <u class="KrutiDev_hindi_text"> ¼ vf/kdkjh dk gLrk{kj ½  </u> <br> Signature of officer</p></td>                                                                                        
-                                                                                        <td colspan="1" style="width: 100px" > <p> <u class="KrutiDev_hindi_text"> ¼ vkxarqd dk gLrk{kj ½  </u> <br> Signature of visitor</p></td>                                                                                        
-                                                                                    </tr>
 
-                                                                                </table>
-                                                                            </td>
-                                                                            <td style="width: 350px">
-                                                                                <table width="100%"
-                                                                                    style="border: 1px solid black">
-                                                                                    <tr>
-                                                                                        <th style="text-align:center">
-                                                                                            <p><u class="KrutiDev_hindi_text">egRoiq.kZ funsZ'k</u>
-                                                                                            <br>
-                                                                                            <u>IMPORTANT INSTRUCTION</u>
-                                                                                            </p>
-                                                                                        </th>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td>sda</td>
-                                                                                    </tr>
+                                                                                    </table>
+                                                                                </td>
 
-                                                                                </table>
-                                                                            </td>
+                                                                            </tr>
 
-                                                                        </tr>
-
-                                                                    </table>
+                                                                        </table>
 
 
-                                                                </div>
+                                                                    </div>
+                                                                </center>
 
                                                             </div>
                                                         </div>
@@ -562,6 +665,20 @@
     {{-- <script type="text/javascript" src="{{url('public/qr/instascan.min.js')}}"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
+
+    <script>
+        function printDiv(divName) {
+            var printContents = document.getElementById(divName).innerHTML;
+            var originalContents = document.body.innerHTML;
+
+            document.body.innerHTML = printContents;
+
+            window.print();
+
+            document.body.innerHTML = originalContents;
+        }
+    </script>
 </body>
+
 
 </html>
