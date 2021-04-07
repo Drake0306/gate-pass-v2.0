@@ -682,11 +682,14 @@ class viewController extends Controller
     
     public function TruckVisitPdfPrintView(REQUEST $request, $id){
         $truck_data = truck_data::where('id',$id)->first();
-        return view('truck_data_scan_print_pdf', compact('truck_data'));
+        $party_wise_tt = party_wise_tt::where('id',$truck_data->truck_no)->first();
+        // return $truck_data;
+        return view('truck_data_scan_print_pdf', compact('truck_data','party_wise_tt'));
     }
     
     public function TruckVisitPdfPrintNow(REQUEST $request, $id){
         $truck_data = truck_data::where('id',$id)->first();
+        
         // return $truck_data;
         $pdf = PDF::loadView('truck_data_scan_pdf',$truck_data);
         return $pdf->stream();

@@ -431,11 +431,11 @@
                                                                         <table width="100%" style="">
                                                                             <!--  -->
                                                                             <tr>
-                                                                                <td style="width: 500px">
+                                                                                <td style="width: 400px">
                                                                                     <table width="100%" cellspacing="0"
                                                                                         style="border: 1px solid black;background-color:#FF6B2B;color: black;font-size:10px; padding: 0px; border-spacing: 0;border-collapse: collapse;">
                                                                                         <tr>
-                                                                                            <th><img src="{{url('public/files/iocl lOGO.jpg')}}"
+                                                                                            <th ><img src="{{url('public/files/iocl lOGO.jpg')}}"
                                                                                                     alt="Logo"
                                                                                                     style="width:70px; height: 70px;padding-left: 10px">
                                                                                             </th>
@@ -462,18 +462,18 @@
                                                                                                         djus dh
                                                                                                         frfFk%½</span>
                                                                                                     <span>Date of issue
-                                                                                                        05/08/2015</span>
+                                                                                                        {{$truck_data->issue_date}}</span>
                                                                                                     <br>
                                                                                                     <span
                                                                                                         class="KrutiDev_hindi_text">oS/krk%½</span>
                                                                                                     <span>Validity
                                                                                                         Till</span>
-                                                                                                    <span>04/02/2016</span>
+                                                                                                    <span>{{$truck_data->valid_to}}</span>
                                                                                                     <span
                                                                                                         class="KrutiDev_hindi_text">¼la[;k
                                                                                                         %½</span>
                                                                                                     <span>S.No.
-                                                                                                        TKT10042</span>
+                                                                                                    {{$truck_data->card_number}}</span>
                                                                                                     <br>
                                                                                                     <center>
                                                                                                         <div
@@ -483,7 +483,7 @@
                                                                                                 </p>
 
                                                                                             </th>
-                                                                                            <th style="width: 60px">
+                                                                                            <th style="width: 100px">
                                                                                                 &nbsp;
                                                                                             </th>
                                                                                         </tr>
@@ -491,13 +491,12 @@
                                                                                             <td>
                                                                                                 <img src="{{url('public/files/iocl lOGO.jpg')}}"
                                                                                                     alt="Logo"
-                                                                                                    style="width:90px; height: 100px">
+                                                                                                    style="width:90px;margin-left: 10px; height: 100px">
                                                                                             </td>
                                                                                             <td>
                                                                                                 <span
                                                                                                     class="KrutiDev_hindi_text">¼uke%½</span>
-                                                                                                <span>Name MANJIT
-                                                                                                    SINGH</span>
+                                                                                                <span>Name {{$truck_data->full_name}}</span>
                                                                                                 <br>
                                                                                                 <span
                                                                                                     class="KrutiDev_hindi_text">¼fu;ksäk%½</span>
@@ -509,7 +508,7 @@
                                                                                                     class="KrutiDev_hindi_text">¼VhVh
                                                                                                     la[;k%½</span>
                                                                                                 <span>TT No
-                                                                                                    DL1GB5049</span>
+                                                                                                {{$party_wise_tt->truck_no}}</span>
                                                                                                 <br>
                                                                                                 <span
                                                                                                     class="KrutiDev_hindi_text">¼vuqefrr%
@@ -521,7 +520,7 @@
                                                                                                             Terminal</span>
 
                                                                                             </td>
-                                                                                            <td></td>
+                                                                                            <td>&nbsp;</td>
 
                                                                                         </tr>
                                                                                         <tr>
@@ -529,30 +528,24 @@
                                                                                                 style="text-align: center">
                                                                                                 <p> <u
                                                                                                         class="KrutiDev_hindi_text">
-                                                                                                        ¼ xkMZ dk
-                                                                                                        gLrk{kj ½
-                                                                                                    </u> <br> Signature
-                                                                                                    of
-                                                                                                    Security</p>
+                                                                                                        ¼/kkjd ds gLrk{kj½
+                                                                                                    </u> <br> Signature of Holder</p>
                                                                                             </td>
                                                                                             <td
                                                                                                 style="text-align: center">
                                                                                                 <p> <u
                                                                                                         class="KrutiDev_hindi_text">
-                                                                                                        ¼ vf/kdkjh dk
-                                                                                                        gLrk{kj ½ </u>
+                                                                                                        ¼fu;ksäk ds gLrk{kj½ </u>
                                                                                                     <br>
-                                                                                                    Signature of officer
+                                                                                                    Signature of Contractor
                                                                                                 </p>
                                                                                             </td>
-                                                                                            <td style="text-align: center"
-                                                                                                style="width: 100px">
+                                                                                            <td style="text-align: left"
+                                                                                                style="">
                                                                                                 <p> <u
                                                                                                         class="KrutiDev_hindi_text">
-                                                                                                        ¼ vkxarqd dk
-                                                                                                        gLrk{kj
-                                                                                                        ½ </u> <br>
-                                                                                                    Signature of visitor
+                                                                                                        ¼tkjhdrkZ ds gLrk{kj½ </u> <br>
+                                                                                                        Signature Issuing
                                                                                                 </p>
                                                                                             </td>
                                                                                         </tr>
@@ -561,7 +554,7 @@
                                                                                 </td>
                                                                                 <td width="400px">
                                                                                     <table width="100%" cellspacing="0"
-                                                                                        style="border: 1px solid black;color: black;font-size:10px; padding: 0px; border-spacing: 0;border-collapse: collapse;">
+                                                                                        style="min-height: 315px;border: 1px solid black;color: black;font-size:10px; padding: 0px; border-spacing: 0;border-collapse: collapse;">
                                                                                         <tr>
                                                                                             <th
                                                                                                 style="text-align:center">
@@ -600,7 +593,8 @@
                                                                                                 <br>
                                                                                                 <span>NAME & SIGNATURE OF CONTRACTOR ---- ---- ---- ---- ----</span>
                                                                                                 <br>
-                                                                                                <span class="KrutiDev_hindi_text" style="font-size:14px">¼irk ½  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----</span>
+                                                                                                <span class="KrutiDev_hindi_text" style="font-size:14px">¼irk ½</span> <span>---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---</span>
+                                                                                                <br>
                                                                                                 <span >ADDRESS  ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----</span>
                                                                                                 <span > ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ---- ----</span>
                                                                                                 <span > ---- ---- ---- ---- ---- ---- ---- ---- --- ---- ---- ---- ---- ---- ---- ---- ----</span>
