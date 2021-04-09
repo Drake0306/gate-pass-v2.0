@@ -596,7 +596,7 @@ class viewController extends Controller
     }
     
     public function paryMasterttHome(REQUEST $request){
-        $sap_code_list = party_master::select('sap_code')->get();
+        $sap_code_list = party_master::select('sap_code','party_name')->get();
         return view('party_master_tt',compact('sap_code_list'));
     }
     

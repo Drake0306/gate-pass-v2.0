@@ -297,7 +297,7 @@
                                                                                 required>
                                                                                 <option selected value="" >Select</option>
                                                                                 @foreach($sap_code_list as $item)
-                                                                                <option value="{{$item->sap_code}}" >{{$item->sap_code}}</option>
+                                                                                <option value="{{$item->sap_code}}" >{{$item->party_name}}</option>
                                                                                 @endforeach
                                                                             </select>
                                                                             <small id="helpId"

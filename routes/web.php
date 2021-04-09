@@ -75,3 +75,4 @@ Route::any('/party_wise_tt/list','viewController@paryMasterttList');
 Route::any('/master/pary_tt/edit/{id}','viewController@paryMasterttEdit');
 Route::any('/master/party_master_tt/update{id}','viewController@paryMasterttUpdate');
 Route::any('/master/party_master_tt/search','viewController@paryMasterTTSearch');
+Route::any('/master/party_master_tt/create','viewController@paryMasterttAdd');
