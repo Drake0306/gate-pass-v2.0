@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 22, 2021 at 01:54 PM
+-- Generation Time: Apr 09, 2021 at 01:41 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.26
 
@@ -176,7 +176,15 @@ INSERT INTO `log_in_log` (`id`, `table_id`, `user_id`, `date`) VALUES
 (76, 1, 'admin', '2021-03-20 11:52:13'),
 (77, 1, 'admin', '2021-03-20 12:58:37'),
 (78, 1, 'admin', '2021-03-20 17:43:49'),
-(79, 1, 'admin', '2021-03-22 11:15:14');
+(79, 1, 'admin', '2021-03-22 11:15:14'),
+(80, 1, 'admin', '2021-03-24 11:34:48'),
+(81, 1, 'admin', '2021-03-26 04:32:50'),
+(82, 1, 'admin', '2021-03-31 06:16:17'),
+(83, 1, 'admin', '2021-04-01 11:46:47'),
+(84, 1, 'admin', '2021-04-02 05:05:56'),
+(85, 1, 'admin', '2021-04-03 04:05:26'),
+(86, 1, 'admin', '2021-04-07 04:07:14'),
+(87, 1, 'admin', '2021-04-09 10:24:06');
 
 -- --------------------------------------------------------
 
@@ -368,17 +376,26 @@ CREATE TABLE `truck_data` (
   `location_code` varchar(250) DEFAULT NULL,
   `card_number` varchar(250) DEFAULT NULL,
   `temp` varchar(250) DEFAULT NULL,
-  `process_stage` int(11) DEFAULT NULL
+  `process_stage` int(11) DEFAULT NULL,
+  `hg_training` varchar(250) DEFAULT NULL,
+  `upload_photo_documents` varchar(250) DEFAULT NULL,
+  `valid_up_to` varchar(250) DEFAULT NULL,
+  `blood_group` varchar(250) DEFAULT NULL,
+  `insurance_twelve_rupee` varchar(250) DEFAULT NULL,
+  `insurance_three_thirty_rupee` varchar(250) DEFAULT NULL,
+  `nominee_name` varchar(250) DEFAULT NULL,
+  `bank_ac` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `truck_data`
 --
 
-INSERT INTO `truck_data` (`id`, `party`, `truck_no`, `type`, `adhar_no`, `full_name`, `fathers_name`, `gender`, `yob`, `mobile`, `house`, `dl_no`, `issueing_rto`, `eye_sight`, `from_j`, `from_h`, `police_verification`, `ref`, `police_station`, `valid_from`, `valid_to`, `valid_from_training`, `valid_to_training`, `upload_documents`, `issue_date`, `insuranse_rs_1`, `insuranse_rs_2`, `nominee`, `bank_account`, `hiv_test`, `fitness_test`, `created_date`, `create_user`, `attach_document`, `location_code`, `card_number`, `temp`, `process_stage`) VALUES
-(1, '234567', '1', 'Helper', '5432165', 'Drake', 'dghub', NULL, '2021-01-20', NULL, 'dasd213', '543', '12367', 'OK', 'Yes', 'Yes', 'Yes', 'nbv', 'asd', '2021-03-25', '2021-03-27', '2021-03-16', '2021-04-04', '1616413160.pdf', '2021-03-17', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
-(2, '234567', '1', 'Helper', '876543', 'qwert', 'kajsdh', NULL, '2021-04-02', NULL, 'sadsfdsg', '1231441', 'asdasd', 'OK', 'No', 'No', 'Yes', NULL, 'asd', '2021-03-19', '2021-03-27', '2021-03-11', '2021-03-30', '1616413160.pdf', '2021-03-06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'JAMP10001', '0', 1),
-(3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1616413160.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'JAMP10002', '0', 1);
+INSERT INTO `truck_data` (`id`, `party`, `truck_no`, `type`, `adhar_no`, `full_name`, `fathers_name`, `gender`, `yob`, `mobile`, `house`, `dl_no`, `issueing_rto`, `eye_sight`, `from_j`, `from_h`, `police_verification`, `ref`, `police_station`, `valid_from`, `valid_to`, `valid_from_training`, `valid_to_training`, `upload_documents`, `issue_date`, `insuranse_rs_1`, `insuranse_rs_2`, `nominee`, `bank_account`, `hiv_test`, `fitness_test`, `created_date`, `create_user`, `attach_document`, `location_code`, `card_number`, `temp`, `process_stage`, `hg_training`, `upload_photo_documents`, `valid_up_to`, `blood_group`, `insurance_twelve_rupee`, `insurance_three_thirty_rupee`, `nominee_name`, `bank_ac`) VALUES
+(1, '234567', '1', 'Helper', '5432165', 'Drake', 'dghub', NULL, '2021-01-20', NULL, 'dasd213', '543', '12367', NULL, 'Yes', NULL, 'Yes', 'nbv', 'asd', '2021-03-25', '2021-03-27', '2021-03-16', '2021-04-04', '1616413160.pdf', '2021-03-17', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, 'No', '605d7089cd805.png', NULL, 'A', 'Yes', 'No', 'Sam', '1123445678903'),
+(2, '234567', '1', 'Helper', '876543', 'qwert', 'kajsdh', NULL, '2021-04-02', NULL, 'sadsfdsg', '1231441', 'asdasd', 'OK', 'No', 'No', 'Yes', NULL, 'asd', '2021-03-19', '2021-03-27', '2021-03-11', '2021-03-30', '1616413160.pdf', '2021-03-06', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'JAMP10001', '0', 2, NULL, '606d5231e78f2.png', NULL, NULL, NULL, NULL, NULL, NULL),
+(3, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1616413160.pdf', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'JAMP10002', '0', 2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(4, '234567', '1', 'Driver', '5432165', 'Drake', 'dghub', NULL, '2021-04-08', NULL, 'dasd213', '1231441', '12367', NULL, 'Yes', NULL, 'Yes', 'nbv', 'asd', '2021-04-08', '2021-04-13', '2021-04-29', '2021-04-19', NULL, '2021-04-14', NULL, NULL, NULL, NULL, NULL, NULL, NULL, '1', NULL, NULL, 'JAMP10003', '0', 2, 'Yes', '60703a27ac268.png', '2021-04-15', 'O', 'Yes', 'No', 'bhji', '1123445678903');
 
 -- --------------------------------------------------------
 
@@ -597,7 +614,7 @@ ALTER TABLE `location`
 -- AUTO_INCREMENT for table `log_in_log`
 --
 ALTER TABLE `log_in_log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=88;
 
 --
 -- AUTO_INCREMENT for table `no_of_visit`
@@ -633,7 +650,7 @@ ALTER TABLE `profile_master`
 -- AUTO_INCREMENT for table `truck_data`
 --
 ALTER TABLE `truck_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user_role`
