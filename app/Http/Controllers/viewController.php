@@ -655,7 +655,7 @@ class viewController extends Controller
         $party_name = party_master::where('sap_code',@$truck_data->party)->first();
         $party_wise_tt = party_wise_tt::where('id',@$truck_data->truck_no)->first();
         $party_wise_tt_get = party_wise_tt::where('sap_code',@$truck_data->party)->get();
-        // return $party_name;
+        // return $truck_data;
         return view('truck_data_scan_edit', compact('party_master','truck_data','party_name','party_wise_tt','party_wise_tt_get'));
     }
     
@@ -762,6 +762,13 @@ class viewController extends Controller
         $truck_data_add->issue_date = $request->issue_date;
         $truck_data_add->hg_training = $request->hg_training;
 
+        $truck_data_add->valid_up_to = $request->valid_up_to;
+        $truck_data_add->blood_group = $request->blood_group;
+        $truck_data_add->insurance_twelve_rupee = $request->insurance_twelve_rupee;
+        $truck_data_add->insurance_three_thirty_rupee = $request->insurance_three_thirty_rupee;
+        $truck_data_add->nominee_name = $request->nominee_name;
+        $truck_data_add->bank_ac = $request->bank_ac;
+
         //prifix
         $location_code_id = $request->session()->get('location_code');
         $location_code = location::where('id',$location_code_id)->first();
@@ -842,6 +849,13 @@ class viewController extends Controller
         $truck_data_update->issue_date = $request->issue_date;
         $truck_data_update->hg_training = $request->hg_training;
 
+        $truck_data_update->valid_up_to = $request->valid_up_to;
+        $truck_data_update->blood_group = $request->blood_group;
+        $truck_data_update->insurance_twelve_rupee = $request->insurance_twelve_rupee;
+        $truck_data_update->insurance_three_thirty_rupee = $request->insurance_three_thirty_rupee;
+        $truck_data_update->nominee_name = $request->nominee_name;
+        $truck_data_update->bank_ac = $request->bank_ac;
+
         // File Upload
         if($request->hasFile('upload_documents')) {
             $file_img_name = $request->file('upload_documents');
@@ -852,7 +866,8 @@ class viewController extends Controller
             $truck_data_update->upload_documents = $file_name;
           }
 
-        $truck_data_update->process_stage = 1;
+        $truck_data_get = truck_data::where('id',$id)->first();
+        $truck_data_update->process_stage = $truck_data_get->process_stage;
 
         // $truck_data_update->insuranse_rs_1 = $request->insuranse_rs_1;
         // $truck_data_update->insuranse_rs_2 = $request->insuranse_rs_2;

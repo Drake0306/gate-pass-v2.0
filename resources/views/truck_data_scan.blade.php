@@ -392,7 +392,7 @@
                                                                 <br>
                                                             </div> -->
                                                             <!-- Fields for entry-->
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="">Party</label>
                                                                     <select class="form-control" name="party"
@@ -409,7 +409,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="">Truck Number</label>
                                                                     <select class="form-control" id="truck_no"
@@ -421,7 +421,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="">Type</label>
                                                                     <select class="form-control" name="type" required
@@ -436,7 +436,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="">Aadhar Number</label>
                                                                     <input type="text" class="form-control"
@@ -448,46 +448,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="">Full Name</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="full_name" id="box_2"
-                                                                        aria-describedby="helpId"
-                                                                        placeholder="Enter Full Name" required>
-                                                                    <small id="helpId"
-                                                                        class="form-text text-primary">Required</small>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="">Fathers Name</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="fathers_name" id="box"
-                                                                        aria-describedby="helpId"
-                                                                        placeholder="Enter Name" required>
-                                                                    <small id="helpId"
-                                                                        class="form-text text-primary">Required</small>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6" style="display: none">
-                                                                <div class="form-group">
-                                                                    <label for="">Gender</label>
-                                                                    <select class="form-control" name="gender"
-                                                                        id="box_3" required>
-                                                                        <option value="">Select</option>
-                                                                        <option value="M">Male</option>
-                                                                        <option value="F">Female</option>
-                                                                        <option value="Other">Other</option>
-                                                                    </select>
-                                                                    <small id="helpId"
-                                                                        class="form-text text-primary">Required</small>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-8">
                                                                 <div class="form-group">
                                                                     <label for="">DOB <small class="text-warning">
                                                                             Format (DD-MM-YYYY) - if month and date are
@@ -506,10 +467,51 @@
                                                                 </div>
                                                             </div>
 
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="">Full Name</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="full_name" id="box_2"
+                                                                        aria-describedby="helpId"
+                                                                        placeholder="Enter Full Name" required>
+                                                                    <small id="helpId"
+                                                                        class="form-text text-primary">Required</small>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="">Fathers Name</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="fathers_name" id="box"
+                                                                        aria-describedby="helpId"
+                                                                        placeholder="Enter Name" required>
+                                                                    <small id="helpId"
+                                                                        class="form-text text-primary">Required</small>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4" style="display: none">
+                                                                <div class="form-group">
+                                                                    <label for="">Gender</label>
+                                                                    <select class="form-control" name="gender"
+                                                                        id="box_3" required>
+                                                                        <option value="">Select</option>
+                                                                        <option value="M">Male</option>
+                                                                        <option value="F">Female</option>
+                                                                        <option value="Other">Other</option>
+                                                                    </select>
+                                                                    <small id="helpId"
+                                                                        class="form-text text-primary">Required</small>
+                                                                </div>
+                                                            </div>
+
+                                                            
 
 
 
-                                                            <div class="col-md-6">
+
+                                                            <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="">Phone Number</label>
                                                                     <input type="text" class="form-control"
@@ -534,7 +536,7 @@
                                                                         class="form-text text-primary">Required</small>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6 mt-2">
+                                                            <div class="col-md-8 mt-2">
                                                                 <div class="form-group">
                                                                     <label for="">Address</label>
                                                                     <input type="text" class="form-control" name="house"
@@ -542,6 +544,78 @@
                                                                         placeholder="Enter Address">
                                                                     <small id="helpId"
                                                                         class="form-text text-primary">Required</small>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 mt-2">
+                                                                <div class="form-group">
+                                                                    <label for="">Valid Up To</label>
+                                                                    <input type="date" class="form-control" name="valid_up_to"
+                                                                        id="box_5" aria-describedby="helpId" required
+                                                                        placeholder="Enter Address">
+                                                                    <small id="helpId"
+                                                                        class="form-text text-primary">Required</small>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 mt-2">
+                                                                <div class="form-group">
+                                                                    <label for="">Blood Group</label>
+                                                                    <select class="form-control" name="blood_group"
+                                                                        id="box_3" required>
+                                                                        <option value="">Select</option>
+                                                                        <option value="A">A</option>
+                                                                        <option value="B">B</option>
+                                                                        <option value="O">O</option>
+                                                                    </select>
+                                                                    
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 mt-2">
+                                                                <div class="form-group">
+                                                                    <label for="">Insurance 12 Rupee</label>
+                                                                    <select class="form-control" name="insurance_twelve_rupee"
+                                                                        id="box_3" required>
+                                                                        <option value="">Select</option>
+                                                                        <option value="Yes">Yes</option>
+                                                                        <option value="No">No</option>
+                                                                    </select>
+                                                                    
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 mt-2">
+                                                                <div class="form-group">
+                                                                    <label for="">Insurance 330 Rupee</label>
+                                                                    <select class="form-control" name="insurance_three_thirty_rupee"
+                                                                        id="box_3" required>
+                                                                        <option value="">Select</option>
+                                                                        <option value="Yes">Yes</option>
+                                                                        <option value="No">No</option>
+                                                                    </select>
+                                                                    
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-8 mt-2">
+                                                                <div class="form-group">
+                                                                    <label for="">Nominee Name</label>
+                                                                    <input type="text" class="form-control" name="nominee_name"
+                                                                        id="box_5" aria-describedby="helpId" required
+                                                                        placeholder="Enter">
+                                                                    
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 mt-2">
+                                                                <div class="form-group">
+                                                                    <label for="">Bank Account</label>
+                                                                    <input type="text" class="form-control" name="bank_ac"
+                                                                        id="box_5" aria-describedby="helpId" required
+                                                                        placeholder="Enter">
+                                                                    
 
                                                                 </div>
                                                             </div>
@@ -590,7 +664,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="">Issue Date</label>
                                                                     <input type="date" class="form-control"
@@ -602,18 +676,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="">Issueing RTO</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="issueing_rto" id="box"
-                                                                        aria-describedby="helpId" placeholder="Enter">
-                                                                    <!-- <small id="helpId"
-                                                                        class="form-text text-primary">Required</small> -->
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-2">
                                                                 <div class="form-group">
                                                                     <label for="">Eye sight</label>
                                                                     <select class="form-control" name="eye_sight"
@@ -629,6 +692,19 @@
 
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
+                                                                    <label for="">Issueing RTO</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="issueing_rto" id="box"
+                                                                        aria-describedby="helpId" placeholder="Enter">
+                                                                    <!-- <small id="helpId"
+                                                                        class="form-text text-primary">Required</small> -->
+                                                                </div>
+                                                            </div>
+
+                                                            
+
+                                                            <div class="col-md-3">
+                                                                <div class="form-group">
                                                                     <label for="">From J</label>
                                                                     <select class="form-control" name="from_j" id="box"
                                                                         required>
@@ -642,7 +718,7 @@
                                                             </div>
 
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label for="">From H</label>
                                                                     <select class="form-control" name="from_h" id="box"
@@ -656,7 +732,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label for="">Police Verification</label>
                                                                     <select class="form-control"
@@ -670,7 +746,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label for="">Ref</label>
                                                                     <input type="text" class="form-control" name="ref"
@@ -692,7 +768,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label for="">Valid From</label>
                                                                     <input type="date" class="form-control"
@@ -703,7 +779,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label for="">Valid To</label>
                                                                     <input type="date" class="form-control"
@@ -717,7 +793,7 @@
                                                                 <hr>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label for="">HG Training</label>
                                                                     <select class="form-control"
@@ -731,7 +807,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label for="">Valid From</label>
                                                                     <input type="date" class="form-control"
@@ -742,7 +818,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label for="">Valid To</label>
                                                                     <input type="date" class="form-control"
@@ -753,9 +829,9 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <!-- <div class="col-md-6">
 
-                                                            </div>
+                                                            </div> -->
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="formFile" class="form-label">Upload

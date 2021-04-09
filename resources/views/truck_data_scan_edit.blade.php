@@ -279,34 +279,8 @@
                                                 <div class="col-md-12">
 
                                                         <div class="row">
-                                                            <div class="col-md-3">
-                                                                @if($truck_data->process_stage > 0)
-                                                                <a type="button" class="btn btn-success" href="{{url('truck/data/scan/edit/'.$truck_data->id)}}">
-                                                                    1 Step Form Complete <i class="fa fa-check-circle" aria-hidden="true"></i> </a>
-                                                                @else
-                                                                <a type="button" class="btn btn-danger text-light" href="#">
-                                                                    1 Step Form Complete <i class="fa fa-lock" aria-hidden="true"></i> </a>
-                                                                @endif
-                                                                
-                                                            </div>
-                                                            <div class="col-md-4" >
-                                                            @if($truck_data->process_stage > 1)
-                                                                <a type="button" class="btn btn-success" href="{{url('/truck/data/update/file/upload/section/'.$truck_data->id)}}">
-                                                                    2 Step Upload / Take picture <i class="fa fa-check-circle" aria-hidden="true"></i> </a>
-                                                                @else
-                                                                <a type="button" class="btn btn-danger text-light" href="#">
-                                                                    2 Step Upload / Take picture <i class="fa fa-lock" aria-hidden="true"></i> </a>
-                                                                @endif
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                            @if($truck_data->process_stage > 1)
-                                                                <a type="button" class="btn btn-info" href="{{url('/truck/data/pdf/print/'.$truck_data->id)}}">
-                                                                    3 Step Print PDF <i class="fa fa-check-circle" aria-hidden="true"></i> </a>
-                                                                @else
-                                                                <a type="button" class="btn btn-danger text-light" href="#">
-                                                                    3 Step Print PDF <i class="fa fa-lock" aria-hidden="true"></i> </a>
-                                                                @endif
-                                                            </div>
+                                                            @include('precess_stage_driver_helper')
+                                                            
                                                         </div>
                                                         
                                                 </div>
@@ -413,7 +387,7 @@
                                                                 <br>
                                                             </div> -->
                                                             <!-- Fields for entry-->
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="">Party</label>
                                                                     <select class="form-control" name="party"
@@ -434,7 +408,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="">Truck Number</label>
                                                                     <select class="form-control" id="truck_no"
@@ -453,7 +427,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="">Type</label>
                                                                     <select class="form-control" name="type" required
@@ -471,7 +445,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="">Aadhar Number</label>
                                                                     <input type="text" class="form-control"
@@ -484,48 +458,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="">Full Name</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="full_name" id="box_2"
-                                                                        aria-describedby="helpId"
-                                                                        value="{{@$truck_data->full_name}}"
-                                                                        placeholder="Enter Full Name" required>
-                                                                    <small id="helpId"
-                                                                        class="form-text text-primary">Required</small>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="">Fathers Name</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="fathers_name" id="box"
-                                                                        value="{{@$truck_data->fathers_name}}"
-                                                                        aria-describedby="helpId"
-                                                                        placeholder="Enter Name" required>
-                                                                    <small id="helpId"
-                                                                        class="form-text text-primary">Required</small>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6" style="display: none">
-                                                                <div class="form-group">
-                                                                    <label for="">Gender</label>
-                                                                    <select class="form-control" name="gender"
-                                                                        id="box_3" required>
-                                                                        <option value="">Select</option>
-                                                                        <option value="M">Male</option>
-                                                                        <option value="F">Female</option>
-                                                                        <option value="Other">Other</option>
-                                                                    </select>
-                                                                    <small id="helpId"
-                                                                        class="form-text text-primary">Required</small>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-8">
                                                                 <div class="form-group">
                                                                     <label for="">DOB <small class="text-warning">
                                                                             Format (DD-MM-YYYY) - if month and date are
@@ -544,10 +477,54 @@
                                                                 </div>
                                                             </div>
 
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="">Full Name</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="full_name" id="box_2"
+                                                                        aria-describedby="helpId"
+                                                                        value="{{@$truck_data->full_name}}"
+                                                                        placeholder="Enter Full Name" required>
+                                                                    <small id="helpId"
+                                                                        class="form-text text-primary">Required</small>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4">
+                                                                <div class="form-group">
+                                                                    <label for="">Fathers Name</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="fathers_name" id="box"
+                                                                        value="{{@$truck_data->fathers_name}}"
+                                                                        aria-describedby="helpId"
+                                                                        placeholder="Enter Name" required>
+                                                                    <small id="helpId"
+                                                                        class="form-text text-primary">Required</small>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-6" style="display: none">
+                                                                <div class="form-group">
+                                                                    <label for="">Gender</label>
+                                                                    <select class="form-control" name="gender"
+                                                                        id="box_3" required>
+                                                                        <option selected value="{{@$truck_data->gender}}">{{@$truck_data->gender}}</option>
+                                                                        <option value="">Select</option>
+                                                                        <option value="M">Male</option>
+                                                                        <option value="F">Female</option>
+                                                                        <option value="Other">Other</option>
+                                                                    </select>
+                                                                    <small id="helpId"
+                                                                        class="form-text text-primary">Required</small>
+                                                                </div>
+                                                            </div>
+
+                                                            
 
 
 
-                                                            <div class="col-md-6">
+
+                                                            <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="">Phone Number</label>
                                                                     <input type="text" class="form-control"
@@ -572,7 +549,7 @@
                                                                         class="form-text text-primary">Required</small>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6 mt-2">
+                                                            <div class="col-md-8 mt-2">
                                                                 <div class="form-group">
                                                                     <label for="">Address</label>
                                                                     <input type="text" class="form-control" name="house"
@@ -581,6 +558,85 @@
                                                                         placeholder="Enter Address">
                                                                     <small id="helpId"
                                                                         class="form-text text-primary">Required</small>
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-4 mt-2">
+                                                                <div class="form-group">
+                                                                    <label for="">Valid Up To</label>
+                                                                    <input type="date" class="form-control" name="valid_up_to"
+                                                                        id="box_5" aria-describedby="helpId" required
+                                                                        value="{{@$truck_data->valid_up_to}}"
+                                                                        placeholder="Enter Address">
+                                                                    <small id="helpId"
+                                                                        class="form-text text-primary">Required</small>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 mt-2">
+                                                                <div class="form-group">
+                                                                    <label for="">Blood Group</label>
+                                                                    <select class="form-control" name="blood_group"
+                                                                        id="box_3" required>
+                                                                        <option selected value="{{@$truck_data->blood_group}}">{{@$truck_data->blood_group}}</option>
+                                                                        <option value="">Select</option>
+                                                                        <option value="A">A</option>
+                                                                        <option value="B">B</option>
+                                                                        <option value="O">O</option>
+                                                                    </select>
+                                                                    
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 mt-2">
+                                                                <div class="form-group">
+                                                                    <label for="">Insurance 12 Rupee</label>
+                                                                    <select class="form-control" name="insurance_twelve_rupee"
+                                                                        id="box_3" required>
+                                                                        <option selected value="{{@$truck_data->insurance_twelve_rupee}}">{{@$truck_data->insurance_twelve_rupee}}</option>
+                                                                        <option value="">Select</option>
+                                                                        <option value="Yes">Yes</option>
+                                                                        <option value="No">No</option>
+                                                                    </select>
+                                                                    
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 mt-2">
+                                                                <div class="form-group">
+                                                                    <label for="">Insurance 330 Rupee</label>
+                                                                    <select class="form-control" name="insurance_three_thirty_rupee"
+                                                                        id="box_3" required>
+                                                                        <option selected value="{{@$truck_data->insurance_three_thirty_rupee}}">{{@$truck_data->insurance_three_thirty_rupee}}</option>
+                                                                        <option value="">Select</option>
+                                                                        <option value="Yes">Yes</option>
+                                                                        <option value="No">No</option>
+                                                                    </select>
+                                                                    
+
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="col-md-8 mt-2">
+                                                                <div class="form-group">
+                                                                    <label for="">Nominee Name</label>
+                                                                    <input type="text" class="form-control" name="nominee_name"
+                                                                    value="{{@$truck_data->nominee_name}}"
+                                                                        id="box_5" aria-describedby="helpId" required
+                                                                        placeholder="Enter">
+                                                                    
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-4 mt-2">
+                                                                <div class="form-group">
+                                                                    <label for="">Bank Account</label>
+                                                                    <input type="text" class="form-control" name="bank_ac"
+                                                                        id="box_5" aria-describedby="helpId" required
+                                                                        value="{{@$truck_data->bank_ac}}"
+                                                                        placeholder="Enter">
+                                                                    
 
                                                                 </div>
                                                             </div>
@@ -630,7 +686,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label for="">Issue Date</label>
                                                                     <input type="date" class="form-control"
@@ -643,19 +699,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
-                                                                <div class="form-group">
-                                                                    <label for="">Issueing RTO</label>
-                                                                    <input type="text" class="form-control"
-                                                                        name="issueing_rto" id="box"
-                                                                        value="{{@$truck_data->issueing_rto}}"
-                                                                        aria-describedby="helpId" placeholder="Enter">
-                                                                    <!-- <small id="helpId"
-                                                                        class="form-text text-primary">Required</small> -->
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-2">
                                                                 <div class="form-group">
                                                                     <label for="">Eye sight</label>
                                                                     <select class="form-control" name="eye_sight"
@@ -672,6 +716,20 @@
 
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
+                                                                    <label for="">Issueing RTO</label>
+                                                                    <input type="text" class="form-control"
+                                                                        name="issueing_rto" id="box"
+                                                                        value="{{@$truck_data->issueing_rto}}"
+                                                                        aria-describedby="helpId" placeholder="Enter">
+                                                                    <!-- <small id="helpId"
+                                                                        class="form-text text-primary">Required</small> -->
+                                                                </div>
+                                                            </div>
+
+                                                            
+
+                                                            <div class="col-md-3">
+                                                                <div class="form-group">
                                                                     <label for="">From J</label>
                                                                     <select class="form-control" name="from_j" id="box"
                                                                         required>
@@ -686,7 +744,7 @@
                                                             </div>
 
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label for="">From H</label>
                                                                     <select class="form-control" name="from_h" id="box"
@@ -701,12 +759,12 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label for="">Police Verification</label>
                                                                     <select class="form-control"
                                                                         name="police_verification" id="box" required>
-                                                                        <option selected value="{{@$truck_data->ploice_verification}}">{{@$truck_data->ploice_verification}}</option>
+                                                                        <option selected value="{{@$truck_data->police_verification}}">{{@$truck_data->police_verification}}</option>
                                                                         <option value="">Select</option>
                                                                         <option value="Yes">Yes</option>
                                                                         <option value="No">No</option>
@@ -716,7 +774,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label for="">Ref</label>
                                                                     <input type="text" class="form-control" name="ref"
@@ -740,7 +798,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label for="">Valid From</label>
                                                                     <input type="date" class="form-control"
@@ -752,7 +810,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label for="">Valid To</label>
                                                                     <input type="date" class="form-control"
@@ -767,7 +825,7 @@
                                                                 <hr>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label for="">HG Training</label>
                                                                     <select class="form-control"
@@ -782,7 +840,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label for="">Valid From</label>
                                                                     <input type="date" class="form-control"
@@ -794,7 +852,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <div class="col-md-3">
                                                                 <div class="form-group">
                                                                     <label for="">Valid To</label>
                                                                     <input type="date" class="form-control"
@@ -806,9 +864,9 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-6">
+                                                            <!-- <div class="col-md-6">
 
-                                                            </div>
+                                                            </div> -->
                                                             <div class="col-md-6">
                                                                 <div class="form-group">
                                                                     <label for="formFile" class="form-label">Upload
