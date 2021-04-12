@@ -57,6 +57,13 @@ Route::any('truck/ajax/load','viewController@truckDataloadAjax');
 
 // Labour Scan
 Route::any('labour/data/scan','viewController@LabourDataScan');
+Route::any('labour/data/add','viewController@LabourDataAdd');
+Route::any('labour/data/image/upload/{id}','viewController@LabourPicUpload');
+Route::any('labour/data/pdf/print/{id}','viewController@LabourPdf');
+Route::any('labour/data/scan/edit/{id}','viewController@LabourEdit');
+Route::any('labour/data/update/{id}','viewController@LabourUpdate');
+Route::any('labour/data/list','viewController@LabourDataList');
+Route::any('labour/data/image/file/upload/section/{id}','viewController@LabourUploadFile');
 
 // master 
 // Master Party 

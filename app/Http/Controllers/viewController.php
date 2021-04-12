@@ -20,6 +20,7 @@ use App\party_master;
 use App\truck_data;
 use App\location;
 use App\company_master; 
+use App\labour_data; 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -887,5 +888,134 @@ class viewController extends Controller
 
         // return redirect('/truck/data/scan/edit/'.$id);
         return redirect('/truck/data/update/file/upload/section/'.$id);
+    }
+
+    public function LabourPicUpload (REQUEST $request, $id) {
+        $labour_data = labour_data::where('id',$id)->first();
+        // return $labour_data;
+        return view('labour_data_scan_pic_upload', compact('labour_data'));
+    }
+    
+    public function LabourDataList (REQUEST $request) {
+        $labour_data = labour_data::paginate(10);
+        // return $labour_data;
+        return view('labour_visits_list', compact('labour_data'));
+    }
+    
+    public function LabourEdit (REQUEST $request, $id) {
+        $labour_data = labour_data::where('id',$id)->first();
+        $party_master = party_master::get();
+        $party_master_data = party_master::where('id',$labour_data->party)->first();
+        // return $labour_data;
+        return view('labour_data_scan_edit', compact('labour_data','party_master','party_master_data'));
+    }
+    
+    public function LabourPdf (REQUEST $request, $id) {
+        $labour_data = labour_data::where('id',$id)->first();
+        // return $labour_data;
+        return view('labour_data_scan_pdf', compact('labour_data'));
+    }
+
+    public function LabourUploadFile(REQUEST $request, $id){
+        // return $request;
+        if(!empty($request->image)) {
+            // File Upload
+            $img = $request->image;
+            $image_parts = explode(";base64,", $img);
+            $image_type_aux = explode("image/", $image_parts[0]);
+            $image_type = $image_type_aux[1];
+            
+            //decoding image
+            $image_base64 = base64_decode($image_parts[1]);
+            $fileName = uniqid() . '.png';
+
+            //saving image
+            file_put_contents(public_path().'/files/'.$fileName, $image_base64);
+
+            //updating file name
+            $update_file_name = labour_data::find($id);
+            $update_file_name->upload_photo_documents = $fileName;
+            $update_file_name->process_stage = 2;
+            $update_file_name->save();
+        }
+        else {
+            if($request->hasFile('upload_photo_documents')) {
+                $file_img_name = $request->file('upload_photo_documents');
+                $file_name = time().'.'.$file_img_name->getClientOriginalExtension();
+                $destinationPath = public_path('/files');
+                $file_img_name->move($destinationPath, $file_name);
+                
+                $labour_data_update = labour_data::find($id);
+                $labour_data_update->upload_photo_documents = $file_name;
+                $labour_data_update->process_stage = 2;
+                $labour_data_update->save();
+            }
+
+        }
+        // return redirect('/truck/data/update/file/upload/section/'.$id);
+
+        $temp_labour_data = labour_data::where('id',$id)->first();
+        if(!empty($temp_labour_data->upload_photo_documents)) {
+            return redirect('labour/data/pdf/print/'.$id);
+        } else {
+            return redirect('labour/data/image/upload/'.$id);
+        }
+    }
+
+    public function LabourDataAdd (REQUEST $request) {
+        // return $request;
+        $ADD_LABOUR_DATA = new labour_data();
+        $ADD_LABOUR_DATA->party = $request->party;
+        $ADD_LABOUR_DATA->adhar_no = $request->adhar_no;
+        $ADD_LABOUR_DATA->type = $request->type;
+        $ADD_LABOUR_DATA->yob = $request->yob;
+        $ADD_LABOUR_DATA->full_name = $request->full_name;
+        $ADD_LABOUR_DATA->fathers_name = $request->fathers_name;
+        $ADD_LABOUR_DATA->mobile = $request->mobile;
+        $ADD_LABOUR_DATA->valid_up_to = $request->valid_up_to;
+        $ADD_LABOUR_DATA->house = $request->house;
+        $ADD_LABOUR_DATA->blood_group = $request->blood_group;
+        $ADD_LABOUR_DATA->issue_date = $request->issue_date;
+        $ADD_LABOUR_DATA->eye_sight = $request->eye_sight;
+        $ADD_LABOUR_DATA->from_j = $request->from_j;
+        $ADD_LABOUR_DATA->from_h = $request->from_h;
+        $ADD_LABOUR_DATA->police_verification = $request->police_verification;
+        $ADD_LABOUR_DATA->ref = $request->ref;
+        $ADD_LABOUR_DATA->police_station = $request->police_station;
+        $ADD_LABOUR_DATA->valid_from = $request->valid_from;
+        $ADD_LABOUR_DATA->valid_to = $request->valid_to;
+        $ADD_LABOUR_DATA->process_stage = 1;
+        $ADD_LABOUR_DATA->save();
+
+        // return $ADD_LABOUR_DATA;
+        return redirect('labour/data/image/upload/'.$ADD_LABOUR_DATA->id);
+    }
+    
+    public function LabourUpdate (REQUEST $request, $id) {
+        // return $request;
+        $UPDATE_LABOUR_DATA = labour_data::find($id);
+        $UPDATE_LABOUR_DATA->party = $request->party;
+        $UPDATE_LABOUR_DATA->type = $request->type;
+        $UPDATE_LABOUR_DATA->yob = $request->yob;
+        $UPDATE_LABOUR_DATA->adhar_no = $request->adhar_no;
+        $UPDATE_LABOUR_DATA->full_name = $request->full_name;
+        $UPDATE_LABOUR_DATA->fathers_name = $request->fathers_name;
+        $UPDATE_LABOUR_DATA->mobile = $request->mobile;
+        $UPDATE_LABOUR_DATA->valid_up_to = $request->valid_up_to;
+        $UPDATE_LABOUR_DATA->house = $request->house;
+        $UPDATE_LABOUR_DATA->blood_group = $request->blood_group;
+        $UPDATE_LABOUR_DATA->issue_date = $request->issue_date;
+        $UPDATE_LABOUR_DATA->eye_sight = $request->eye_sight;
+        $UPDATE_LABOUR_DATA->from_j = $request->from_j;
+        $UPDATE_LABOUR_DATA->from_h = $request->from_h;
+        $UPDATE_LABOUR_DATA->police_verification = $request->police_verification;
+        $UPDATE_LABOUR_DATA->ref = $request->ref;
+        $UPDATE_LABOUR_DATA->police_station = $request->police_station;
+        $UPDATE_LABOUR_DATA->valid_from = $request->valid_from;
+        $UPDATE_LABOUR_DATA->valid_to = $request->valid_to;
+        $UPDATE_LABOUR_DATA->save();
+
+        // return $ADD_LABOUR_DATA;
+        return redirect('labour/data/image/upload/'.$id);
     }
 }

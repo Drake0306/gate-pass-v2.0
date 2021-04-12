@@ -279,21 +279,8 @@
                                                 <div class="col-md-12">
 
                                                         <div class="row">
-                                                            <div class="col-md-3">
-                                                                <button type="button" class="btn btn-danger">1'st Step
-                                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                                    Form Complete</button>
-                                                            </div>
-                                                            <div class="col-md-3" >
-                                                                <button type="button" class="btn btn-danger">2'nd Step
-                                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                                    Upload Picture</button>
-                                                            </div>
-                                                            <div class="col-md-3">
-                                                                <button type="button" class="btn btn-danger">3'rd Step
-                                                                    <i class="fa fa-arrow-right" aria-hidden="true"></i>
-                                                                    Download PDF</button>
-                                                            </div>
+                                                            @include('precess_stage_labour')
+                                                            
                                                         </div>
                                                         
                                                 </div>
@@ -333,6 +320,14 @@
                                                 <form method="POST" action="{{url('/store_image')}}">
                                                     @csrf
                                                     <div class="row">
+                                                        <div class="col-md-12 mt-3">
+                                                            <button type="button" onClick="toggleDataScanner('toggle_scanner')"
+                                                                class="btn btn-secondary"> <i
+                                                                    class="fas fa-chevron-right"></i> &nbsp;
+                                                                Toggle Scanner</button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-5" id="toggle_scanner" style="display:none" >
                                                         <div class="col-md-6" style="padding: 5px;">
                                                             <video style="border-radius:10px; width: 100%; height: 100%"
                                                                 id="preview"></video>
@@ -353,10 +348,10 @@
                                                                         Scanner</button>
                                                                 </div>
                                                                 <div class="col-md-6 mt-3">
-                                                                    <button style="margin-top: 2px;" type="button"
+                                                                    <!-- <button style="margin-top: 2px;" type="button"
                                                                         class="btn btn-secondary"> <i
                                                                             class="fas fa-chevron-right"></i> &nbsp;
-                                                                        Next</button>
+                                                                        Next</button> -->
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -369,7 +364,7 @@
                             </div>
                             <!-- <div class="col-md-12" id="input_part" style="display: none"> -->
                             <form method="POST" novalidate id="registervalidation" role="form"
-                                enctype="multipart/form-data" action="{{url('/labour/data/add')}}">
+                                enctype="multipart/form-data" action="{{url('/labour/data/update/'.$labour_data->id)}}">
                                 @csrf
                                 <div class="col-md-12" id="input_part">
                                     <div class="mb-3 card">
@@ -398,6 +393,8 @@
                                                                     <select class="form-control" name="party"
                                                                         id="box"
                                                                         required>
+                                                                        <option value="{{@$party_master_data->id}}">
+                                                                            {{@$party_master_data->party_name}}</option>
                                                                         <option value="">Select</option>
                                                                         @foreach($party_master as $value)
                                                                         <option value="{{$value->id}}">
@@ -416,6 +413,7 @@
                                                                     <label for="">Type</label>
                                                                     <select class="form-control" name="type" required
                                                                         id="box" required>
+                                                                        <option value="{{$labour_data->type}}">{{$labour_data->type}}</option>
                                                                         <option value="">Select</option>
                                                                         <option value="Guard">Guard</option>
                                                                         <option value="Labour">Labour</option>
@@ -430,6 +428,7 @@
                                                                     <label for="">Aadhar Number</label>
                                                                     <input type="text" class="form-control"
                                                                         name="adhar_no" id="box_1"
+                                                                        value="{{$labour_data->adhar_no}}"
                                                                         aria-describedby="helpId"
                                                                         placeholder="Enter Aadhar Number" required>
                                                                     <small id="helpId"
@@ -445,6 +444,7 @@
                                                                         </small></label>
                                                                     <input type="date" class="form-control" name="yob"
                                                                         id="box_4" aria-describedby="helpId"
+                                                                        value="{{$labour_data->yob}}"
                                                                         placeholder="Enter date of birth (dd-mm-yyyy)"
                                                                         required>
                                                                     <small id="helpId" style="display:inline"
@@ -461,6 +461,7 @@
                                                                     <label for="">Full Name</label>
                                                                     <input type="text" class="form-control"
                                                                         name="full_name" id="box_2"
+                                                                        value="{{$labour_data->full_name}}"
                                                                         aria-describedby="helpId"
                                                                         placeholder="Enter Full Name" required>
                                                                     <small id="helpId"
@@ -474,6 +475,7 @@
                                                                     <input type="text" class="form-control"
                                                                         name="fathers_name" id="box"
                                                                         aria-describedby="helpId"
+                                                                        value="{{$labour_data->fathers_name}}"
                                                                         placeholder="Enter Name" required>
                                                                     <small id="helpId"
                                                                         class="form-text text-primary">Required</small>
@@ -505,6 +507,7 @@
                                                                     <label for="">Phone Number</label>
                                                                     <input type="text" class="form-control"
                                                                         name="mobile" id="mobile"
+                                                                        value="{{$labour_data->mobile}}"
                                                                         aria-describedby="helpId"
                                                                         placeholder="Enter Number">
 
@@ -517,6 +520,7 @@
                                                                     <label for="">Valid Up To</label>
                                                                     <input type="date" class="form-control" name="valid_up_to"
                                                                         id="box_5" aria-describedby="helpId" required
+                                                                        value="{{$labour_data->valid_up_to}}"
                                                                         placeholder="Enter Address">
                                                                     <small id="helpId"
                                                                         class="form-text text-primary">Required</small>
@@ -541,6 +545,7 @@
                                                                     <label for="">Address</label>
                                                                     <input type="text" class="form-control" name="house"
                                                                         id="box_5" aria-describedby="helpId" required
+                                                                        value="{{$labour_data->house}}"
                                                                         placeholder="Enter Address">
                                                                     <small id="helpId"
                                                                         class="form-text text-primary">Required</small>
@@ -553,6 +558,7 @@
                                                                     <label for="">Blood Group</label>
                                                                     <select class="form-control" name="blood_group"
                                                                         id="box_3" required>
+                                                                        <option value="{{$labour_data->blood_group}}">{{$labour_data->blood_group}}</option>
                                                                         <option value="">Select</option>
                                                                         <option value="A">A</option>
                                                                         <option value="B">B</option>
@@ -651,6 +657,7 @@
                                                                     <input type="date" class="form-control"
                                                                         name="issue_date" id="box"
                                                                         aria-describedby="helpId"
+                                                                        value="{{$labour_data->issue_date}}"
                                                                         placeholder="Enter Date" required>
                                                                     <small id="helpId"
                                                                         class="form-text text-primary">Required</small>
@@ -661,7 +668,8 @@
                                                                 <div class="form-group">
                                                                     <label for="">Eye sight</label>
                                                                     <select class="form-control" name="eye_sight"
-                                                                        id="box" required>
+                                                                    id="box" required>
+                                                                    <option value="{{$labour_data->eye_sight}}">{{$labour_data->eye_sight}}</option>
                                                                         <option value="">Select</option>
                                                                         <option value="OK">OK</option>
                                                                         <option value="POOR">POOR</option>
@@ -687,7 +695,8 @@
                                                                 <div class="form-group">
                                                                     <label for="">From J</label>
                                                                     <select class="form-control" name="from_j" id="box"
-                                                                        required>
+                                                                    required>
+                                                                    <option value="{{$labour_data->from_j}}">{{$labour_data->from_j}}</option>
                                                                         <option value="">Select</option>
                                                                         <option value="Yes">Yes</option>
                                                                         <option value="No">No</option>
@@ -703,6 +712,7 @@
                                                                     <label for="">From H</label>
                                                                     <select class="form-control" name="from_h" id="box"
                                                                         required>
+                                                                        <option value="{{$labour_data->from_h}}">{{$labour_data->from_h}}</option>
                                                                         <option value="">Select</option>
                                                                         <option value="Yes">Yes</option>
                                                                         <option value="No">No</option>
@@ -717,6 +727,7 @@
                                                                     <label for="">Police Verification</label>
                                                                     <select class="form-control"
                                                                         name="police_verification" id="box" required>
+                                                                        <option value="{{$labour_data->police_verification}}">{{$labour_data->police_verification}}</option>
                                                                         <option value="">Select</option>
                                                                         <option value="Yes">Yes</option>
                                                                         <option value="No">No</option>
@@ -731,6 +742,7 @@
                                                                     <label for="">Ref</label>
                                                                     <input type="text" class="form-control" name="ref"
                                                                         id="box" aria-describedby="helpId" required
+                                                                        value="{{$labour_data->ref}}"
                                                                         placeholder="Enter Ref">
                                                                     <small id="helpId"
                                                                         class="form-text text-primary">Required</small>
@@ -742,6 +754,7 @@
                                                                     <label for="">Police Station</label>
                                                                     <input type="text" class="form-control"
                                                                         name="police_station" id="box"
+                                                                        value="{{$labour_data->police_station}}"
                                                                         aria-describedby="helpId" placeholder="Enter">
                                                                     <!-- <small id="helpId"
                                                                         class="form-text text-primary">Required</small> -->
@@ -753,6 +766,7 @@
                                                                     <label for="">Valid From</label>
                                                                     <input type="date" class="form-control"
                                                                         name="valid_from" id="box"
+                                                                        value="{{$labour_data->valid_from}}"
                                                                         aria-describedby="helpId" placeholder="Enter">
                                                                     <!-- <small id="helpId"
                                                                         class="form-text text-primary">Required</small> -->
@@ -764,6 +778,7 @@
                                                                     <label for="">Valid To</label>
                                                                     <input type="date" class="form-control"
                                                                         name="valid_to" id="box"
+                                                                        value="{{$labour_data->valid_to}}"
                                                                         aria-describedby="helpId" placeholder="Enter">
                                                                     <!-- <small id="helpId"
                                                                         class="form-text text-primary">Required</small> -->
@@ -822,7 +837,7 @@
                                                             <!-- Fields for entry End-->
                                                             <div class="col-md-8 mt-4">
                                                                 <button type="submit" class="btn"
-                                                                    style="background-color: #F79646;color: white">Next</button>
+                                                                    style="background-color: #F79646;color: white">Update & Next</button>
 
                                                             </div>
                                                         </div>
@@ -1323,6 +1338,11 @@
         });
     </script>
 
+    <script>
+        function toggleDataScanner(id) {
+            $('#' + id).toggle(500);
+        }
+    </script>
     <script>
         function loadAjax(value) {
             $('#truck_no').empty();

@@ -80,6 +80,12 @@
                                 </i>Driver / Helper List
                             </a>
                             @endif
+                            @if(Session::get('read_in_out') == 1)
+                            <a href="{{url('labour/data/list')}}" id="in_out_value">
+                                <i class="metismenu-icon">
+                                </i>Labour List
+                            </a>
+                            @endif
                         </li>
                         <!-- <li>
                             @if(Session::get('read_in_out') == 1)
