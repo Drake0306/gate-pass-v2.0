@@ -541,7 +541,7 @@
                                                                 <div class="form-group">
                                                                     <label for="">Email</label>
                                                                     <input type="text" class="form-control"
-                                                                        name="mobile" id="email"
+                                                                        name="e" id="email"
                                                                         aria-describedby="helpId" 
                                                                         placeholder="Enter Email">
 
@@ -704,7 +704,7 @@
                                                                     <label for="">Eye sight</label>
                                                                     <select class="form-control" name="eye_sight"
                                                                         id="box" required>
-                                                                        <option selected value="{{@$truck_data->eye_site}}">{{@$truck_data->eye_site}}</option>
+                                                                        <option selected value="{{@$truck_data->eye_sight}}">{{@$truck_data->eye_sight}}</option>
                                                                         <option value="">Select</option>
                                                                         <option value="OK">OK</option>
                                                                         <option value="POOR">POOR</option>
@@ -749,7 +749,7 @@
                                                                     <label for="">From H</label>
                                                                     <select class="form-control" name="from_h" id="box"
                                                                         required>
-                                                                        <option selected value="{{@$truck_data->form_h}}">{{@$truck_data->form_h}}</option>
+                                                                        <option selected value="{{@$truck_data->from_h}}">{{@$truck_data->from_h}}</option>
                                                                         <option value="">Select</option>
                                                                         <option value="Yes">Yes</option>
                                                                         <option value="No">No</option>
@@ -883,9 +883,9 @@
                                                             <!-- Fields for entry End-->
                                                             <div class="col-md-8 mt-4">
                                                                 <button type="submit" class="btn"
-                                                                    style="background-color: #F79646;color: white">Update</button>
-                                                                <a href="{{url('/truck/data/update/file/upload/section/'.$truck_data->id)}}" class="btn ml-5 btn-secondary text-light"
-                                                                    >Next</a>
+                                                                    style="background-color: #F79646;color: white">Update & Next</button>
+                                                                <!-- <a href="{{url('/truck/data/update/file/upload/section/'.$truck_data->id)}}" class="btn ml-5 btn-secondary text-light"
+                                                                    >Next</a> -->
 
                                                             </div>
                                                         </div>

@@ -671,7 +671,7 @@ class viewController extends Controller
     }
     
     public function TruckVisitList(REQUEST $request){
-        $truck_data = truck_data::paginate(10);
+        $truck_data = truck_data::select('truck_data.*','party_wise_tt.truck_no')->leftJoin('party_wise_tt', 'truck_data.truck_no', '=', 'party_wise_tt.id')->paginate(10);
         return view('truck_visits_list', compact('truck_data'));
     }
     
@@ -731,7 +731,14 @@ class viewController extends Controller
             }
 
         }
-        return redirect('/truck/data/update/file/upload/section/'.$id);
+        // return redirect('/truck/data/update/file/upload/section/'.$id);
+
+        $temp_truck_data = truck_data::where('id',$id)->first();
+        if(!empty($temp_truck_data->upload_photo_documents)) {
+            return redirect('truck/data/pdf/print/'.$id);
+        } else {
+            return redirect('/truck/data/update/file/upload/section/'.$id);
+        }
     }
     
     public function DriverHelperAdd(REQUEST $request){
@@ -818,7 +825,8 @@ class viewController extends Controller
         // $truck_data_add->location_code = $request->
         $truck_data_add->save();
 
-        return redirect('/truck/data/scan/edit/'.$truck_data_add->id);
+        // return redirect('/truck/data/scan/edit/'.$truck_data_add->id);
+        return redirect('/truck/data/update/file/upload/section/'.$truck_data_add->id);
     }
     
     public function DriverHelperEditUpdate(REQUEST $request, $id){
@@ -877,6 +885,7 @@ class viewController extends Controller
         // $truck_data_update->fitness_test = $request->fitness_test;
         $truck_data_update->save();
 
-        return redirect('/truck/data/scan/edit/'.$id);
+        // return redirect('/truck/data/scan/edit/'.$id);
+        return redirect('/truck/data/update/file/upload/section/'.$id);
     }
 }

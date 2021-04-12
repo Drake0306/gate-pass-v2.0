@@ -378,9 +378,9 @@
                                                         <div class="row">
                                                             <div class="col-md-8 mt-5">
                                                                 <button type="submit" class="btn"
-                                                                    style="background-color: #F79646;color: white">Update</button>
-                                                                <a href="{{url('/truck/data/pdf/print/'.$truck_data->id)}}"
-                                                                    class="btn ml-5 btn-secondary text-light">Next</a>
+                                                                    style="background-color: #F79646;color: white">Update & Next</button>
+                                                                <!-- <a href="{{url('/truck/data/pdf/print/'.$truck_data->id)}}"
+                                                                    class="btn ml-5 btn-secondary text-light">Next</a> -->
 
                                                             </div>
                                                         </div>

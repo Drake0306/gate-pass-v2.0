@@ -528,7 +528,7 @@
                                                                 <div class="form-group">
                                                                     <label for="">Email</label>
                                                                     <input type="text" class="form-control"
-                                                                        name="mobile" id="email"
+                                                                        name="e" id="email"
                                                                         aria-describedby="helpId"
                                                                         placeholder="Enter Email">
 

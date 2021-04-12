@@ -44,21 +44,18 @@
                 </li>
                 <li>
                     <a href="#">
-                        <i class="fa fa-align-center" style="color: grey; text-align: left;" aria-hidden="true"></i>
+                    <i class="metismenu-icon pe-7s-id"></i>
                         CARD
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
                     <ul>
                         <li>
                             <a href="{{url('/truck/data/scan')}}" id="in_entry">
-                                <i class="fa fa-truck" style="color: grey; text-align: left;" aria-hidden="true"></i>
                                 Driver / Helper
                             </a>
                         </li>
                         <li>
                             <a href="{{url('labour/data/scan')}}" id="in_entry">
-                                <i class="fa fa-briefcase" style="color: grey; text-align: left;"
-                                    aria-hidden="true"></i>
                                 Temp Labour
                             </a>
                         </li>
@@ -71,7 +68,7 @@
 
                 <li>
                     <a href="#">
-                        <i class="metismenu-icon pe-7s-truck"></i>
+                        <i class="metismenu-icon pe-7s-news-paper"></i>
                         REGISTER
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
@@ -84,7 +81,7 @@
                             </a>
                             @endif
                         </li>
-                        <li>
+                        <!-- <li>
                             @if(Session::get('read_in_out') == 1)
                             <a href="{{url('/in_out_register')}}" id="in_out_value">
                                 <i class="metismenu-icon">
@@ -99,7 +96,7 @@
                                 </i>VISITOR REGISTER
                             </a>
                             @endif
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
                 <?php $type_ne = Session::get('type'); ?>
@@ -107,8 +104,8 @@
                 <li class="app-sidebar__heading">Party</li>
                 <li>
                     <a href="#">
-                        <i class="metismenu-icon pe-7s-diamond"></i>
-                        Elements
+                        <i class="metismenu-icon pe-7s-display2"></i>
+                        Master
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
                     <ul>
@@ -127,7 +124,7 @@
                         <li>
                             <a href="{{url('/master/party/home')}}">
                                 <i class="metismenu-icon"></i>
-                                Party
+                                Party Create
                             </a>
                         </li>
                         <li>
@@ -139,7 +136,7 @@
                         <li>
                             <a href="{{url('/party_wise_tt')}}">
                                 <i class="metismenu-icon"></i>
-                                Truck
+                                Truck Create
                             </a>
                         </li>
                         <li>

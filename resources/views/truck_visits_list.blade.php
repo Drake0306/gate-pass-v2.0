@@ -330,20 +330,18 @@
                                                             <tr>
                                                                 <th>#</th>
                                                                 <th>Aadhar No</th>
-                                                                <th>IN / OUT</th>
-                                                                <th>REASON OF VISIT</th>
-                                                                <th>DATE AND TIME</th>
+                                                                <th>Full Name</th>
+                                                                <th>Truck Number</th>
+                                                                <th>Type</th>
+                                                                <th>Issue Date</th>
                                                                 <th>ADDRESS <small>Hover to see full details</small>
                                                                 </th>
+                                                                <th style="text-align:center">Action</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody style="font-size:12px;">
                                                             <?php $c = 1; ?>
                                                             @foreach($truck_data as $item)
-
-                                                            <?php 
-                                                                @$details = DB::table('visitor')->where('uid',@$item->uid)->first();
-                                                            ?>
                                                             <tr>
                                                                 @if(@$item->party)
 
@@ -353,21 +351,23 @@
                                                                         title="{{@$item->adhar_no}} ( click to edit )">{{substr(@$item->adhar_no, 0, 20)}}
                                                                         ..</a></td>
 
-                                                                <td>{{date('d-m-Y (h:i:a)',strtotime(@$item->in_time))}}
+                                                                <td>{{@$item->full_name}}</td>
+                                                                <!-- <td>{{date('d-m-Y (h:i:a)',strtotime(@$item->in_time))}}
                                                                     | @if(@$item->in_out == '0000-00-00 00:00:00') NA
                                                                     @else
                                                                     {{date('d-m-Y (h:i:a)',strtotime(@$item->in_out))}}
-                                                                    @endif</td>
+                                                                    @endif</td> -->
 
-                                                                <td style="text-transform:capitalize">
-                                                                    {{@$item->visit_reason}}</td>
-                                                                <td>{{date('d-m-Y (h:i:a)',strtotime(@$item->created_at))}}
+                                                                <td style="text-transform:capitalize">{{@$item->truck_no}}</td>
+                                                                <td>{{@$item->type}}</td>
+                                                                <td>{{date('d-m-Y',strtotime(@$item->issue_date))}}</td>
                                                                 </td>
                                                                 <?php
-                                                                    $small = substr($details->house, 0, 20);
+                                                                    $small = substr($item->house, 0, 20);
                                                                 ?>
-                                                                <td data-toggle="tooltip" title="{{@$details->house}}">
+                                                                <td data-toggle="tooltip" title="{{@$item->house}}">
                                                                     {{$small}} ...</td>
+                                                                <td style="text-align:center" > <a href="{{url('/truck/data/scan/edit/'.$item->id)}}" data-toggle="tooltip" title="Edit" > <i style="font-size:15px;" class="fas fa-pencil-alt"></i> </a> </td>
                                                                 @endif
                                                             </tr>
                                                             @endforeach
