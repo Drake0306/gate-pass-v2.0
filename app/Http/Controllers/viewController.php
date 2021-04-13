@@ -80,11 +80,12 @@ class viewController extends Controller
     }
 
     public function register(REQUEST $request){
-        $type = $request->session()->get('type');
-        if($type !=0){
-            return \redirect('/view_home');
-        }
-        return view('register');
+        $user_role = user_role::get();
+        // $type = $request->session()->get('type');
+        // if($type !=0){
+        //     return \redirect('/view_home');
+        // }
+        return view('register',compact('user_role'));
     }
 
     public function log_out(REQUEST $request){

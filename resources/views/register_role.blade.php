@@ -140,12 +140,12 @@
                 </div>
             </div>
         </div>
-
+        
         <div class="app-main">
+            
 
-
-            @include('sidebar')
-
+                @include('sidebar')
+            
             <div class="app-main__outer">
                 <div class="app-main__inner">
 
@@ -155,7 +155,163 @@
                             <div class="col-md-12">
 
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
+                                        <div class="mb-3 card">
+                                            <div class="card-header-tab card-header-tab-animation card-header">
+                                                <div class="card-header-title">
+                                                    <i class="header-icon lnr-apartment icon-gradient bg-love-kiss">
+                                                    </i>
+                                                    Create User Role </div>
+
+                                            </div>
+                                            <div class="card-body">
+                                                <div class="tab-content">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <form>
+                                                                <div class="row">
+                                                                    {{-- <div class="col-md-12">
+                                                                        <h4>Personal Details</h4>
+                                                                        <br>
+                                                                    </div> --}}
+                                                                    <!-- Fields for entry-->
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label for="">USER ROLE NAME</label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="user_role_name"
+                                                                                aria-describedby="helpId" value=""
+                                                                                placeholder="Enter User Role Name"
+                                                                                required>
+                                                                            <small id="helpId"
+                                                                                class="form-text text-primary">Required</small>
+                                                                            <small id="error"
+                                                                                class="form-text text-danger"
+                                                                                style="display:none">This cannot be left
+                                                                                blank</small>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <hr>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label for=""
+                                                                                style="text-transform:uppercase">Select
+                                                                                Permission for user role
+                                                                                <br><small
+                                                                                    style="color:rgb(209, 97, 40)">(
+                                                                                    **DON'T FORGET TO CHECK TO GIVE THE
+                                                                                    PERMISSION** )</small>
+                                                                                <br><small
+                                                                                    style="color:rgb(209, 97, 40)">(
+                                                                                    **IF UNCHECKED NO PERMISSION WILL BE
+                                                                                    GIVEN** )</small>
+                                                                            </label>
+                                                                            
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12">
+                                                                        <hr>
+                                                                        <label><b>ADD ENTRY</b></label>
+                                                                    </div>
+                                                                    <div class="col-md-4 mt-2">
+                                                                        <div class="form-check">
+                                                                            <label class="form-check-label">
+                                                                                <input type="checkbox"
+                                                                                    class="form-check-input" name=""
+                                                                                    id="in_entry" value="checkedValue"
+                                                                                    checked>
+                                                                                IN ENTRY
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-8 mt-2">
+                                                                        <div class="form-check">
+                                                                            <label class="form-check-label">
+                                                                                <input type="checkbox"
+                                                                                    class="form-check-input" name=""
+                                                                                    id="out_entry" value="checkedValue"
+                                                                                    checked>
+                                                                                OUT ENTRY
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 mt-4">
+                                                                        <hr>
+                                                                        <label><b>EDIT REGISTER OR ENTRY</b></label>
+                                                                    </div>
+                                                                    <div class="col-md-5 mt-2">
+                                                                        <div class="form-check">
+                                                                            <label class="form-check-label">
+                                                                                <input type="checkbox"
+                                                                                    class="form-check-input" name=""
+                                                                                    id="in_out_register"
+                                                                                    value="checkedValue">
+                                                                                IN/OUT REGISTER
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-7 mt-2">
+                                                                        <div class="form-check">
+                                                                            <label class="form-check-label">
+                                                                                <input type="checkbox"
+                                                                                    class="form-check-input" name=""
+                                                                                    id="visitor_register"
+                                                                                    value="checkedValue">
+                                                                                VISITOR REGISTER
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 mt-4">
+                                                                        <hr>
+                                                                        <label><b>READ REGISTER OR ENTRY</b><br> <small
+                                                                                style="color:rgb(209, 97, 40)">( NOTE !!
+                                                                                Without READ - EDIT function cannot be
+                                                                                peformed )</small></label>
+                                                                    </div>
+                                                                    <div class="col-md-5 mt-2">
+                                                                        <div class="form-check">
+                                                                            <label class="form-check-label">
+                                                                                <input type="checkbox"
+                                                                                    class="form-check-input" name=""
+                                                                                    id="in_out_read"
+                                                                                    value="checkedValue">
+                                                                                IN/OUT REGISTER
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-7 mt-2">
+                                                                        <div class="form-check">
+                                                                            <label class="form-check-label">
+                                                                                <input type="checkbox"
+                                                                                    class="form-check-input" name=""
+                                                                                    id="visitor_read"
+                                                                                    value="checkedValue">
+                                                                                VISITOR REGISTER
+                                                                            </label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-12 mt-4">
+                                                                        <hr>
+                                                                    </div>
+                                                                    <!-- Fields for entry End-->
+                                                                    <div class="col-md-8 mt-1">
+                                                                        <button type="button" id="next"
+                                                                            onclick="register_role()"
+                                                                            class="btn btn-primary">Create</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col-md-6">
                                         <div class="mb-3 card">
                                             <div class="card-header-tab card-header-tab-animation card-header">
                                                 <div class="card-header-title">
@@ -171,25 +327,9 @@
                                                         <div class="col-md-12">
                                                             <form>
                                                                 <div class="row">
-
-                                                                    <div class="col-md-2">
-                                                                        <div class="form-group">
-                                                                            <label for="">USER ROLE</label>
-                                                                            <select class="form-control" name="gender"
-                                                                                id="user_role_create" required>
-                                                                                <option value="">Select Role
-                                                                                </option>
-                                                                                @foreach($user_role as $value)
-                                                                                <option value="{{$value->id}} | {{$value->name}}">{{$value->name}}
-                                                                                </option>
-                                                                                @endforeach
-                                                                            </select>
-
-                                                                        </div>
-                                                                    </div>
-
+                                                                    
                                                                     <!-- Fields for entry-->
-                                                                    <div class="col-md-4">
+                                                                    <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label for="">FULL NAME </label>
                                                                             <input type="text" class="form-control"
@@ -203,9 +343,19 @@
 
 
 
+                                                                    <div class="col-md-12">
+                                                                        <div class="form-group">
+                                                                            <label for="">USER ROLE</label>
+                                                                            <select class="form-control" name="gender"
+                                                                                id="user_role_create" required>
+                                                                                <option value="">Select User Role
+                                                                                </option>
+                                                                            </select>
 
+                                                                        </div>
+                                                                    </div>
 
-                                                                    <div class="col-md-6">
+                                                                    <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label for="">NEW USER ID <small
                                                                                     class="text"
@@ -294,11 +444,11 @@
 
                             </div>
                         </div>
-
+                        
                     </div>
 
                 </div>
-
+                
             </div>
             <!--<script src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
         </div>
@@ -432,7 +582,7 @@
                 success: function (data) {
                     // console.log(data);
                     $('#user_role_create').empty();
-                    var tag = `<option value="">Select Role</option>`;
+                    var tag = `<option value="">Select User Role</option>`;
                     for (var i = 0; i <= data.length - 1; i++) {
                         var item = data[i];
                         // console.log(item.name);
@@ -449,9 +599,9 @@
         }
 
         //RUN AT START UP
-        // $(document).ready(function () {
-        //     run_get_user_role()
-        // });
+        $(document).ready(function () {
+            run_get_user_role()
+        });
     </script>
     {{-- validation--}}
     <script>
@@ -592,10 +742,10 @@
                     type: 'POST',
                     url: '{{url("/create_new_user_/")}}',
                     data: {
-                        full_name: full_name,
-                        user_id_new: user_id_new,
-                        password: password,
-                        user_role_create: user_role_create
+                        full_name:full_name,
+                        user_id_new:user_id_new,
+                        password:password,
+                        user_role_create:user_role_create
 
                     },
                     success: function (data) {
