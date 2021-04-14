@@ -50,15 +50,62 @@
                     </a>
                     <ul>
                         <li>
-                            <a href="{{url('/truck/data/scan')}}" id="in_entry">
+                            
+                            
+
+                            <li>
+                                <a href="#">
+                                <i class="metismenu-icon pe-7s-id"></i>
                                 Driver / Helper
-                            </a>
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        
+                                        <a href="{{url('/truck/data/scan')}}" id="in_entry">
+                                            Driver / Helper Create
+                                        </a>
+                                    </li>
+                                    <li>
+                                        
+                                        <a href="{{url('/truck/visit/list')}}" id="in_out_value">
+                                            <i class="metismenu-icon">
+                                            </i>Driver / Helper List
+                                        </a>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
                         </li>
                         <li>
-                            <a href="{{url('labour/data/scan')}}" id="in_entry">
-                                Temp Labour
-                            </a>
+                            
+                            
+
+                            <li>
+                                <a href="#">
+                                <i class="metismenu-icon pe-7s-id"></i>
+                                Temp Labour 
+                                    <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                                </a>
+                                <ul>
+                                    <li>
+                                        
+                                        <a href="{{url('labour/data/scan')}}" id="in_entry">
+                                            Temp Labour Create
+                                        </a>
+                                    </li>
+                                    <li>
+                                        
+                                    <a href="{{url('labour/data/list')}}" id="in_out_value">
+                                        <i class="metismenu-icon">
+                                        </i>Temp Labour List
+                                    </a>
+                                    </li>
+                                    
+                                </ul>
+                            </li>
                         </li>
+                        
                     </ul>
                 </li>
                 <li>
@@ -75,16 +122,10 @@
                     <ul>
                         <li>
                             @if(Session::get('read_in_out') == 1)
-                            <a href="{{url('/truck/visit/list')}}" id="in_out_value">
-                                <i class="metismenu-icon">
-                                </i>Driver / Helper List
-                            </a>
+                            
                             @endif
                             @if(Session::get('read_in_out') == 1)
-                            <a href="{{url('labour/data/list')}}" id="in_out_value">
-                                <i class="metismenu-icon">
-                                </i>Labour List
-                            </a>
+                            
                             @endif
                         </li>
                         <!-- <li>
@@ -107,11 +148,58 @@
                 </li>
                 <?php $type_ne = Session::get('type'); ?>
                 @if(@$type_ne == 0)
-                <li class="app-sidebar__heading">Party</li>
+                <li class="app-sidebar__heading">Master</li>
                 <li>
                     <a href="#">
                         <i class="metismenu-icon pe-7s-display2"></i>
-                        Master
+                        Party
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                    </a>
+                    <ul>
+                        
+                        <li>
+                            <a href="{{url('/master/party/home')}}">
+                                <i class="metismenu-icon"></i>
+                                Party Create
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('/master/party/list')}}">
+                                <i class="metismenu-icon"></i>
+                                Party List
+                            </a>
+                        </li>
+                        
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="metismenu-icon pe-7s-display2"></i>
+                        Truck
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                    </a>
+                    <ul>
+                        
+                        <li>
+                            <a href="{{url('/party_wise_tt')}}">
+                                <i class="metismenu-icon"></i>
+                                Truck Create
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('/party_wise_tt/list')}}">
+                                <i class="metismenu-icon"></i>
+                                Truck List
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="metismenu-icon pe-7s-display2"></i>
+                        Extra
                         <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                     </a>
                     <ul>
@@ -127,30 +215,7 @@
                                 Company
                             </a>
                         </li>
-                        <li>
-                            <a href="{{url('/master/party/home')}}">
-                                <i class="metismenu-icon"></i>
-                                Party Create
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{url('/master/party/list')}}">
-                                <i class="metismenu-icon"></i>
-                                Party List
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{url('/party_wise_tt')}}">
-                                <i class="metismenu-icon"></i>
-                                Truck Create
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{url('/party_wise_tt/list')}}">
-                                <i class="metismenu-icon"></i>
-                                Truck List
-                            </a>
-                        </li>
+                        
 
                     </ul>
                 </li>

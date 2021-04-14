@@ -562,7 +562,7 @@
 
                                                                 </div>
                                                             </div>
-                                                            <!-- <div class="col-md-4 mt-2">
+                                                            <div class="col-md-4 mt-2">
                                                                 <div class="form-group">
                                                                     <label for="">Insurance 12 Rupee</label>
                                                                     <select class="form-control" name="insurance_twelve_rupee"
@@ -608,7 +608,7 @@
                                                                     
 
                                                                 </div>
-                                                            </div> -->
+                                                            </div>
 
 
 
@@ -657,7 +657,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-2">
+                                                            <!-- <div class="col-md-2">
                                                                 <div class="form-group">
                                                                     <label for="">Eye sight</label>
                                                                     <select class="form-control" name="eye_sight"
@@ -666,10 +666,9 @@
                                                                         <option value="OK">OK</option>
                                                                         <option value="POOR">POOR</option>
                                                                     </select>
-                                                                    <!-- <small id="helpId"
-                                                                        class="form-text text-primary">Required</small> -->
+                                                                    
                                                                 </div>
-                                                            </div>
+                                                            </div> -->
 
                                                             <!-- <div class="col-md-6">
                                                                 <div class="form-group">

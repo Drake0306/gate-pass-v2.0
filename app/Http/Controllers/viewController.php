@@ -977,7 +977,12 @@ class viewController extends Controller
         $ADD_LABOUR_DATA->house = $request->house;
         $ADD_LABOUR_DATA->blood_group = $request->blood_group;
         $ADD_LABOUR_DATA->issue_date = $request->issue_date;
-        $ADD_LABOUR_DATA->eye_sight = $request->eye_sight;
+
+        $ADD_LABOUR_DATA->bank_ac = $request->bank_ac;
+        $ADD_LABOUR_DATA->nominee_name = $request->nominee_name;
+        $ADD_LABOUR_DATA->insurance_three_thirty_rupee = $request->insurance_three_thirty_rupee;
+        $ADD_LABOUR_DATA->insurance_twelve_rupee = $request->insurance_twelve_rupee;
+
         $ADD_LABOUR_DATA->from_j = $request->from_j;
         $ADD_LABOUR_DATA->from_h = $request->from_h;
         $ADD_LABOUR_DATA->police_verification = $request->police_verification;
@@ -1006,7 +1011,12 @@ class viewController extends Controller
         $UPDATE_LABOUR_DATA->house = $request->house;
         $UPDATE_LABOUR_DATA->blood_group = $request->blood_group;
         $UPDATE_LABOUR_DATA->issue_date = $request->issue_date;
-        $UPDATE_LABOUR_DATA->eye_sight = $request->eye_sight;
+        
+        $UPDATE_LABOUR_DATA->bank_ac = $request->bank_ac;
+        $UPDATE_LABOUR_DATA->nominee_name = $request->nominee_name;
+        $UPDATE_LABOUR_DATA->insurance_three_thirty_rupee = $request->insurance_three_thirty_rupee;
+        $UPDATE_LABOUR_DATA->insurance_twelve_rupee = $request->insurance_twelve_rupee;
+
         $UPDATE_LABOUR_DATA->from_j = $request->from_j;
         $UPDATE_LABOUR_DATA->from_h = $request->from_h;
         $UPDATE_LABOUR_DATA->police_verification = $request->police_verification;

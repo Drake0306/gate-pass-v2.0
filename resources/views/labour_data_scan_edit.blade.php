@@ -568,11 +568,12 @@
 
                                                                 </div>
                                                             </div>
-                                                            <!-- <div class="col-md-4 mt-2">
+                                                            <div class="col-md-4 mt-2">
                                                                 <div class="form-group">
                                                                     <label for="">Insurance 12 Rupee</label>
                                                                     <select class="form-control" name="insurance_twelve_rupee"
                                                                         id="box_3" required>
+                                                                        <option value="{{$labour_data->insurance_twelve_rupee}}">{{$labour_data->insurance_twelve_rupee}}</option>
                                                                         <option value="">Select</option>
                                                                         <option value="Yes">Yes</option>
                                                                         <option value="No">No</option>
@@ -586,6 +587,7 @@
                                                                     <label for="">Insurance 330 Rupee</label>
                                                                     <select class="form-control" name="insurance_three_thirty_rupee"
                                                                         id="box_3" required>
+                                                                        <option value="{{$labour_data->insurance_three_thirty_rupee}}">{{$labour_data->insurance_three_thirty_rupee}}</option>
                                                                         <option value="">Select</option>
                                                                         <option value="Yes">Yes</option>
                                                                         <option value="No">No</option>
@@ -600,6 +602,7 @@
                                                                     <label for="">Nominee Name</label>
                                                                     <input type="text" class="form-control" name="nominee_name"
                                                                         id="box_5" aria-describedby="helpId" required
+                                                                        value="{{$labour_data->nominee_name}}"
                                                                         placeholder="Enter">
                                                                     
 
@@ -610,11 +613,12 @@
                                                                     <label for="">Bank Account</label>
                                                                     <input type="text" class="form-control" name="bank_ac"
                                                                         id="box_5" aria-describedby="helpId" required
+                                                                        value="{{$labour_data->bank_ac}}"
                                                                         placeholder="Enter">
                                                                     
 
                                                                 </div>
-                                                            </div> -->
+                                                            </div>
 
 
 
@@ -664,7 +668,7 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="col-md-2">
+                                                            <!-- <div class="col-md-2">
                                                                 <div class="form-group">
                                                                     <label for="">Eye sight</label>
                                                                     <select class="form-control" name="eye_sight"
@@ -674,10 +678,9 @@
                                                                         <option value="OK">OK</option>
                                                                         <option value="POOR">POOR</option>
                                                                     </select>
-                                                                    <!-- <small id="helpId"
-                                                                        class="form-text text-primary">Required</small> -->
+                                                                    
                                                                 </div>
-                                                            </div>
+                                                            </div> -->
 
                                                             <!-- <div class="col-md-6">
                                                                 <div class="form-group">
