@@ -417,8 +417,9 @@
                                                                     <select class="form-control" name="type" required
                                                                         id="box" required>
                                                                         <option value="">Select</option>
-                                                                        <option value="Guard">Guard</option>
-                                                                        <option value="Labour">Labour</option>
+                                                                        @foreach($labour_type as $value)
+                                                                            <option value="{{$value->id}}">{{$value->name}}</option>
+                                                                        @endforeach
                                                                     </select>
                                                                     <small id="helpId"
                                                                         class="form-text text-primary">Required</small>

@@ -359,7 +359,7 @@
                                                                     @endif</td> -->
 
                                                                 
-                                                                <td>{{@$item->type}}</td>
+                                                                <td>{{@$item->name}}</td>
                                                                 <td>{{date('d-m-Y',strtotime(@$item->issue_date))}}</td>
                                                                 </td>
                                                                 <?php

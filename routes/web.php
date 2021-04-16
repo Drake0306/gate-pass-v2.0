@@ -52,8 +52,17 @@ Route::any('/truck/data/update/file/upload/section/{id}','viewController@TruckVi
 Route::any('/truck/data/image/upload/{id}','viewController@TruckVisitUploadFile');
 Route::any('/truck/data/pdf/print/{id}','viewController@TruckVisitPdfPrintView');
 Route::any('/truck/data/pdf/print/now/{id}','viewController@TruckVisitPdfPrintNow');
+
+
 // Ajax
 Route::any('truck/ajax/load','viewController@truckDataloadAjax');
+
+// Labour type
+Route::any('/labour_type/create','viewController@LabourTypeCreateView');
+Route::any('/labour_type/list','viewController@LabourTypeListView');
+Route::any('/labour/type/name/update/{id}','viewController@LabourTypeEditUpdate');
+Route::any('/labour_type/edit/{id}','viewController@LabourTypeEditView');
+Route::any('/labour/type/name','viewController@LabourTypeCreate');
 
 // Labour Scan
 Route::any('labour/data/scan','viewController@LabourDataScan');

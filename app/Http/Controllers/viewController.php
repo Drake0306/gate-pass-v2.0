@@ -20,6 +20,7 @@ use App\party_master;
 use App\truck_data;
 use App\location;
 use App\company_master; 
+use App\labour_type; 
 use App\labour_data; 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
@@ -669,7 +670,8 @@ class viewController extends Controller
     
     public function LabourDataScan(REQUEST $request){
         $party_master = party_master::get();
-        return view('labour_data_scan', compact('party_master'));
+        $labour_type = labour_type::get();
+        return view('labour_data_scan', compact('party_master','labour_type'));
     }
     
     public function TruckVisitList(REQUEST $request){
@@ -898,7 +900,7 @@ class viewController extends Controller
     }
     
     public function LabourDataList (REQUEST $request) {
-        $labour_data = labour_data::paginate(10);
+        $labour_data = labour_data::select('labour_type.name', 'labour_data.*')->leftJoin('labour_type', 'labour_data.type', '=', 'labour_type.id')->paginate(10);
         // return $labour_data;
         return view('labour_visits_list', compact('labour_data'));
     }
@@ -906,9 +908,11 @@ class viewController extends Controller
     public function LabourEdit (REQUEST $request, $id) {
         $labour_data = labour_data::where('id',$id)->first();
         $party_master = party_master::get();
+        $labour_type = labour_type::where('id',$labour_data->type)->first();
+        $labour_type_get = labour_type::get();
         $party_master_data = party_master::where('id',$labour_data->party)->first();
         // return $labour_data;
-        return view('labour_data_scan_edit', compact('labour_data','party_master','party_master_data'));
+        return view('labour_data_scan_edit', compact('labour_type_get','labour_type','labour_data','party_master','party_master_data'));
     }
     
     public function LabourPdf (REQUEST $request, $id) {
@@ -1028,5 +1032,37 @@ class viewController extends Controller
 
         // return $ADD_LABOUR_DATA;
         return redirect('labour/data/image/upload/'.$id);
+    }
+
+    public function LabourTypeCreateView(REQUEST $request) {
+        return view('labour_type');
+    }
+    
+    public function LabourTypeEditView(REQUEST $request, $id) {
+        $labour_type = labour_type::where('id',$id)->first();
+        return view('labour_type_edit',compact('labour_type'));
+    }
+
+    public function LabourTypeListView(REQUEST $request) {
+        $labour_type = labour_type::get();
+        return view('labour_type_list',compact('labour_type'));
+    }
+    
+    public function LabourTypeCreate(REQUEST $request) {
+        $NameValue = strtoupper($request->name);
+        $labour_type_add = new labour_type();
+        $labour_type_add->name = $NameValue;
+        $labour_type_add->save();
+
+        return redirect('/labour_type/create');
+    }
+    
+    public function LabourTypeEditUpdate(REQUEST $request, $id) {
+        $NameValue = strtoupper($request->name);
+        $labour_type_update = labour_type::find($id);
+        $labour_type_update->name = $NameValue;
+        $labour_type_update->save();
+
+        return redirect('/labour_type/edit/'.$id);
     }
 }

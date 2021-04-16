@@ -63,14 +63,14 @@
                                     <li>
                                         
                                         <a href="{{url('/truck/data/scan')}}" id="in_entry">
-                                            Driver / Helper Create
+                                            Create
                                         </a>
                                     </li>
                                     <li>
                                         
                                         <a href="{{url('/truck/visit/list')}}" id="in_out_value">
                                             <i class="metismenu-icon">
-                                            </i>Driver / Helper List
+                                            </i>List
                                         </a>
                                     </li>
                                     
@@ -84,21 +84,21 @@
                             <li>
                                 <a href="#">
                                 <i class="metismenu-icon pe-7s-id"></i>
-                                Temp Labour 
+                                Temporary Labour 
                                     <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
                                 </a>
                                 <ul>
                                     <li>
                                         
                                         <a href="{{url('labour/data/scan')}}" id="in_entry">
-                                            Temp Labour Create
+                                             Create
                                         </a>
                                     </li>
                                     <li>
                                         
                                     <a href="{{url('labour/data/list')}}" id="in_out_value">
                                         <i class="metismenu-icon">
-                                        </i>Temp Labour List
+                                        </i> List
                                     </a>
                                     </li>
                                     
@@ -160,13 +160,13 @@
                         <li>
                             <a href="{{url('/master/party/home')}}">
                                 <i class="metismenu-icon"></i>
-                                Party Create
+                                 Create
                             </a>
                         </li>
                         <li>
                             <a href="{{url('/master/party/list')}}">
                                 <i class="metismenu-icon"></i>
-                                Party List
+                                 List
                             </a>
                         </li>
                         
@@ -184,13 +184,36 @@
                         <li>
                             <a href="{{url('/party_wise_tt')}}">
                                 <i class="metismenu-icon"></i>
-                                Truck Create
+                                 Create
                             </a>
                         </li>
                         <li>
                             <a href="{{url('/party_wise_tt/list')}}">
                                 <i class="metismenu-icon"></i>
-                                Truck List
+                                 List
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="metismenu-icon pe-7s-display2"></i>
+                        Labour Type
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                    </a>
+                    <ul>
+                        
+                        <li>
+                            <a href="{{url('/labour_type/create')}}">
+                                <i class="metismenu-icon"></i>
+                                 Create
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{url('/labour_type/list')}}">
+                                <i class="metismenu-icon"></i>
+                                 List
                             </a>
                         </li>
 

@@ -413,10 +413,11 @@
                                                                     <label for="">Type</label>
                                                                     <select class="form-control" name="type" required
                                                                         id="box" required>
-                                                                        <option value="{{$labour_data->type}}">{{$labour_data->type}}</option>
+                                                                        <option value="{{@$labour_type->id}}">{{@$labour_type->name}}</option>
                                                                         <option value="">Select</option>
-                                                                        <option value="Guard">Guard</option>
-                                                                        <option value="Labour">Labour</option>
+                                                                        @foreach($labour_type_get as $value)
+                                                                            <option value="{{$value->id}}">{{$value->name}}</option>
+                                                                        @endforeach
                                                                     </select>
                                                                     <small id="helpId"
                                                                         class="form-text text-primary">Required</small>
