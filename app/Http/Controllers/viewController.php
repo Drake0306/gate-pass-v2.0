@@ -22,6 +22,7 @@ use App\location;
 use App\company_master; 
 use App\labour_type; 
 use App\labour_data; 
+use App\blacklist; 
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -222,41 +223,75 @@ class viewController extends Controller
     }
     
 
-    public function search_in_out_register(REQUEST $request){
+    public function searchDriverHelper(REQUEST $request){
         $search_value = $request->search;
-        if($request->type == 1){
-            if($request->search == ''){
-                $no_of_visit = no_of_visit::orderBy('id','DESC')->get();
-            }else{
-                $visitor = visitor::where('name','like','%'.$request->search.'%')->orderBy('id','DESC')->get();
-                foreach($visitor as $item){
-                    $no_of_visit = no_of_visit::where('visitor_id',$item->id)->orderBy('id','DESC')->get();
-                }
-            }   
-        }
-        else if($request->type == 2){
-            $no_of_visit = no_of_visit::where('in_or_out','IN')->orderBy('id','DESC')->get();
-        }
-        else if($request->type == 3){
-            $no_of_visit = no_of_visit::where('in_or_out','OUT')->orderBy('id','DESC')->get();
-        }
-        else if ($request->type == 4){
-            if($request->search == ''){
-                $no_of_visit = no_of_visit::where('in_out','0000-00-00 00:00:00')->orderBy('id','DESC')->get();
-            }else{
-                $visitor = visitor::where('name','like','%'.$request->search.'%')->orderBy('id','DESC')->get();
-                foreach($visitor as $item){
-                    $no_of_visit = no_of_visit::where('visitor_id',$item->id)->where('in_out','0000-00-00 00:00:00')->orderBy('id','DESC')->get();
-                }
+        $type = $request->type;
+        if($request->search == ''){
+            $truck_data = truck_data::orderBy('id','DESC')->get();
+        }else{
+            $truck_data = truck_data::query();
+            $truck_data = $truck_data->where('full_name','like','%'.$request->search.'%');
+            $truck_data = $truck_data->orWhere('adhar_no','like','%'.$request->search.'%');
+            $truck_data = $truck_data->orWhere('type','like','%'.$request->search.'%');
+            $truck_data = $truck_data->orderBy('id','DESC');
+            if($type == 0) {
+                $truck_data = $truck_data->get();
+            } else {
+                $truck_data = $truck_data->paginate($type);
             }
-        }
-        $read_in_out = $request->session()->get('read_in_out');
-        if($read_in_out == 0){
-            return '<h2>Access Denied ... <small>( !! contact your head for adequate permission !! ) </small></h2>';
-        }
-        else{
-            return view('in_out_register',\compact('search_value','no_of_visit'));
-        }
+        }   
+        
+        
+        // $read_in_out = $request->session()->get('read_in_out');
+        // if($read_in_out == 0){
+        //     return '<h2>Access Denied ... <small>( !! contact your head for adequate permission !! ) </small></h2>';
+        // }
+        // else{
+        //     return view('in_out_register',\compact('search_value','no_of_visit'));
+        // }
+        return view('truck_visits_list',\compact('search_value','truck_data'));
+            
+    }
+    
+    public function searchTempLabour(REQUEST $request){
+        $search_value = $request->search;
+        $type = $request->type;
+        if($request->search == ''){
+            $labour_data = labour_data::orderBy('id','DESC')->get();
+        }else{
+            $labour_data = labour_data::query();
+            $labour_data = $labour_data->where('full_name','like','%'.$request->search.'%');
+            $labour_data = $labour_data->orWhere('adhar_no','like','%'.$request->search.'%');
+            $labour_data = $labour_data->orWhere('type','like','%'.$request->search.'%');
+            $labour_data = $labour_data->orderBy('id','DESC');
+            if($type == 0) {
+                $labour_data = $labour_data->get();
+            } else {
+                $labour_data = $labour_data->paginate($type);
+            }
+        }   
+        
+        return view('labour_visits_list',\compact('search_value','labour_data'));
+            
+    }
+    
+    public function partyTypeSearch(REQUEST $request){
+        $search_value = $request->search;
+        $type = $request->type;
+        if($request->search == ''){
+            $labour_type = labour_type::orderBy('id','DESC')->get();
+        }else{
+            $labour_type = labour_type::query();
+            $labour_type = $labour_type->where('name','like','%'.$request->search.'%');
+            $labour_type = $labour_type->orderBy('id','DESC');
+            if($type == 0) {
+                $labour_type = $labour_type->get();
+            } else {
+                $labour_type = $labour_type->paginate($type);
+            }
+        }   
+        
+        return view('labour_type_list',\compact('search_value','labour_type'));
             
     }
 
@@ -502,21 +537,24 @@ class viewController extends Controller
             $user_table_add->name = $full_name;
             $user_table_add->user_id = $user_id_new;
             $user_table_add->password = $password;
-            $user_table_add->type = 1;
+            $user_table_add->type = $user_role_create_explode[0];
+            $user_table_add->location_code = $request->session()->get('location_name');
             $user_table_add->save();
 
             //USER PERMISSION ADDED
-            $add_permission = new permission();
-            $add_permission->user_id = $user_table_add->id;
-            $add_permission->edit_in_out = $user_role->edit_in_out;
-            $add_permission->read_in_out = $user_role->read_in_out;
-            $add_permission->delete_in_out = $user_role->delete_in_out;
-            $add_permission->read_visitor = $user_role->read_visitor;
-            $add_permission->edit_visitor = $user_role->edit_visitor;
-            $add_permission->delete_visitor = $user_role->delete_visitor;
-            $add_permission->in_entry = $user_role->in_entry;
-            $add_permission->out_entry   = $user_role->out_entry ;
-            $add_permission->save();
+            // $add_permission = new permission();
+            // $add_permission->user_id = $user_table_add->id;
+            // $add_permission->role_name = $user_role->name;
+            // $add_permission->role_id = $user_role->id;
+            // $add_permission->edit_in_out = $user_role->edit_in_out;
+            // $add_permission->read_in_out = $user_role->read_in_out;
+            // $add_permission->delete_in_out = $user_role->delete_in_out;
+            // $add_permission->read_visitor = $user_role->read_visitor;
+            // $add_permission->edit_visitor = $user_role->edit_visitor;
+            // $add_permission->delete_visitor = $user_role->delete_visitor;
+            // $add_permission->in_entry = $user_role->in_entry;
+            // $add_permission->out_entry   = $user_role->out_entry ;
+            // $add_permission->save();
 
         }
         return \response($data);
@@ -781,9 +819,9 @@ class viewController extends Controller
         $truck_data_add->bank_ac = $request->bank_ac;
 
         //prifix
-        $location_code_id = $request->session()->get('location_code');
-        $location_code = location::where('id',$location_code_id)->first();
-        $location_name = substr(@$location_code->name, 0, 3);
+        // $location_code = location::where('id',$location_code_id)->first();
+        $location_code = $request->session()->get('location_name');
+        $location_name = substr(@$location_code, 0, 3);
         $temp = false;
         $RandNoPrefix = 'P';
         if ($temp == true) {
@@ -804,6 +842,7 @@ class viewController extends Controller
 
         $truck_data_add->card_number = $location_name.$RandNoPrefix.'1'.$formatted_str;
         $truck_data_add->temp = $temp;
+        $truck_data_add->location_code = $request->session()->get('location_code');
 
         // File Upload
         if($request->hasFile('upload_documents')) {
@@ -995,6 +1034,34 @@ class viewController extends Controller
         $ADD_LABOUR_DATA->valid_from = $request->valid_from;
         $ADD_LABOUR_DATA->valid_to = $request->valid_to;
         $ADD_LABOUR_DATA->process_stage = 1;
+
+        // $location_code = location::where('id',$location_code_id)->first();
+        $location_code = $request->session()->get('location_name');
+        $location_name = substr(@$location_code, 0, 3);
+        // return $location_name;
+        $temp = false;
+        $RandNoPrefix = 'P';
+        if ($temp == true) {
+            $RandNoPrefix = 'T';
+        }
+        $countDriverHelper = labour_data::count();
+        $pad_length = 4;
+        $pad_char = 0;
+        $str_type = 'd'; // treats input as integer, and outputs as a (signed) decimal number
+
+        $format = "%{$pad_char}{$pad_length}{$str_type}"; // or "%04d"
+
+        // output and echo
+        printf($format, 123);
+
+        // output to a variable
+        $formatted_str = sprintf($format, $countDriverHelper);
+
+        $ADD_LABOUR_DATA->card_number = $location_name.$RandNoPrefix.'1'.$formatted_str;
+        $ADD_LABOUR_DATA->temp = $temp;
+        $ADD_LABOUR_DATA->location_code = $request->session()->get('location_code');
+
+
         $ADD_LABOUR_DATA->save();
 
         // return $ADD_LABOUR_DATA;
@@ -1044,7 +1111,7 @@ class viewController extends Controller
     }
 
     public function LabourTypeListView(REQUEST $request) {
-        $labour_type = labour_type::get();
+        $labour_type = labour_type::paginate(10);
         return view('labour_type_list',compact('labour_type'));
     }
     
@@ -1064,5 +1131,62 @@ class viewController extends Controller
         $labour_type_update->save();
 
         return redirect('/labour_type/edit/'.$id);
+    }
+    
+    public function blackListList(REQUEST $request) {
+        $truck_data_temp = truck_data::select('id','adhar_no','full_name')->distinct('adhar_no')->get();
+        $truck_data = [];
+        $keyItem = 0;
+        foreach($truck_data_temp as $item) {
+            $blacklist = [];
+            $blacklist = blacklist::where('aadhar',$item->adhar_no)->first();
+            if(empty($blacklist)) {
+                array_push($truck_data, $item);
+            }
+        }
+
+        $blacklistList = blacklist::paginate(10);
+        // return $truck_data;
+        return view('blacklist',compact('truck_data','blacklistList'));
+    }
+    
+    public function blackListAdd(REQUEST $request) {
+        $blacklist_ADD = new blacklist();
+        $blacklist_ADD->aadhar = $request->aadhar_no;
+        $blacklist_ADD->location = $request->session()->get('location_code'); 
+        $blacklist_ADD->save();
+
+        return redirect('/blacklist');
+    }
+    
+    public function blackListRemove(REQUEST $request, $id) {
+        $blacklist = blacklist::where('id',$id)->delete();
+        return redirect('/blacklist');
+    }
+    
+    public function blackListSearch(REQUEST $request) {
+        $truck_data_temp = truck_data::select('id','adhar_no','full_name')->distinct('adhar_no')->get();
+        $truck_data = [];
+        $keyItem = 0;
+        foreach($truck_data_temp as $item) {
+            $blacklist = [];
+            $blacklist = blacklist::where('aadhar',$item->adhar_no)->first();
+            if(empty($blacklist)) {
+                array_push($truck_data, $item);
+            }
+        }
+
+
+        $blacklistList = blacklist::where('aadhar','like','%'.$request->search.'%')->orderBy('id','DESC')->get();
+        return view('blacklist',compact('truck_data','blacklistList'));
+    }
+
+    public function BlacklistAadharNo(REQUEST $request){
+        $blacklist = blacklist::where('aadhar', $request->value)->first();
+        if ($blacklist) {
+            return Response('true');
+        } else {
+            return Response('false');
+        }
     }
 }

@@ -449,12 +449,12 @@
                                                                 <div class="form-group">
                                                                     <label for="">Aadhar Number</label>
                                                                     <input type="text" class="form-control"
-                                                                        name="adhar_no" id="box_1"
+                                                                        name="adhar_no" id="box_1" onblur="CheckAadhar(this.value)" id="box_1"
                                                                         value="{{@$truck_data->adhar_no}}"
-                                                                        aria-describedby="helpId"
+                                                                        aria-describedby="helpId" readonly
                                                                         placeholder="Enter Aadhar Number" required>
                                                                     <small id="helpId"
-                                                                        class="form-text text-primary">Required</small>
+                                                                        class="form-text text-primary">Required <span class="text-danger">(*Note This should not be blacklisted)</span></small>
                                                                 </div>
                                                             </div>
 
@@ -1416,6 +1416,33 @@
                 }
 
             });
+        }
+    </script>
+
+<script>
+        function CheckAadhar(value) {
+            $('#box_1').css('border-color', '#e3e7ea');
+            if(value) {
+                $.ajax({ //create an ajax for blacklist check
+                    type: "GET",
+                    url: "{{url('check/blacklist/aadhar-no')}}",
+                    data: {
+                        value: value
+                    },
+                    dataType: "json",
+                    success: function (response) {
+                        if(response == true) {
+                            $('#box_1').css('border-color', 'red');
+                            alert('This Aadhar No is Blacklisted') ? "" : $('#box_1').css('color', 'red');
+                        }
+                    },
+                    error: function (error) {
+                        console.log(response);
+                    }
+
+                });
+
+            }
         }
     </script>
 

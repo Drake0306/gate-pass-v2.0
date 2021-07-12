@@ -633,6 +633,7 @@
             window.print();
 
             document.body.innerHTML = originalContents;
+
         }
     </script>
 </body>

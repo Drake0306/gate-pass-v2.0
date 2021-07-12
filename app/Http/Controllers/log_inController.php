@@ -12,7 +12,9 @@ use Hash;
 // use Stevebauman\Wmi\Wmi;
 use App\user_table;
 use App\log_in_log;
+use App\company_master;
 use App\permission;
+use App\user_role;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -26,6 +28,7 @@ class log_inController extends Controller
         $password = $request->password;
         $user_id  = $request->user_id; 
         $data = user_table::where('user_id',$user_id)->where('password',$password)->first();
+        $company_master = company_master::first();
         if($data){
             // if (Hash::check($data->password , $password)) {
             //     // The passwords match...
@@ -56,26 +59,32 @@ class log_inController extends Controller
 
             // exit;
 
-
-            $permission = permission::where('user_id',$data->id)->first();
+            $user_role = user_role:: where('id',$data->type)->first();
+            // $permission = permission::where('user_id',$data->id)->first();
             //ADDING DATA TO SESSION
             $request->session()->put('user_id', $data->user_id);
             $request->session()->put('id', $data->id);
-            $request->session()->put('type', $data->type);
+            $roleName = $user_role->name;
+            if ($roleName == "Admin") {
+                $request->session()->put('type', 0);
+            }else {
+                $request->session()->put('type', 1);
+            }
             $request->session()->put('name', $data->name);
             //IN  OUT
-            $request->session()->put('read_in_out',$permission->read_in_out);
-            $request->session()->put('edit_in_out',$permission->edit_in_out );
-            $request->session()->put('delete_in_out',$permission->delete_in_out);
+            $request->session()->put('read_in_out',$user_role->read_in_out);
+            $request->session()->put('edit_in_out',$user_role->edit_in_out );
+            $request->session()->put('delete_in_out',$user_role->delete_in_out);
             //VISITOR
-            $request->session()->put('read_visitor',$permission->read_visitor );
-            $request->session()->put('edit_visitor',$permission->edit_visitor);
-            $request->session()->put('delete_visitor',$permission->delete_visitor);
+            $request->session()->put('read_visitor',$user_role->read_visitor );
+            $request->session()->put('edit_visitor',$user_role->edit_visitor);
+            $request->session()->put('delete_visitor',$user_role->delete_visitor);
             //ENTRY
-            $request->session()->put('in_entry',$permission->in_entry);
-            $request->session()->put('out_entry',$permission->out_entry);
+            $request->session()->put('in_entry',$user_role->in_entry);
+            $request->session()->put('out_entry',$user_role->out_entry);
             
-            $request->session()->put('location','101');
+            $request->session()->put('location',$company_master->location_code);
+            $request->session()->put('location_name',$company_master->location_name);
             $request->session()->put('location_code',$data->location_code);
 
             // $request->session()->put('ip', $request->ip());

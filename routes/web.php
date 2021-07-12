@@ -23,7 +23,12 @@ Route::any('/store_image','viewController@storeimg');
 Route::any('log_out','viewController@log_out');
 Route::any('/store_visitor_data','viewController@store_visitor_data');
 Route::any('/in_out_register','viewController@in_out_register');
-Route::any('/search_in_out_register','viewController@search_in_out_register');
+
+// Search
+Route::any('/search-driver-helper','viewController@searchDriverHelper');
+Route::any('/search-temp-labour','viewController@searchTempLabour');
+Route::any('/party-type-search','viewController@partyTypeSearch');
+
 Route::any('/visitor_register','viewController@visitor_register');
 Route::any('/search_visitor_register','viewController@search_visitor_register');
 Route::any('/snap','viewController@snap');
@@ -56,6 +61,7 @@ Route::any('/truck/data/pdf/print/now/{id}','viewController@TruckVisitPdfPrintNo
 
 // Ajax
 Route::any('truck/ajax/load','viewController@truckDataloadAjax');
+Route::any('check/blacklist/aadhar-no','viewController@BlacklistAadharNo');
 
 // Labour type
 Route::any('/labour_type/create','viewController@LabourTypeCreateView');
@@ -92,3 +98,9 @@ Route::any('/master/pary_tt/edit/{id}','viewController@paryMasterttEdit');
 Route::any('/master/party_master_tt/update{id}','viewController@paryMasterttUpdate');
 Route::any('/master/party_master_tt/search','viewController@paryMasterTTSearch');
 Route::any('/master/party_master_tt/create','viewController@paryMasterttAdd');
+
+// Blacklist
+Route::any('/blacklist','viewController@blackListList');
+Route::any('/blacklist/add','viewController@blackListAdd');
+Route::any('/revert/blacklist/{id}','viewController@blackListRemove');
+Route::any('/blacklist/search','viewController@blackListSearch');

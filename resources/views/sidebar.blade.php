@@ -242,6 +242,22 @@
 
                     </ul>
                 </li>
+                <li>
+                    <a href="#">
+                        <i class="metismenu-icon pe-7s-display2"></i>
+                        Blacklist
+                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="{{url('/blacklist')}}">
+                                <i class="metismenu-icon"></i>
+                                List
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
                 @endif
             </ul>
         </div>

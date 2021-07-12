@@ -267,7 +267,7 @@
                                 <div class="card-header-tab card-header-tab-animation card-header">
                                     <div class="card-header-title">
                                         <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
-                                        IN / OUT REGISTER
+                                        Temporary Labour List
                                     </div>
                                     {{-- <div class="search-wrapper">
                                         <div class="input-holder">
@@ -279,22 +279,22 @@
                                 </div>
                                 <div class="card-body">
                                     <div class="tab-content">
-                                        <form action="{{url('/search_in_out_register')}}" method="get">
+                                        <form action="{{url('/search-temp-labour')}}" method="get">
                                             <div class="row">
-                                                <div class="col-md-8">
+                                                <div class="col-md-7">
                                                     <div class="form-group">
                                                         <input type="text" class="form-control" name="search" id=""
-                                                            aria-describedby="helpId" placeholder="Name">
+                                                            aria-describedby="helpId" placeholder="Name, Aadhar, Type">
                                                     </div>
 
                                                 </div>
-                                                <div class="col-md-2">
+                                                <div class="col-md-3">
                                                     <div class="form-group">
                                                         <select class="form-control" name="type" id="">
-                                                            <option value="1">ALL</option>
-                                                            {{-- <option value="2">IN</option>
-                                                            <option value="3">OUT</option> --}}
-                                                            <option value="4">PENDING OUT</option>
+                                                            <option value="10">Show 10 Results</option>
+                                                            <option value="20">Show 20 Results</option>
+                                                            <option value="30">Show 30 Results</option>
+                                                            <option value="0">Show all</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -359,7 +359,7 @@
                                                                     @endif</td> -->
 
                                                                 
-                                                                <td>{{@$item->name}}</td>
+                                                                <td>{{@$item->type}}</td>
                                                                 <td>{{date('d-m-Y',strtotime(@$item->issue_date))}}</td>
                                                                 </td>
                                                                 <?php

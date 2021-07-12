@@ -175,7 +175,7 @@
                                                                     <div class="col-md-2">
                                                                         <div class="form-group">
                                                                             <label for="">USER ROLE</label>
-                                                                            <select class="form-control" name="gender"
+                                                                            <select class="form-control" name="user_Role"
                                                                                 id="user_role_create" required>
                                                                                 <option value="">Select Role
                                                                                 </option>
@@ -234,8 +234,8 @@
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label for="">PASSWORD</label>
-                                                                            <input type="text" class="form-control"
-                                                                                name="mobile" id="password"
+                                                                            <input type="password" class="form-control"
+                                                                                name="password" id="password"
                                                                                 aria-describedby="helpId" minlength="8"
                                                                                 value=""
                                                                                 placeholder="Enter new password">
@@ -255,8 +255,8 @@
                                                                     <div class="col-md-12">
                                                                         <div class="form-group">
                                                                             <label for="">CONFIRM PASSWORD</label>
-                                                                            <input type="text" class="form-control"
-                                                                                name="email" id="confirm_password"
+                                                                            <input type="password" class="form-control"
+                                                                                name="confirm_password" id="confirm_password"
                                                                                 aria-describedby="helpId" value=""
                                                                                 placeholder="Enter password again">
 
@@ -495,7 +495,8 @@
     {{-- End validation--}}
     {{-- check same name--}}
     <script>
-        $('#user_id_new').keyup(function () {
+        $('#user_id_new').blur(function () {
+            $('#user_id_new').css('border-color', '#d2d7dd');
             var user_id_new = $('#user_id_new').val();
             $.ajax({
                 type: 'GET',
@@ -507,6 +508,7 @@
                     // console.log(data);
                     if (data == 1) {
                         alert('Same user id exist');
+                        $('#user_id_new').css('border-color', 'red');
                     }
                 },
                 error: function (data) {
@@ -602,6 +604,8 @@
                         console.log(data);
                         if (data == 1) {
                             alert('USER ID ALREADY EXIST ENTER NEW ONE');
+                            $('#user_id_new').css('border-color', 'red');
+
                         } else {
                             $('#full_name').val('');
                             $('#user_id_new').val('');
@@ -609,10 +613,12 @@
                             $('#confirm_password').val('');
                             run_get_user_role()
                             alert('User Created');
+                            $('#user_id_new').css('border-color', '#d2d7dd');
                         }
 
                     },
                     error: function (data) {
+                        console.log(data);
                         alert('Internal Server error');
                     }
                 });

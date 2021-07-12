@@ -131,41 +131,56 @@
                                     <div class="card-header-tab card-header-tab-animation card-header">
                                         <div class="card-header-title">
                                             <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
-                                            PARTY SEARCH
+                                            ADD BLACKLIST
                                         </div>
 
                                     </div>
                                     <div class="card-body">
                                         <div class="tab-content">
-                                            <form action="{{url('/party-type-search')}}" method="get">
+                                            <form action="{{url('/blacklist/add')}}" method="post">
+                                            @csrf
                                                 <div class="row">
-                                                    <div class="col-md-7">
+                                                    <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <input type="text" class="form-control" name="search" id=""
-                                                                aria-describedby="helpId" placeholder="Name">
+                                                              <select class="form-control" name="aadhar_no" id="" required >
+                                                                <option value="" >Aadhar Number Select</option>
+                                                                @foreach($truck_data as $item)
+                                                                <option value="{{$item['adhar_no']}}" >{{$item['adhar_no']}} || {{$item['full_name']}}</option>
+                                                                @endforeach
+                                                              </select>
                                                         </div>
 
                                                     </div>
-                                                    <div class="col-md-3">
+                                                    <!-- <div class="col-md-2">
                                                         <div class="form-group">
                                                             <select class="form-control" name="type" id="">
-                                                                <option value="10">Show 10 Results</option>
-                                                                <option value="20">Show 20 Results</option>
-                                                                <option value="30">Show 30 Results</option>
-                                                                <option value="0">Show all</option>
+                                                                <option value="1">ALL</option>
+                                                                <option value="4">PENDING OUT</option>
                                                             </select>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="col-md-2">
-                                                        <button type="submit" class="btn btn-outline-primary"
-                                                            style="width:100%;height:40px;"><i class="fa fa-search"
-                                                                aria-hidden="true"></i>&nbsp; Search</button>
+                                                        <button type="submit" class="btn btn-outline-danger"
+                                                            style="width:100%;height:40px;"> <i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp; BLACKLIST THIS </button>
                                                     </div>
                                                 </div>
                                             </form>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- <div class="mb-3 card">
+
+                                    <div class="card-header-tab card-header-tab-animation card-header">
+                                        <div class="card-header-title">
+                                            <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
+                                            BLACKLIST SEARCH
+                                        </div>
+
+                                    </div>
+                                    <div class="card-body">
+                                        
+                                    </div>
+                                </div> -->
                                 <div class="col-md-12">
 
                                     <div class="card-header-tab card-header-tab-animation card-header">
@@ -182,30 +197,65 @@
 
                                                 <div class="main-card mb-3 card">
                                                     <div class="card-body">
+                                                    <div class="tab-content">
+                                                            <form action="{{url('/blacklist/search')}}" method="get">
+                                                                <div class="row">
+                                                                    <div class="col-md-10">
+                                                                        <div class="form-group">
+                                                                            <input type="text" class="form-control" name="search" id=""
+                                                                                aria-describedby="helpId" placeholder="Aadhar Number Search">
+                                                                        </div>
+
+                                                                    </div>
+                                                                    
+                                                                    <!-- <div class="col-md-2">
+                                                                        <div class="form-group">
+                                                                            <select class="form-control" name="type" id="">
+                                                                                <option value="1">ALL</option>
+                                                                                <option value="4">PENDING OUT</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div> -->
+                                                                    <div class="col-md-2">
+                                                                        <button type="submit" class="btn btn-outline-primary"
+                                                                            style="width:100%;height:40px;"><i class="fa fa-search"
+                                                                                aria-hidden="true"></i>&nbsp; Search</button>
+                                                                    </div>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                        <br>
                                                         <table class="mb-0 table table-borderless">
                                                             <thead>
                                                                 <tr>
                                                                     <th>#</th>
-                                                                    <th>Labour Type Name</th>
+                                                                    <th style="text-align: center">Action</th>
+                                                                    <th>BlackList Aadhar Number</th>
+                                                                    <th>Location Code</th>
                                                                     </th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody style="font-size:12px;">
                                                                 <?php $c = 1; ?>
-                                                                @foreach($labour_type as $item)
+                                                                @foreach($blacklistList as $item)
                                                                 <?php //echo $item->party_name;?>
                                                                 <tr>
-                                                                    <th scope="row">{{$item->id}}</th>
-                                                                    <td><a href="{{url('/labour_type/edit/'.$item->id)}}"
-                                                                            data-toggle="tooltip"
-                                                                            title="{{@$item->name}} ( click to edit )">{{@$item->name}}
-                                                                            </a></td>
+                                                                    <th scope="row">{{ $c++ }}</th>
+                                                                    <td style="text-align: center" >
+                                                                    <a href="{{url('/revert/blacklist/'.$item->id)}}" 
+                                                                       onclick="return confirm('Are you sure?')" 
+                                                                       title="Delete Consignment"> 
+                                                                       <i class="fa fa-trash text-danger" style="font-size: 20px;" aria-hidden="true"></i>
+                                                                    </a> 
+                                                                 </td>
+                                                                    <th scope="row"> <lable class="text-primary" > <b style="letter-spacing: 1px" >{{ $item->aadhar }}</b> </lable> </th>
+                                                                    <th scope="row">{{ $item->location }}</th>
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
                                                         </table>
                                                         @if($value ?? '' == 1)
-                                                        {{@$labour_type->links()}}
+                                                        {{@$truck_data->links()}}
                                                         @endif
                                                     </div>
                                                 </div>
