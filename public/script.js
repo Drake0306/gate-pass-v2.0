@@ -19,13 +19,18 @@ if (navigator.getUserMedia) {
 
         // Success Callback
         function (localMediaStream) {
-            // Get a reference to the video element on the page.
-            var vid = document.getElementById('camerastream');
-            console.log(localMediaStream);
-            // Create an object URL for the video stream and use this 
-            // to set the video source.
-            // vid.src = window.URL.createObjectURL(localMediaStream);
-            document.getElementById('camerastream').setAttribute('src',localMediaStream);
+            if(localMediaStream) {
+                // Get a reference to the video element on the page.
+                var vid = document.getElementById('camerastream');
+                if(vid) {
+
+                    console.log(localMediaStream);
+                    // Create an object URL for the video stream and use this 
+                    // to set the video source.
+                    // vid.src = window.URL.createObjectURL(localMediaStream);
+                    document.getElementById('camerastream').setAttribute('src',localMediaStream);
+                }
+            }
 
         },
 

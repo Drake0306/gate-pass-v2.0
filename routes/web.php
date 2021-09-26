@@ -99,8 +99,9 @@ Route::any('/master/party_master_tt/update{id}','viewController@paryMasterttUpda
 Route::any('/master/party_master_tt/search','viewController@paryMasterTTSearch');
 Route::any('/master/party_master_tt/create','viewController@paryMasterttAdd');
 
-// Blacklist
+// Blacklist Truck
 Route::any('/blacklist','viewController@blackListList');
 Route::any('/blacklist/add','viewController@blackListAdd');
 Route::any('/revert/blacklist/{id}','viewController@blackListRemove');
 Route::any('/blacklist/search','viewController@blackListSearch');
+

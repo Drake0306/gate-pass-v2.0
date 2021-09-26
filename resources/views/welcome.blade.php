@@ -11,220 +11,122 @@
         content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
     <meta name="description" content="This is an example dashboard created using build-in elements and components.">
     <meta name="msapplication-tap-highlight" content="no">
-    <!--
-    =========================================================
-    * ArchitectUI HTML Theme Dashboard - v1.0.0
-    =========================================================
-    * Product Page: https://dashboardpack.com
-    * Copyright 2019 DashboardPack (https://dashboardpack.com)
-    * Licensed under MIT (https://github.com/DashboardPack/architectui-html-theme-free/blob/master/LICENSE)
-    =========================================================
-    * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-    -->
-    <link href="{{url('public/style.css')}}" rel="stylesheet">
-    <link href="{{url('public/main.css')}}" rel="stylesheet">
+
+    @include('script&css')
+
+    <!-- Bootstrap core CSS -->
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.1/examples/sign-in/">
+
     <style>
-        .fixed-sidebar .app-main .app-main__outer {
-            z-index: 9;
-            padding-left: 0px;
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            display: flex;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: #f5f5f5;
+        }
+
+        .form-signin {
+            width: 100%;
+            max-width: 330px;
+            padding: 15px;
+            margin: auto;
+        }
+
+        .form-signin .checkbox {
+            font-weight: 400;
+        }
+
+        .form-signin .form-floating:focus-within {
+            z-index: 2;
+        }
+
+        .form-signin input[type="email"] {
+            margin-bottom: -1px;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        .form-signin input[type="password"] {
+            margin-bottom: 10px;
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
         }
     </style>
+
+
+    <!-- Custom styles for this template -->
+    <!-- <link href="signin.css" rel="stylesheet"> -->
 </head>
 
-<body>
-    <div class="app-container app-theme-white body-tabs-shadow fixed-sidebar fixed-header">
-        <div class="app-header header-shadow">
-            <div class="app-header__logo">
-                <div class="" style="text-transform:uppercase"><b id="text_change">gate entry system</b></div>
-                <input type="hidden" name="" id="value_data_one" value="0">
-                <div class="header__pane ml-auto">
-                    <div>
-                        <!-- <button type="button" id="change_no" class="hamburger close-sidebar-btn hamburger--elastic"
-                            data-class="closed-sidebar">
-                            <span class="hamburger-box">
-                                <span class="hamburger-inner"></span>
-                            </span>
-                        </button> -->
-                    </div>
-                </div>
+<body class="text-center">
+        <div style="display: none" id="preloader"></div>
+    <main class="form-signin">
+        <form method="POST" action="{{url('/log_in')}}">
+            @csrf
+            <img class="mb-4" src="{{url('/assets/images/bootstrap-logo.svg')}}" alt="" width="72" height="57">
+            <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+            <div class="form-floating">
+                <input type="text" name="user_id" class="form-control" id="floatingInput" placeholder="ID****">
+                <label for="floatingInput">User ID</label>
+                @if(@$error == 1)
+                <small id="helpId" style="color:red" class="form-text">Wrong Password or User Id</small>
+                @endif
             </div>
-            <div class="app-header__mobile-menu">
-                <div>
-                    <button type="button" class="hamburger hamburger--elastic mobile-toggle-nav">
-                        <span class="hamburger-box">
-                            <span class="hamburger-inner"></span>
-                        </span>
-                    </button>
-                </div>
+            <div class="form-floating">
+                <input type="password" class="form-control" minlength="6" name="password" id="floatingPassword"
+                    placeholder="Password">
+                <label for="floatingPassword">Password</label>
+                @if(@$error == 1)
+                <small id="helpId" style="color:red" class="form-text">Wrong Password or User Id</small>
+                @endif
             </div>
-            <div class="app-header__menu">
-                <span>
-                    <button type="button"
-                        class="btn-icon btn-icon-only btn btn-primary btn-sm mobile-toggle-header-nav">
-                        <span class="btn-icon-wrapper">
-                            <i class="fa fa-ellipsis-v fa-w-6"></i>
-                        </span>
-                    </button>
-                </span>
+
+            <div class="checkbox mb-3">
+                <label>
+                    <input type="checkbox" name="remember" value="remember-me"> Remember me
+                </label>
             </div>
-            <div class="app-header__content">
-                <div class="app-header-left">
-
-                </div>
-                <div class="app-header-right">
-                    <div class="header-btn-lg pr-0">
-                        <div class="widget-content p-0">
-                            <div class="widget-content-wrapper">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="app-main">
-
-            <div class="app-main__outer">
-                <div class="app-main__inner">
-                    <div class="row">
-                        <div class="col-md-12 col-lg-12">
-                            <div class="mb-3 card">
-                                <div class="card-header-tab card-header-tab-animation card-header">
-                                    <div class="card-header-title">
-                                        <i class="header-icon lnr-apartment icon-gradient bg-love-kiss"> </i>
-                                        Log In
-                                    </div>
-                                </div>
-                                <style>
-                                    /* img {
-                                        vertical-align: middle;
-                                        border-style: none;
-                                        width: 100%;
-                                    } */
-                                </style>
-                                <div class="card-body">
-                                    <div class="tab-content">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <form method="POST" action="{{url('/log_in')}}">
-                                                    @csrf
-                                                    <div class="row">
-                                                        <div class="col-md-4">
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <label for="">USER ID</label>
-                                                                <input type="text" class="form-control" name="user_id"
-                                                                    id="" aria-describedby="helpId"
-                                                                    placeholder="Enter id" required>
-                                                                @if(@$error == 1)
-                                                                <small id="helpId" style="color:red"
-                                                                    class="form-text">Wrong Password or User Id</small>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mt-4">
-                                                        <div class="col-md-4">
-                                                        </div>
-                                                        <div class="col-md-4">
-                                                            <div class="form-group">
-                                                                <label for="">PASSWORD</label>
-                                                                <input type="password" minlength="6"
-                                                                    class="form-control" name="password" id=""
-                                                                    aria-describedby="helpId"
-                                                                    placeholder="Enter Password" required>
-                                                                @if(@$error == 1)
-                                                                <small id="helpId" style="color:red"
-                                                                    class="form-text">Wrong Password or User Id</small>
-                                                                @endif
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mt-4">
-                                                        <div class="col-md-5">
-                                                        </div>
-                                                        <div class="col-md-4" style="margin-left:50px">
-                                                            <div class="form-group">
-                                                                <button type="submit" class="btn btn-primary">Login
-                                                                    &nbsp; <i class="fa fa-angle-right"
-                                                                        aria-hidden="true"></i> </button>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+            <p class="mt-5 mb-3 text-muted">&copy; 2017–2021</p>
+        </form>
+    </main>
 
 
-
-                    <div class="app-wrapper-footer">
-                        <div class="app-footer">
-                            <div class="app-footer__inner">
-                                <div class="app-footer-left">
-                                    <ul class="nav">
-                                        <!-- <li class="nav-item">
-                                            <a href="javascript:void(0);" class="nav-link">
-                                                
-                                            </a>
-                                        </li> -->
-                                        <li class="nav-item">
-                                            <a href="javascript:void(0);" class="nav-link">
-                                                <!-- <div class="badge badge-success mr-1 ml-0">
-                                                    <p>Developed by &nbsp;: &nbsp;</p>
-                                                </div> -->
-                                                COMSYS IT
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- <div class="app-footer-right">
-                                    <ul class="nav">
-                                        <li class="nav-item">
-                                            <a href="javascript:void(0);" class="nav-link">
-                                                Footer Link 3
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a href="javascript:void(0);" class="nav-link">
-                                                <div class="badge badge-success mr-1 ml-0">
-                                                    <small>NEW</small>
-                                                </div>
-                                                Footer Link 4
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div> -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
-            </div>
-        </div>
-        <script type="text/javascript" src="{{url('public/assets/scripts/main.js')}}"></script>
-        <script type="text/javascript" src="{{url('public/script.js')}}"></script>
-
-
-        <script>
-            $('#change_no').click(function () {
-                var value_data_one = $('#value_data_one').val();
-                if (value_data_one == 0) {
-                    $('#text_change').html('GES');
-                    $('#value_data_one').val(1);
-
-                } else {
-                    $('#text_change').html('gate entry system');
-                    $('#value_data_one').val(0);
-                }
-            });
-        </script>
 
 </body>
+<script>
+    $('#change_no').click(function () {
+        var value_data_one = $('#value_data_one').val();
+        if (value_data_one == 0) {
+            $('#text_change').html('GES');
+            $('#value_data_one').val(1);
+
+        } else {
+            $('#text_change').html('gate entry system');
+            $('#value_data_one').val(0);
+        }
+    });
+</script>
 
 </html>

@@ -148,6 +148,15 @@
                 </li>
                 <?php $type_ne = Session::get('type'); ?>
                 @if(@$type_ne == 0)
+                <li class="app-sidebar__heading">BlackList</li>
+                <li>
+                    <a href="{{url('/blacklist')}}">
+                        <i class="metismenu-icon pe-7s-display2"></i>
+                        Blacklist
+                    </a>
+                    
+                </li>
+                
                 <li class="app-sidebar__heading">Master</li>
                 <li>
                     <a href="#">
@@ -242,22 +251,7 @@
 
                     </ul>
                 </li>
-                <li>
-                    <a href="#">
-                        <i class="metismenu-icon pe-7s-display2"></i>
-                        Blacklist
-                        <i class="metismenu-state-icon pe-7s-angle-down caret-left"></i>
-                    </a>
-                    <ul>
-                        <li>
-                            <a href="{{url('/blacklist')}}">
-                                <i class="metismenu-icon"></i>
-                                List
-                            </a>
-                        </li>
-
-                    </ul>
-                </li>
+                
                 @endif
             </ul>
         </div>

@@ -1135,7 +1135,9 @@ class viewController extends Controller
     
     public function blackListList(REQUEST $request) {
         $truck_data_temp = truck_data::select('id','adhar_no','full_name')->distinct('adhar_no')->get();
+        $labour_data_temp = labour_data::select('id','adhar_no','full_name')->distinct('adhar_no')->get();
         $truck_data = [];
+        $labour_data = [];
         $keyItem = 0;
         foreach($truck_data_temp as $item) {
             $blacklist = [];
@@ -1144,15 +1146,29 @@ class viewController extends Controller
                 array_push($truck_data, $item);
             }
         }
+        foreach($labour_data_temp as $item) {
+            $blacklist = [];
+            $blacklist = blacklist::where('aadhar',$item->adhar_no)->first();
+            if(empty($blacklist)) {
+                array_push($labour_data, $item);
+            }
+        }
 
         $blacklistList = blacklist::paginate(10);
+        $company_master = [];
+        if($blacklistList) {
+            $company_master = company_master::where('location_code', @$blacklistList[0]->location)->first();
+        }
         // return $truck_data;
-        return view('blacklist',compact('truck_data','blacklistList'));
+        $name = 'ADD TRUCK BLACKLIST';
+        return view('blacklist',compact('company_master','truck_data','labour_data','blacklistList','name'));
     }
     
     public function blackListAdd(REQUEST $request) {
+        $TempAadhar = explode('|',$request->aadhar_no);
         $blacklist_ADD = new blacklist();
-        $blacklist_ADD->aadhar = $request->aadhar_no;
+        $blacklist_ADD->aadhar = @$TempAadhar[0];
+        $blacklist_ADD->type = @$TempAadhar[1];
         $blacklist_ADD->location = $request->session()->get('location_code'); 
         $blacklist_ADD->save();
 
@@ -1180,6 +1196,7 @@ class viewController extends Controller
         $blacklistList = blacklist::where('aadhar','like','%'.$request->search.'%')->orderBy('id','DESC')->get();
         return view('blacklist',compact('truck_data','blacklistList'));
     }
+    
 
     public function BlacklistAadharNo(REQUEST $request){
         $blacklist = blacklist::where('aadhar', $request->value)->first();
